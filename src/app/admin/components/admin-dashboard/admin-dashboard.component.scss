@@ -1,0 +1,45 @@
+// .mat-drawer-container {
+//   position: static;
+//   overflow: hidden;
+// }
+
+// .container {
+//   padding: 100px;
+//   height: auto;
+//   width: auto;
+// }
+
+// button {
+//   margin: 2px;
+// }
+
+.circle {
+  background: #68b828;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 0px;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.primary-info {
+  &-div {
+    display: inline-flex;
+    flex-flow: row wrap;
+    overflow-x: hidden;
+  }
+
+  &-card {
+    padding: 0 0 20px 0 !important;
+    margin: 10px;
+    cursor: pointer;
+
+    &-gt-xs {
+      padding: 0 0 20px 0 !important;
+      margin: 10px;
+      cursor: pointer; // height: 30vh;
+    }
+  }
+}

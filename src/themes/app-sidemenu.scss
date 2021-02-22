@@ -1,0 +1,260 @@
+// Import all the tools needed to customize the theme and extract parts of it
+@import "~@angular/material/theming";
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin app-sidemenu($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get(
+    $theme,
+    accent
+  ); // Use mat-color to extract individual colors from a palette as necessary.
+  $warn: map-get($theme, warn);
+  $outer: mat-color($primary, 400);
+  $outer-light: mat-color($primary, 300);
+  .active-link {
+    background-color: mat-color($accent, 500) !important;
+    color: set-text-color(rgba($color: #ffffff, $alpha: 1)) !important;
+    border-bottom: 2px thin mat-color($primary, 600);
+    border-top: 2px thin mat-color($primary, 600);
+  }
+  $colors: (
+    50,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    A100,
+    A200,
+    A400,
+    A700
+  );
+  @each $color in $colors {
+    .col {
+      &-primary-#{$color} {
+        color: mat-color($primary, $color) !important;
+      }
+      &-accent-#{$color} {
+        color: mat-color($accent, $color) !important;
+      }
+      &-warn-#{$color} {
+        color: mat-color($warn, $color) !important;
+      }
+    }
+    .bg {
+      &-primary-#{$color} {
+        background: mat-color($primary, $color) !important;
+        color: set-text-color(mat-color($primary, $color)) !important;
+      }
+      &-accent-#{$color} {
+        background: mat-color($accent, $color) !important;
+        color: set-text-color(mat-color($accent, $color)) !important;
+      }
+      &-warn-#{$color} {
+        background: mat-color($warn, $color) !important;
+        color: set-text-color(mat-color($warn, $color)) !important;
+      }
+    }
+  }
+  .col {
+    &-primary {
+      color: mat-color($primary) !important;
+    }
+    &-accent {
+      color: mat-color($accent) !important;
+    }
+  }
+  .bg {
+    &-primary {
+      background: mat-color($primary) !important;
+      &-light {
+        background: mat-color($primary, 500) !important;
+        color: #ffffff !important;
+      }
+      &-dark {
+        background: mat-color($primary, 500) !important;
+        color: #000000 !important;
+      }
+    }
+    &-accent {
+      &-light {
+        background: mat-color($accent, A200) !important;
+        color: #ffffff !important;
+      }
+      &-dark {
+        background: mat-color($accent, 300) !important;
+        color: #000000 !important;
+      }
+      &-new {
+        background: mat-color($accent, A100);
+        color: #000000;
+      }
+      &-border {
+        border-color: mat-color($accent, A200) !important;
+      }
+    }
+    &-warn {
+      background: mat-color($warn, 500) !important;
+      color: #ffffff !important;
+    }
+  }
+  .pagination .pagination-number.current-number {
+    background: mat-color($primary, 500) !important;
+    color: #fff;
+  }
+  #outer .out,
+  .out-sm {
+    .avatar,
+    .message {
+      background-color: $outer;
+      color: white;
+    }
+    .message:before {
+      border-color: $outer transparent transparent transparent;
+    }
+  }
+  .active-chat {
+    background: $outer;
+    color: white;
+    &:hover {
+      background: $outer-light;
+      color: white;
+    }
+  }
+  .error-header {
+    text-align: center;
+    font-size: 15em;
+    font-weight: 100;
+    text-shadow: mat-color($primary, 900) 1px 1px,
+      mat-color($primary, 900) 2px 2px, mat-color($primary, 900) 3px 3px,
+      mat-color($primary, 800) 4px 4px, mat-color($primary, 800) 5px 5px,
+      mat-color($primary, 800) 6px 6px, mat-color($primary, 800) 7px 7px,
+      mat-color($primary, 700) 8px 8px, mat-color($primary, 700) 9px 9px,
+      mat-color($primary, 700) 10px 10px, mat-color($primary, 700) 11px 11px,
+      mat-color($primary, 600) 12px 12px, mat-color($primary, 600) 13px 13px,
+      mat-color($primary, 600) 14px 14px, mat-color($primary, 600) 15px 15px,
+      mat-color($primary, 500) 16px 16px, mat-color($primary, 500) 17px 17px,
+      mat-color($primary, 500) 18px 18px, mat-color($primary, 500) 19px 19px;
+  }
+  .inner-login-sidenav-content {
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      mat-color($primary, 700),
+      mat-color($primary, 900)
+    );
+  }
+  .logo-font {
+    color: mat-color($accent, A700);
+    -ms-transform: scale(4, 4);
+    -webkit-transform: scale(4, 4);
+    transform: scale(4, 4);
+  }
+  .my-profile-image {
+    width: 140px;
+    height: 137px;
+    border: 1px solid mat-color($primary, 800);
+    position: relative;
+    left: 16px;
+    border-radius: 50%;
+  }
+  .info-header {
+    font-size: 17px !important;
+  }
+  .hrline {
+    border: 1px solid #ccc;
+    margin: 0px 10px 0px 10px;
+  }
+  // .demo2 {
+  //   /* font-weight: 350;*/
+  // }
+  .special-date {
+    background-color: green;
+  }
+  .marginTop {
+    margin-top: 10px;
+  }
+  .matlineheight {
+    height: 35px !important;
+  }
+  .myview-profile-image {
+    width: 160px;
+    height: 160px;
+    border: 1px solid mat-color($primary, 800);
+    position: relative;
+    left: 16px;
+    border-radius: 50%;
+    margin-top: 20px;
+  }
+  .card-view {
+    background: transparent;
+  }
+  .formfieldview {
+    width: 100%;
+  }
+  .formfieldview > .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  .container1 {
+    background: white;
+    margin: 5px;
+  }
+  #lab-camera {
+    border-radius: 12px;
+    font-size: 27px;
+    position: relative;
+    top: 64px;
+    left: -30px;
+    background-color: #ffffff;
+    color: mat-color($accent, A200);
+    cursor: pointer;
+  }
+  .mat-button-toggle {
+    // background-color: mat-color($primary);
+    color: mat-color($primary);
+  }
+  .mat-button-toggle-checked {
+    background-color: mat-color($accent);
+    color: mat-color($accent, default-contrast);
+  }
+  .loading-slide .slide {
+    position: absolute;
+    width: 25%;
+    height: 5px;
+    background: mat-color($accent, A200);
+    animation: slide 2s infinite;
+  }
+  .card-two {
+    header {
+      background-color: mat-color($accent, A200);
+    }
+    .contacts {
+      a {
+        color: mat-color($accent, A200);
+      }
+      .fa {
+        border: 2px solid mat-color($accent, A200);
+        &::after {
+          background: mat-color($accent, A200);
+        }
+      }
+    }
+  }
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}

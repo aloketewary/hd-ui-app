@@ -1,0 +1,231 @@
+/* ================== Badge Overlay CSS ========================*/
+.badge-overlay {
+  position: absolute;
+  left: 0%;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+  -webkit-transition: width 1s ease, height 1s ease;
+  -moz-transition: width 1s ease, height 1s ease;
+  -o-transition: width 1s ease, height 1s ease;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+/* ================== Badge CSS ========================*/
+.badge {
+  margin: 0;
+  padding: 0;
+  color: white;
+  padding: 10px 10px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  line-height: normal;
+  text-transform: uppercase;
+  background: #ed1b24;
+}
+
+.badge::before,
+.badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  margin: 0 -1px;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  min-width: 55px;
+}
+
+.badge::before {
+  right: 100%;
+}
+
+.badge::after {
+  left: 100%;
+}
+
+/* ================== Badge Position CSS ========================*/
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -ms-transform: translateX(-30%) translateY(0%) rotate(-45deg);
+  -webkit-transform: translateX(-30%) translateY(0%) rotate(-45deg);
+  transform: translateX(-30%) translateY(0%) rotate(-45deg);
+  -ms-transform-origin: top right;
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -ms-transform: translateX(30%) translateY(0%) rotate(45deg);
+  -webkit-transform: translateX(30%) translateY(0%) rotate(45deg);
+  transform: translateX(30%) translateY(0%) rotate(45deg);
+  -ms-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -ms-transform: translateX(-30%) translateY(0%) rotate(45deg);
+  -webkit-transform: translateX(-30%) translateY(0%) rotate(45deg);
+  transform: translateX(-30%) translateY(0%) rotate(45deg);
+  -ms-transform-origin: bottom right;
+  -webkit-transform-origin: bottom right;
+  transform-origin: bottom right;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -ms-transform: translateX(30%) translateY(0%) rotate(-45deg);
+  -webkit-transform: translateX(30%) translateY(0%) rotate(-45deg);
+  transform: translateX(30%) translateY(0%) rotate(-45deg);
+  -ms-transform-origin: bottom left;
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
+}
+
+.top-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.middle-full {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  -ms-transform: translateX(0%) translateY(-50%) rotate(0deg);
+  -webkit-transform: translateX(0%) translateY(-50%) rotate(0deg);
+  transform: translateX(0%) translateY(-50%) rotate(0deg);
+}
+
+.bottom-full {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* ================== Badge color CSS ========================*/
+.badge {
+  &.red {
+    background: #ed1b24;
+  }
+  &.orange {
+    background: #fa7901;
+  }
+  &.pink {
+    background: #ee2b8b;
+  }
+  &.blue {
+    background: #00adee;
+  }
+  &.green {
+    background: #b4bd00;
+  }
+}
+
+// Chips
+.chip-container {
+  border: 1px solid #cccccc;
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  font-family: "Roboto";
+}
+
+.chip-container .basic-chip a {
+  color: inherit;
+}
+
+.chip-title {
+  padding: 20px 10px;
+  font-size: 14px;
+}
+
+.basic-chip {
+  padding: 5px 10px;
+  border-radius: 50px;
+  display: inline-flex;
+  margin: 5px;
+}
+
+.click-chip,
+.click-chip-hover {
+  padding: 5px 10px;
+  border-radius: 50px;
+  display: inline-flex;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.click-chip-hover:hover {
+  filter: brightness(85%);
+}
+
+.outline {
+  border: 1px solid #cccccc;
+  color: #cccccc;
+  outline: none;
+}
+
+.outline-green {
+  border: 1px solid #3a913f;
+  color: #3a913f;
+  outline: none;
+}
+
+.outline-blue {
+  border: 1px solid #0074c3;
+  color: #0074c3;
+  outline: none;
+}
+
+.outline-grey {
+  border: 1px solid #616161;
+  color: #616161;
+  outline: none;
+}
+
+.background-grey {
+  background: #dddddd;
+  color: #616161;
+}
+
+.background-green {
+  background: #3a913f;
+  color: #ffffff;
+}
+
+.background-blue {
+  background: #0074c3;
+  color: #ffffff;
+}
+
+.mat-chip-icon {
+  /*background: #bdbdbd;*/
+  /* background: #bdbdbd; */
+  color: #616161;
+  margin: -7px 5px -7px -5px;
+  /* background: #bbbbbb; */
+  padding: 2px;
+  border-radius: 50px;
+}

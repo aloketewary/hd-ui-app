@@ -1,0 +1,68 @@
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+@import "./variables/helper.scss";
+@import "./variables/colors.scss";
+@import "./variables/badge.scss";
+@import "./variables/fonts.scss";
+@import "./variables/spacemanager.scss";
+@import "./app-sidemenu.scss";
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$general-typography: mat-typography-config(
+  $font-family: '"Lato", sans-serif',
+  $display-4: mat-typography-level(32px, 112px, 300),
+  $display-3: mat-typography-level(28px, 56px, 400),
+  $display-2: mat-typography-level(24px, 48px, 400),
+  $display-1: mat-typography-level(20px, 40px, 400),
+  $headline: mat-typography-level(17px, 32px, 400),
+  $title: mat-typography-level(18px, 28px, 500),
+  $subheading-2: mat-typography-level(15px, 26px, 400),
+  $subheading-1: mat-typography-level(13px, 25px, 400),
+  $body-2: mat-typography-level(16px, 20px, 500),
+  $body-1: mat-typography-level(14px, 18px, 400),
+  $caption: mat-typography-level(10px, 18px, 400),
+  $button: mat-typography-level(12px, 14px, 500),
+  $input: mat-typography-level(12px, 1.125, 400),
+);
+// Be sure that you only ever include this mixin once!
+@include mat-core($general-typography);
+// Primary theme
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-app-primary: mat-palette($mat-blue-grey, 900);
+$app-app-accent: mat-palette($mat-amber, A700, A100, A400);
+// The warn palette is optional (defaults to red).
+$app-app-warn: mat-palette($mat-deep-orange);
+// Create the theme object (a Sass map containing all of the palettes).
+$app-app-theme: mat-light-theme(
+  $app-app-primary,
+  $app-app-accent,
+  $app-app-warn
+);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-app-theme);
+// Secondary Theme
+.app-dark-theme {
+  $app-dark-primary: mat-palette($mat-teal, 700);
+  $app-dark-accent: mat-palette($mat-amber, 500);
+  $app-dark-warn: mat-palette($mat-deep-orange);
+  $app-dark-theme: mat-dark-theme(
+    $app-dark-primary,
+    $app-dark-accent,
+    $app-dark-warn
+  );
+  @include angular-material-theme($app-dark-theme);
+  .inner-sidenav-content {
+    background-color: #676565 !important;
+  }
+}
+
+// Using the $theme variable from the pre-built theme you can call the theming function
+@include app-sidemenu($app-app-theme);
+@include setMatColors($app-app-theme);

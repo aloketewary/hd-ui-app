@@ -1,0 +1,616 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.flex-full {
+    width: 100%;
+}
+
+.sidenav-root-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.sidenav-main {
+    min-width: 220px;
+    overflow-x: hidden;
+}
+
+.profile {
+    &-icon {
+        border-radius: 50%;
+        border: 1px solid white;
+        width: 42px;
+        height: 42px;
+        &-dark {
+            border-radius: 50%;
+            border: 1px solid #000000;
+            width: 42px;
+            height: 42px;
+        }
+    }
+    &-menu {
+        position: absolute !important;
+        right: 0px;
+    }
+}
+
+.subheader {
+    font-size: 15px;
+}
+
+.big-icon {
+    width: 80px;
+    height: 80px;
+    background-size: 140%;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.xxl-icon {
+    width: 150px;
+    height: 150px;
+    background-size: 140%;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+img {
+    text-align: center;
+    max-width: 100%;
+}
+
+.mat-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+}
+
+mat-toolbar-row {
+    justify-content: space-between;
+}
+
+.done {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+}
+
+.spacer {
+    box-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.smallSpace {
+    padding: 0 5px 0 0;
+}
+
+.space {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+material-app,
+mat-sidenav-container,
+.my-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.app-logo {
+    flex: 20;
+    margin: 0 -3em 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-sidenav {
+    flex: 45;
+    margin: 0;
+    width: 100%;
+    height: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+.centerMe {
+    margin-left: 0;
+}
+
+.input-flex-full,
+.flex-full {
+    width: 100% !important;
+}
+
+.flex-half {
+    width: 50% !important;
+}
+
+.clearColor,
+.subheader {
+    font-weight: normal !important;
+}
+
+.header-theme {
+    color: #fff !important;
+    background-color: #607d8b !important;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.inner-sidenav-content {
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 64px;
+    background-color: #e9e9e9;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; // font-family: "Roboto", Arial, Tahoma, sans-serif; // line-height: 1.42857143;
+}
+
+.inner-error-sidenav-content {
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #e9e9e9;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+// Helper Classes
+.p-b-1em {
+    padding-bottom: 0em;
+    margin: 5px !important;
+}
+
+.fa-size {
+    font-size: 24px;
+    font-size-adjust: inherit;
+}
+
+.profile-mat-menu-panel {
+    width: 200px !important;
+}
+
+.cur-point {
+    cursor: pointer !important;
+}
+
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+// @media (max-width: 600px) {
+//     mat-card {
+//         &>mat-toolbar {
+//             margin: -24px 0 -24px -17px !important;
+//             width: calc(100% + 34px) !important;
+//         }
+//     }
+// }
+// @media (min-width: 601px) {
+//     mat-card {
+//         &>mat-toolbar {
+//             margin: -24px 0 24px -24px !important;
+//             width: calc(100% + 48px) !important;
+//         }
+//     }
+// }
+.color-white {
+    color: #fff !important;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}
+
+.underline {
+    text-decoration: underline !important;
+}
+
+.iconBackground {
+    i {
+        color: #d86344;
+        margin: 0 auto;
+        font-size: 80px;
+    }
+}
+
+.progress-margin {
+    margin: 0 auto;
+}
+
+.full-height {
+    height: 100% !important;
+}
+
+.scrollable-y {
+    overflow-y: auto !important;
+}
+
+// ::-webkit-scrollbar {
+//     width: 4px;
+//     overflow-y: visible;
+//     height: 4px;
+//     &:hover {
+//         width: 8px;
+//     }
+//     &-track {
+//         border-radius: 5px;
+//         background: #eee;
+//     }
+//     &-thumb {
+//         border-radius: 5px;
+//         background: #888;
+//         overflow: visible;
+//     }
+//     &-thumb:window-inactive {
+//         background: rgba(100, 100, 100, 0.4);
+//         overflow: hidden;
+//     }
+// }
+.component-viewer-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    // top: 25px;
+}
+
+.spaceIn {
+    padding: 1em;
+}
+
+.circle-img {
+    border-radius: 50% !important;
+}
+
+.circleBtn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #f44336;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    /* bottom: 122px; */
+    /* left: 115px; */
+    top: 35%;
+    left: 38%;
+    z-index: 2;
+    /* width: 100%; */
+    /* height: 100%; */
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+}
+
+.opac-point-3 {
+    opacity: 0.3;
+}
+
+.circleBtn:after {
+    width: 24px;
+    height: 4px;
+    background-color: #f44336;
+    content: "";
+    left: 50%;
+    top: 50%;
+    margin-left: -12px;
+    margin-top: -2px;
+    position: absolute;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    /*@include transform-origin(100%,100%);*/
+}
+
+.circleBtn:before {
+    left: 50%;
+    top: 50%;
+    margin-left: -12px;
+    margin-top: -2px;
+    width: 24px;
+    height: 4px;
+    background-color: #f44336;
+    content: "";
+    position: absolute;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    /*@include transform-origin(0%,0%);*/
+}
+
+.circleBtn[data-animation="showShadow"] {
+    -moz-box-shadow: 0px 0px 0px 0px #101010 inset;
+    -webkit-box-shadow: 0px 0px 0px 0px #101010 inset;
+    box-shadow: 0px 0px 0px 0px #101010 inset;
+    -moz-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    -o-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    -webkit-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    border: 0px solid white;
+}
+
+.circleBtn[data-animation="showShadow"]:before,
+.circleBtn[data-animation="showShadow"]:after {
+    -moz-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    -o-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    -webkit-transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+    transition: cubic-bezier(0.175, 0.885, 0.52, 1.775) 200ms;
+}
+
+.circleBtn[data-animation="showShadow"]:not(.showShadow):hover {
+    -moz-box-shadow: 0px 0px 0px 6px #101010 inset;
+    -webkit-box-shadow: 0px 0px 0px 6px #101010 inset;
+    box-shadow: 0px 0px 0px 6px #101010 inset;
+}
+
+.circleBtn[data-animation="showShadow"]:not(.showShadow):hover:before {
+    -moz-transform: scale(0.7) rotate(45deg);
+    -ms-transform: scale(0.7) rotate(45deg);
+    -webkit-transform: scale(0.7) rotate(45deg);
+    transform: scale(0.7) rotate(45deg);
+    -moz-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    -webkit-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+
+.circleBtn[data-animation="showShadow"]:not(.showShadow):hover:after {
+    -moz-transform: scale(0.7) rotate(-45deg);
+    -ms-transform: scale(0.7) rotate(-45deg);
+    -webkit-transform: scale(0.7) rotate(-45deg);
+    transform: scale(0.7) rotate(-45deg);
+    -moz-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    -webkit-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+
+.circleBtn.showShadow {
+    -moz-transition: ease-out 300ms;
+    -o-transition: ease-out 300ms;
+    -webkit-transition: ease-out 300ms;
+    transition: ease-out 300ms;
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+}
+
+.img-content {
+    position: relative;
+    width: 90%;
+    max-width: 250px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.img-content .img-content-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.img-content:hover .img-content-overlay {
+    opacity: 1;
+}
+
+.img-content-image {
+    width: 100%;
+}
+
+.img-content-details {
+    position: absolute;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.img-content:hover .img-content-details {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+}
+
+.img-content-details span {
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+}
+
+.fadeIn-bottom {
+    top: 80%;
+}
+
+.fadeIn-top {
+    top: 20%;
+}
+
+.fadeIn-left {
+    left: 20%;
+}
+
+.fadeIn-right {
+    left: 80%;
+}
+
+.chat-disp {
+    display: block;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+
+/* Notifications */
+
+.count,
+.count-sm {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    .num {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: #f22;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        line-height: 17px;
+        font-size: 11px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(0, 0, 0, 0.20);
+        transition: all 0.3s;
+    }
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.baseline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 25px;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.circle {
+    display: inline-block;
+    min-width: 30px;
+    // background: #4679BD;
+    border-radius: 50%;
+    text-align: center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    line-height: 1em;
+    word-wrap: white-space;
+    // color: #fff;
+    // text-transform: uppercase;
+    // font-family: sans-serif;
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        padding: 25%;
+    }
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    >div {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 5px;
+        button {
+            margin-bottom: 17px;
+        }
+    }
+}

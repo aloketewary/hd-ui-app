@@ -1,0 +1,8 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <span class="school-font size-35">
+    <em class="material-icons big-icon">{{icon}}</em>
+  </span>
+  <div fxLayout="row" fxLayoutAlign="center center" class="flex-full school-font size-20 weight-500">
+    {{!transMessage ? message : message | translate:locale.language}}
+  </div>
+</div>

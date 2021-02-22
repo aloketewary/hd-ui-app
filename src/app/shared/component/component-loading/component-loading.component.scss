@@ -1,0 +1,46 @@
+.loading-container {
+    height: 30px;
+}
+
+.loader {
+    margin: 89px 0 0 0;
+    text-align: center;
+    width: 100%;
+    min-height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    opacity: 1;
+    animation-play-state: running;
+}
+
+.loading-slide {
+    position: relative;
+    width: 25%;
+    margin: 0 auto;
+}
+
+.loading-slide .slide:nth-of-type(0n+1) {
+    opacity: 0.2;
+    transform: scale(1.8, 1);
+    animation-delay: 0.2s;
+}
+
+.loading-slide .slide:nth-of-type(0n+2) {
+    opacity: 0.4;
+    transform: scale(1.4, 1);
+    animation-delay: 0.1s;
+}
+
+.loading-slide .slide:nth-of-type(0n+3) {
+    opacity: 0.8;
+}
+
+@keyframes slide {
+    0%,
+    100% {
+        left: 0;
+    }
+    50% {
+        left: 100%;
+    }
+}

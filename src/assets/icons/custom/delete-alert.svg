@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 224 224" style=" fill:#000000;">
+  <g transform="translate(3.92,3.92) scale(0.965,0.965)">
+    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+      <g id="Layer_1 1" stroke="#000000" stroke-width="8" stroke-linejoin="round">
+        <path d="M172.66667,51.33333v130.66667c0,10.26667 -8.4,18.66667 -18.66667,18.66667h-84c-10.26667,0 -18.66667,-8.4 -18.66667,-18.66667v-130.66667h14l28,-28h37.33333l28,28z" fill="#ff3d00"></path>
+        <path d="M51.33333,32.66667h121.33333c5.13333,0 9.33333,4.2 9.33333,9.33333v9.33333h-140v-9.33333c0,-5.13333 4.2,-9.33333 9.33333,-9.33333z" fill="#ff6e40"></path>
+        <path d="M90.5994,160.5984l-13.1992,-13.1992l56.00091,-56.00091l13.1992,13.1992z" fill="#fafafa"></path>
+        <path d="M133.4011,160.6017l-56.00091,-56.00091l13.1992,-13.1992l56.00091,56.00091z" fill="#fafafa"></path>
+      </g>
+      <path d="M0,224v-224h224v224z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path>
+      <g id="Layer_1" stroke="none" stroke-width="1" stroke-linejoin="miter">
+        <path d="M158.66667,51.33333l-28,-28h-37.33333l-28,28h-14v130.66667c0,10.26667 8.4,18.66667 18.66667,18.66667h84c10.26667,0 18.66667,-8.4 18.66667,-18.66667v-130.66667z" fill="#ff3d00"></path>
+        <path d="M51.33333,32.66667h121.33333c5.13333,0 9.33333,4.2 9.33333,9.33333v9.33333h-140v-9.33333c0,-5.13333 4.2,-9.33333 9.33333,-9.33333z" fill="#ff6e40"></path>
+        <rect x="-10.60655" y="34.06258" transform="rotate(-45) scale(4.66662,4.66662)" width="16.971" height="4" fill="#fafafa"></rect>
+        <rect x="-4.12155" y="27.57758" transform="rotate(-45) scale(4.66662,4.66662)" width="4" height="16.971" fill="#fafafa"></rect>
+      </g>
+      <path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path>
+    </g>
+  </g>
+</svg>

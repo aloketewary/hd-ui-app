@@ -1,0 +1,47 @@
+<div class="inner-sidenav-content">
+  <div class="p-b-0">
+    <div fxLayout="row" fxLayoutAlign="start center" class="primary-info-div flex-full">
+      <mat-card class="primary-info-card flex-full">
+        <mat-toolbar color="primary">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            {{'ADMIN.CONFIG.HEADER.TITLE' | translate:locale.language}}
+          </div>
+        </mat-toolbar>
+        <mat-card-content>
+          <ng-template #serviceData>
+            <ng-container *ngIf="configModelList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
+            <ng-template #thenTemplate>
+              <mat-nav-list>
+                <div mat-subheader>Used For - APP</div>
+                <mat-list-item *ngFor="let config of configModelList; trackBy: config.id">
+                  <div mat-line>{{config.key}}</div>
+                  <p mat-line>{{config.value}} </p>
+                  <button mat-icon-button color="accent" (click)="manageConfigDialog(config)"
+                    matTooltip="{{'ADMIN.CONFIG.BUTTON.EDIT' | translate:locale.language:{name: config.key} }}"
+                    matTooltipPosition="above">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteConfig(config)"
+                    matTooltip="{{'ADMIN.CONFIG.BUTTON.DELETE' | translate:locale.language:{name: config.key} }}"
+                    matTooltipPosition="above">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-list-item>
+              </mat-nav-list>
+            </ng-template>
+            <ng-template #elseTemplate>
+              <app-no-data></app-no-data>
+            </ng-template>
+          </ng-template>
+          <app-component-loading [type]="'circular'" [isLoading]="isLoading" [bodyTemplate]="serviceData"></app-component-loading>
+        </mat-card-content>
+      </mat-card>
+      <div class="fab-container">
+        <button matTooltip="Add new config" matTooltipPosition="left" mat-fab class="fab-toggler"
+          (click)="manageConfigDialog()">
+          <em class="material-icons">add</em>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

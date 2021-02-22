@@ -1,0 +1,432 @@
+[
+  {
+    "icon": "comment-multiple-outline",
+    "name": "SIDEBAR.MENU.COMMUNICATIONS",
+    "isShow": false,
+    "userRole": [],
+    "href": "viewRespond",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [],
+        "icon": "forum",
+        "name": "SIDEBAR.MENU.VIEW_RESPOND",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "home-modern",
+        "name": "SIDEBAR.MENU.SCHOOL_CHANNEL",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "teach",
+        "name": "SIDEBAR.MENU.CLASS_CHANNEL",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [],
+        "icon": "calendar-clock",
+        "name": "SIDEBAR.MENU.APPOINTMENT",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "calendar-text",
+        "name": "SIDEBAR.MENU.CLASS_EVENTS",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "calendar-range",
+        "name": "SIDEBAR.MENU.SCHOOL_EVENTS",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "book-open-page-variant",
+    "name": "SIDEBAR.MENU.SCHOOL_SCHEDULING",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "viewRespond",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "chair-school",
+        "name": "SIDEBAR.MENU.CLASS_SECTION",
+        "href": "class-section/all/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "calendar-multiple",
+        "name": "SIDEBAR.MENU.ACADEMIC_YEAR",
+        "href": "academic/year/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "timetable",
+        "name": "SIDEBAR.MENU.TIMETABLE",
+        "href": "timetable/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "timer-sand",
+        "name": "SIDEBAR.MENU.ACTIVE_TIMETABLE",
+        "href": "timetable/active/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [],
+        "icon": "account-group",
+        "name": "SIDEBAR.MENU.TEACHER_LIST_BY_SUBJECT",
+        "href": "timetable/teachers/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "account-tie",
+    "name": "SIDEBAR.MENU.MANAGEMENT.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "management",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "notebook",
+        "name": "SIDEBAR.MENU.MANAGEMENT.CHILDREN.ATTENDANCE",
+        "href": "management/attendance/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "clipboard-text-play",
+        "name": "SIDEBAR.MENU.MANAGEMENT.CHILDREN.EXAM",
+        "href": "management/exams/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "numeric-9-plus-circle",
+        "name": "SIDEBAR.MENU.MANAGEMENT.CHILDREN.MARKS",
+        "href": "management/marks/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "contacts",
+    "name": "SIDEBAR.MENU.ADD_NEW",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "admission",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "account",
+        "name": "SIDEBAR.MENU.STUDENT",
+        "href": "admission/student/add/SCHOOL_ID/SCHOOL_YEAR/STUDENT_QUERY_UNREG/OPERATION_NEW",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "teach",
+        "name": "SIDEBAR.MENU.TEACHER",
+        "href": "admission/teacher/add/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "account-circle-outline",
+        "name": "SIDEBAR.MENU.STAFF",
+        "href": "admission/staff/add/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "car",
+        "name": "SIDEBAR.MENU.DRIVER",
+        "href": "admission/driver/add/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "information",
+    "name": "SIDEBAR.MENU.USER_INFO",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "user",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "account",
+        "name": "SIDEBAR.MENU.STUDENT",
+        "href": "user/student/info/STUDENT_QUERY_REG/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "teach",
+        "name": "SIDEBAR.MENU.TEACHER",
+        "href": "user/teacher/info/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "account-circle-outline",
+        "name": "SIDEBAR.MENU.STAFF",
+        "href": "user/staff/info/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "car",
+        "name": "SIDEBAR.MENU.DRIVER",
+        "href": "user/driver/info/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "library-books",
+    "name": "SIDEBAR.MENU.LIBRARY.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "library",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "book-multiple-variant",
+        "name": "SIDEBAR.MENU.LIBRARY.CHILDREN.SCHOOL",
+        "href": "library/school/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "subway-variant",
+    "name": "SIDEBAR.MENU.TRANSPORTATION",
+    "isShow": false,
+    "userRole": [],
+    "href": "transportation",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "map-marker-radius",
+        "name": "SIDEBAR.MENU.ROUTE",
+        "href": "transportation/route",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "map-marker-distance",
+        "name": "SIDEBAR.MENU.ACTIVE_ROUTE",
+        "href": "transportation/activeRoute",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "file-import",
+    "name": "SIDEBAR.MENU.IMPORT_EXPORT.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "import-export",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "import",
+        "name": "SIDEBAR.MENU.IMPORT_EXPORT.SUB.EXCEL_IMPORT",
+        "href": "import-export/bulk/excel-import/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      },
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "publish",
+        "name": "SIDEBAR.MENU.IMPORT_EXPORT.SUB.PUBLISH_TEMP_DATA",
+        "href": "import-export/publish/temp-data/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "progress-wrench",
+    "name": "SIDEBAR.MENU.PERMISSIONS.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "permission",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [
+          "ROLE_STAFF",
+          "ROLE_TEACHER"
+        ],
+        "icon": "format-list-bulleted-type",
+        "name": "SIDEBAR.MENU.PERMISSIONS.SUB.TEACHER_PERMISSION",
+        "href": "permission/teacher/SCHOOL_ID/SCHOOL_YEAR",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "progress-wrench",
+    "name": "SIDEBAR.MENU.ATTENDANCE.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "permission",
+    "loginType": "teacherapp",
+    "isChildAvailable": false,
+    "child": []
+  },
+  {
+    "icon": "progress-wrench",
+    "name": "SIDEBAR.MENU.HOMEWORK.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "permission",
+    "loginType": "teacherapp",
+    "isChildAvailable": false,
+    "child": []
+  },
+  {
+    "icon": "progress-wrench",
+    "name": "SIDEBAR.MENU.CIRCULAR.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_STAFF",
+      "ROLE_TEACHER"
+    ],
+    "href": "permission",
+    "loginType": "teacherapp",
+    "isChildAvailable": false,
+    "child": []
+  }
+]

@@ -1,0 +1,46 @@
+$main-col: #c8c;
+$sec-col: lighten(#303f9f, 20%);
+$back-col: #c5cae9;
+
+$primary-color: "";
+$accent-color: "";
+$warn-color: "";
+
+// Import all the tools needed to customize the theme and extract parts of it
+@import "~@angular/material/theming";
+
+@mixin setMatColors($theme) {
+  $primary-color: map-get($theme, primary);
+  $accent-color: map-get($theme, accent);
+  $warn-color: map-get($theme, warn);
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+
+@function gradient($color1, $color2) {
+  @return linear-gradient(to bottom right, $color1, $color2) !important;
+}
+
+@function gradient-color($color) {
+  @return set-text-color($color) !important;
+}
+
+@function getMatColors($type) {
+  @if ($type== "primary") {
+    @return $primary-color;
+  }
+
+  @if ($type== "accent") {
+    @return $accent-color;
+  }
+
+  @if ($type== "warn") {
+    @return $warn-color;
+  }
+}

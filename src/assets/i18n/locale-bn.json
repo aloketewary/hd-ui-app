@@ -1,0 +1,861 @@
+{
+	"APP": {
+		"BENGALI": "বাংলা",
+		"CHANGE_LANGUAGE": "ভাষা পরিবর্তন করুন",
+		"ENGLISH": "English",
+		"GOTO_DASHBOARD": "ড্যাশবোর্ড এ যান",
+		"HINDI": "हिंदी",
+		"PROJECT_NAME": "হার্ডওয়্যার ড্যাশ",
+		"TITLE": {
+			"DASHBOARD": "{{schoolName}} ড্যাশবোর্ড"
+		}
+	},
+	"COMMON": {
+		"AVAILABLE": {
+			"PROFILE": {
+				"STUDENT": "ছাত্র",
+				"TEACHER": "শিক্ষক"
+			}
+		},
+		"CANCEL_BUTTON": "বাতিল",
+		"ERROR": {
+			"PLEASE_RETRY_AGAIN": "কিছু সময় পরে আবার চেষ্টা করুন",
+			"PLEASE_SELECT_JPG_OR_PNG_FILE": "দয়া করে jpg বা png ফাইলটি নির্বাচন করুন।",
+			"PROFILE_PIC_NOT_ADDED": "",
+			"SCHOOLID_OR_STUDENT_ID_MUST_NOT_NULL": "স্কুল আইডি এবং শিক্ষার্থীর আইডি অবশ্যই ফাঁকা রাখা উচিত নয়",
+			"STUDENT_ID_MUST_NOT_NULL": "শিক্ষার্থীর আইডি অবশ্যই ফাঁকা রাখা উচিত নয়"
+		},
+		"HERE_IS_NOTHING": "এখানে প্রদর্শন করার মতো কিছুই নেই ...",
+		"INVALID": "অকার্যকর",
+		"NETWORK_STATUS": "কোনও নেটওয়ার্ক উপলব্ধ নেই",
+		"OK_BUTTON": "ঠিক আছে",
+		"OR": "অথবা",
+		"REQUIRED": "প্রয়োজনীয়",
+		"SELECT_NONE": "না",
+		"STEPPER_NEXT": "পরবর্তী",
+		"STEPPER_PREV": "",
+		"STEPPER_SAVE": "সংরক্ষণ করুন",
+		"STEPPER_UPDATE": "হালনাগাদ",
+		"STEPPER_UPDATE_EXISTING": "আপডেট আপডেট"
+	},
+	"COMMUNICATION": {
+		"EXAM": {
+			"EXAM": "",
+			"PAPER": "",
+			"SCHEDULE": ""
+		},
+		"PRAYER": {
+			"HEADER": {
+				"ADDPRAYER": "",
+				"TITLE": "",
+				"TITLEDETAIL": ""
+			}
+		}
+	},
+	"DASHBOARD": {
+		"ACADEMIC_YEAR": "",
+		"ACTIVE_ROUTE": "",
+		"CIRCULARS": "",
+		"DISCUS_WITH_PARENT": "",
+		"DRIVER": "",
+		"EXAM": "",
+		"GALLERY": "",
+		"HELP": "",
+		"LOGOUT": "",
+		"PHOTO_ALBUMS": "",
+		"PRAYER": "",
+		"ROUTE": "",
+		"SCHEDULE_MEETING": "",
+		"SCHOOL_NOTIFICATION": "",
+		"SECTION_GRADE": "",
+		"SECTION_NOTIFICATION": "",
+		"SEND_SMS_EMAILS": "",
+		"SETTINGS": "",
+		"STAFF": "",
+		"STUDENT": "",
+		"STUDENTATTENDANCE": "",
+		"TEACHER": "",
+		"TEACHERATTENDANCE": ""
+	},
+	"IMPORT_EXPORT": {
+		"EXPORT": {
+			"HEADER": {
+				"TITLE": ""
+			}
+		},
+		"PUBLISH": {
+			"HEADER": {
+				"TITLE": ""
+			},
+			"TABLE": {
+				"HEADER": {
+					"CLASSID": "",
+					"DOB": "",
+					"FATHERFULLNAME": "",
+					"FIRSTNAME": "",
+					"GENDER": "",
+					"LASTNAME": "",
+					"SECTIONID": ""
+				}
+			}
+		}
+	},
+	"LIBRARY": {
+		"ERRORS": {
+			"NO": {
+				"BOOKS": {
+					"ISSUED": ""
+				}
+			}
+		},
+		"SCHOOLS": {
+			"HEADER": {
+				"TITLE": ""
+			},
+			"TAB": {
+				"ALL": {
+					"ISSUED": {
+						"BOOKS": ""
+					}
+				},
+				"ISSUED_BOOKS": "",
+				"ISSUED_BOOK_TO": {
+					"STAFF": "",
+					"STUDENT": ""
+				},
+				"VIEW_ADD_BOOKS": ""
+			},
+			"VIEW_ADD": {
+				"BOOK": {
+					"AUTHOR": ""
+				}
+			}
+		}
+	},
+	"LOGIN": {
+		"BACK_TO_LOGIN_FROM_FORGOTPWD": "লগইন ফিরে যান",
+		"CREATE_AN_ACCOUNT": "একটি অ্যাকাউন্ট তৈরি করুন",
+		"DONT_HAVE_ACCOUNT": "একটি অ্যাকাউন্ট আছে না?",
+		"EMAIL": "ইমেইল",
+		"EMAIL_IS": "ইমেল হয়",
+		"ENTER_VALID_MAIL": "বৈধ ইমেল আইডি প্রবেশ করান",
+		"FORGOT_PASS": "পাসওয়ার্ড ভুলে গেছেন?",
+		"FORGOT_SUCCESSFULL_MSG": "ইমেল প্রেরিত ইমেল আইডিতে প্রেরিত হয় ইমেলের দেওয়া পদক্ষেপগুলি অনুসরণ করুন",
+		"LOGIN_BUTTON": "লগইন",
+		"LOGIN_TO_YOUR_ACCOUNT": "আপনার অ্যাকাউন্টে লগ ইন করুন",
+		"LOGIN_WITH_FACEBOOK": "FACEBOOK দিয়ে লগইন করুন",
+		"LOGIN_WITH_GOOGLE": "GOOGLEর সাথে লগইন করুন",
+		"PASSWORD": "পাসওয়ার্ড",
+		"PASSWORD_IS": "পাসওয়ার্ড হয়",
+		"RECOVER_YOUR_PASSWORD": "আপনার পাসওয়ার্ডটি পুনরুদ্ধার করুন",
+		"SEND_RESET_LINK": "রিসেট লিঙ্ক প্রেরণ করুন",
+		"SUCCESSFULLY_AUTHORIZED": "সফল লগইন",
+		"SUCCESSFULLY_AUTHORIZED_WITH_USERNAME": "স্বাগত",
+		"WELCOME_TO": "{{projectName}}"
+	},
+	"LOGOUT": {
+		"BUTTON": {
+			"CANCEL": "",
+			"LOGOUT_TEXT": ""
+		},
+		"SURE_MESSAGE": "",
+		"TITLE": ""
+	},
+	"MANAGEMENT": {
+		"EXAMS": {
+			"HEADER": {
+				"TITLE": ""
+			}
+		}
+	},
+	"MANAGE_CLASS_TEACHER": {
+		"HEADER": {
+			"TEXT": ""
+		}
+	},
+	"PERMISSION": {
+		"COMMON": {
+			"TYPE": {
+				"EXECUTE": "",
+				"NONE": "",
+				"READ": ""
+			}
+		},
+		"TEACHER": {
+			"HEADER": {
+				"TITLE": ""
+			}
+		}
+	},
+	"PROFILE": {
+		"CHANGE": {
+			"PASSWORD": {
+				"FORM": {
+					"CONFIRM_PASSWORD": {
+						"ERROR": {
+							"MAXLENGTH": "",
+							"MINLENGTH": "",
+							"MISMATCH": "",
+							"REQUIRED": ""
+						},
+						"TEXT": ""
+					},
+					"CURRENT": {
+						"ERROR": {
+							"MAXLENGTH": "",
+							"MINLENGTH": "",
+							"REQUIRED": ""
+						},
+						"TEXT": ""
+					},
+					"NEW_PASSWORD": {
+						"ERROR": {
+							"MAXLENGTH": "",
+							"MINLENGTH": "",
+							"REQUIRED": ""
+						},
+						"TEXT": ""
+					}
+				},
+				"HEADER": {
+					"TITLE": ""
+				}
+			}
+		},
+		"MINE": {
+			"HEADER": {
+				"TITLE": ""
+			}
+		}
+	},
+	"SCHEDULE": {
+		"DETAILS": {
+			"CLASS": {
+				"PERIODS": {
+					"CARD": {
+						"HEADER": ""
+					}
+				}
+			},
+			"INFO": {
+				"CARD": {
+					"HEADER": "",
+					"NEW": {
+						"HEADER": ""
+					}
+				}
+			},
+			"TIMEMANAGEMENT": {
+				"CARD": {
+					"HEADER": ""
+				},
+				"FORM": {
+					"END": {
+						"DATE": ""
+					},
+					"NAME": {
+						"TITLE": ""
+					},
+					"START": {
+						"DATE": ""
+					}
+				}
+			}
+		}
+	},
+	"SECTION": {
+		"ADD": {
+			"BUTTON": {
+				"ADD": ""
+			},
+			"HEADER": {
+				"TITLE": ""
+			}
+		},
+		"COMMON": {
+			"BUTTON": {
+				"CANCEL": ""
+			},
+			"CLASS_ROOM_NUMBER": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"TEXT": ""
+			},
+			"ID": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"TEXT": ""
+			},
+			"NAME": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"TEXT": ""
+			}
+		},
+		"EDIT": {
+			"BUTTON": {
+				"UPDATE": ""
+			},
+			"HEADER": {
+				"TITLE": ""
+			}
+		}
+	},
+	"SIDEBAR": {
+		"MENU": {
+			"ACADEMIC_YEAR": "",
+			"ACTIVE_ROUTE": "",
+			"ACTIVE_TIMETABLE": "",
+			"ADD_NEW": "",
+			"APPOINTMENT": "",
+			"CLASS_CHANNEL": "",
+			"CLASS_EVENTS": "",
+			"CLASS_SECTION": "",
+			"COMMUNICATIONS": "",
+			"DRIVER": "",
+			"IMPORT_EXPORT": {
+				"SUB": {
+					"EXCEL_IMPORT": "",
+					"PUBLISH_TEMP_DATA": ""
+				},
+				"TITLE": ""
+			},
+			"LIBRARY": {
+				"CHILDREN": {
+					"SCHOOL": ""
+				},
+				"TITLE": ""
+			},
+			"LOGOUT": "",
+			"MANAGEMENT": {
+				"CHILDREN": {
+					"ATTENDANCE": "",
+					"EXAM": "",
+					"MARKS": ""
+				},
+				"TITLE": ""
+			},
+			"MY_PROFILE": "",
+			"PERMISSIONS": {
+				"SUB": {
+					"TEACHER_PERMISSION": ""
+				},
+				"TITLE": ""
+			},
+			"ROUTE": "",
+			"SCHOOL_CHANNEL": "",
+			"SCHOOL_EVENTS": "",
+			"SCHOOL_SCHEDULING": "",
+			"STAFF": "",
+			"STUDENT": "",
+			"TEACHER": "",
+			"TEACHER_LIST_BY_SUBJECT": "",
+			"TIMETABLE": "",
+			"TRANSPORTATION": "",
+			"USER_INFO": "",
+			"VIEW_RESPOND": ""
+		}
+	},
+	"SUBJECT": {
+		"ADD": {
+			"BUTTON": {
+				"ADD": ""
+			},
+			"HEADER": {
+				"TITLE": ""
+			}
+		},
+		"COMMON": {
+			"BUTTON": {
+				"CANCEL": ""
+			},
+			"CODE": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"TEXT": ""
+			},
+			"NAME": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"TEXT": ""
+			},
+			"PRE_REQUIREMENT": {
+				"TEXT": ""
+			},
+			"TYPE": {
+				"ERROR": {
+					"REQUIRED": ""
+				},
+				"OPTIONS": {
+					"COMPULSARY": "",
+					"ELECTIVE": ""
+				},
+				"TEXT": ""
+			}
+		}
+	},
+	"TIMETABLE": {
+		"INFO": {
+			"CARD": {
+				"HEADER": ""
+			},
+			"DISPLAY": {
+				"EVENT": {
+					"HEADER": {
+						"ATTENDANCETYPE": "",
+						"FOR": ""
+					}
+				}
+			},
+			"TAB": {
+				"SCHOOL_TIMETABLE": "",
+				"SCHOOL_TIMETABLE_SETTING": "",
+				"TEACHER_TIMETABLE": ""
+			}
+		}
+	},
+	"TITLE": {
+		"PROFILE": {
+			"CHANGE_PASSWORD": "",
+			"MINE": ""
+		}
+	},
+	"TRANSPORTATION": {
+		"MANAGE_ROUTE": {
+			"HEADER": {
+				"TITLE": ""
+			},
+			"ROUTE": {
+				"DRIVER": {
+					"CAPTION": "",
+					"ERROR": ""
+				},
+				"ID": "",
+				"LOCATION": {
+					"END": "",
+					"START": ""
+				},
+				"NAME": {
+					"CAPTION": "",
+					"ERROR": ""
+				},
+				"NAVIGATE": {
+					"CAPTION": ""
+				},
+				"SAVE": {
+					"CAPTION": ""
+				},
+				"TYPE": {
+					"DROPOFF": "",
+					"PICKUP": "",
+					"TITLE": ""
+				}
+			}
+		},
+		"ROUTE": {
+			"CARD": {
+				"FOOTER": {
+					"ROUTE": {
+						"TYPE": ""
+					}
+				}
+			},
+			"HEADER": {
+				"TITLE": ""
+			}
+		}
+	},
+	"USER": {
+		"OPERATION": {
+			"REMOVE": {
+				"ERROR": "",
+				"SUCCESS": ""
+			}
+		},
+		"STAFF": {
+			"INFO": {
+				"HEADER": {
+					"TITLE": ""
+				},
+				"MENU": {
+					"REMOVE": "",
+					"SELECTION": {
+						"FIRST": "",
+						"SECOND": "",
+						"THIRD": ""
+					}
+				}
+			}
+		},
+		"TEACHER": {
+			"INFO": {
+				"ADD": {
+					"HEADER": {
+						"TITLE": ""
+					}
+				},
+				"COMMON": {
+					"FORM": {
+						"ADDRESS": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"CONFIRMEMAIL": {
+							"ERROR": {
+								"INVALID": "",
+								"MATCH": "",
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"DOB": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"EMAIL": {
+							"ERROR": {
+								"INVALID": "",
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"FIRSTNAME": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"FULLNAME": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"GENDER": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"OPTIONS": {
+								"FEMALE": "",
+								"MALE": ""
+							},
+							"TEXT": ""
+						},
+						"LASTNAME": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"TEXT": ""
+						},
+						"MARITAL_STATUS": {
+							"ERROR": {
+								"REQUIRED": ""
+							},
+							"OPTIONS": {
+								"MARRIED": "",
+								"SINGLE": ""
+							},
+							"TEXT": ""
+						},
+						"QRCODE": {
+							"NOTAVAILABLE": {
+								"TEXT": ""
+							},
+							"TEXT": ""
+						}
+					}
+				},
+				"DETAILS": {
+					"ID_TABLE": "",
+					"ROLE_TABLE": ""
+				},
+				"EDIT": {
+					"HEADER": {
+						"TITLE": ""
+					}
+				},
+				"HEADER": {
+					"TITLE": ""
+				},
+				"MENU": {
+					"MORE": "",
+					"REMOVE": "",
+					"SELECTION": {
+						"FIRST": "",
+						"SECOND": "",
+						"THIRD": ""
+					}
+				},
+				"STEPPER": {
+					"TITLE": {
+						"EMERGENCY_CONTACT": "",
+						"EXPERIENCE": "",
+						"PHYSICIAN_CONTACT_INFO": "",
+						"PROFILE_INFO": "",
+						"QUALIFICATION": "",
+						"ROUTE_DETAILS": "",
+						"SUBJECTS_FILES": ""
+					}
+				},
+				"VIEW": {
+					"TITLE": {
+						"EMERGENCY_CONTACT": "",
+						"EXPERIENCE": "",
+						"PHYSICIAN_CONTACT_INFO": "",
+						"PROFILE_INFO": "",
+						"QUALIFICATION": "",
+						"ROUTE_DETAILS": "",
+						"SUBJECTS_FILES": ""
+					}
+				}
+			}
+		}
+	},
+	"USER_INFO": {
+		"DRIVER_INFO": {
+			"CARD_TITLE": "",
+			"FIRST_SELECTION_MENU": "",
+			"SECOND_SELECTION_MENU": "",
+			"THIRD_SELECTION_MENU": ""
+		},
+		"DRIVER_VIEW_EDIT": {
+			"ADDRESS": "",
+			"ADD_QUALIFICATION": "",
+			"AT_HOME": "",
+			"COMMUNITY_POINT": "",
+			"DEPARTMENT": "",
+			"DOB": "",
+			"DOB_IS": "",
+			"EMAIL_FIELD": "",
+			"EMAIL_FIELD_IS": "",
+			"EMERGENCY_ADDRESS": "",
+			"EMERGENCY_CONTACT": "",
+			"EMERGENCY_EMAILID": "",
+			"EMERGENCY_PHONE_NUM": "",
+			"EMERGENCY_RELATION": "",
+			"EXPERIENCE": "",
+			"EXPIRY_DATE": "",
+			"EXP_ADDRESS": "",
+			"EXP_ORGANIZATION_NAME": "",
+			"EXP_VALID_FROM": "",
+			"EXP_VALID_TILL": "",
+			"FEEDBACK": "",
+			"FIRSTNAME": "",
+			"FIRSTNAME_IS": "",
+			"GENDER": "",
+			"GENDER_FEMALE": "",
+			"GENDER_MALE": "",
+			"ISSUED_DATE": "",
+			"JOINING_DATE": "",
+			"LASTNAME": "",
+			"LASTNAME_IS": "",
+			"MARITAL_STATUS": "",
+			"MARITAL_STATUS_MARRIED": "",
+			"MARITAL_STATUS_SINGLE": "",
+			"NEW_PROFILE_FOR_DRIVER": "",
+			"NOTE_SCHOOL_COUNSELOR": "",
+			"NOTE_TRANSPORT_COUNSELOR": "",
+			"PERMANENT_ADDRESS": "",
+			"PHONE": "",
+			"PHONE_IS": "",
+			"PHYSICIAN_ADDRESS": "",
+			"PHYSICIAN_CONTACT_INFO": "",
+			"PHYSICIAN_CONTACT_INFORMATION": "",
+			"PHYSICIAN_FAX": "",
+			"PHYSICIAN_PHONE_NUM": "",
+			"POSITION": "",
+			"PRESENT_ADDRESS": "",
+			"PROFILE_INFO": "",
+			"PROFILE_INFORMATION": "",
+			"PROFILE_INFO_OF_USER": "",
+			"QR_CODE": "",
+			"QR_CODE_NOT_GENERATED": "",
+			"QUALIFICATION": "",
+			"QUALIFICATION_ORGANIZATION_NAME": "",
+			"QUALIFICATION_UNIVERSITY": "",
+			"QUALIFICATION_VALID_FROM": "",
+			"QUALIFICATION_VALID_TILL": "",
+			"STAFF_ACHIEVMENTS": "",
+			"TRANSPORTATION": ""
+		},
+		"EDIT_ADMIN_DATA": {
+			"ACADEMIC_YEAR": "",
+			"ACADEMIC_YEAR_INVALID": "",
+			"ACADEMIC_YEAR_IS": "",
+			"ACADEMIC_YEAR_PATTERN_IS": "",
+			"ADMIN_PROCESS_TITLE": "",
+			"EMAIL_ID": "",
+			"EMAIL_ID_IS": "",
+			"PHONE": "",
+			"PHONE_IS": "",
+			"SELECT_CLASS": "",
+			"SELECT_GRADE": "",
+			"STUDENT_ID": "",
+			"UPDATE_MULTIPLE_STUDENT": "",
+			"UPDATE_STUDENT": ""
+		},
+		"STUDENT_ATTENDANCE": {
+			"BY_CLASS": "",
+			"BY_SUBJECT": "",
+			"NAME": ""
+		},
+		"STUDENT_INFO": {
+			"ADD_NEW_STUDENT": "",
+			"CARD_TITLE_REG": "",
+			"CARD_TITLE_UNREG": "",
+			"CLASS_ID": "",
+			"DOB": "",
+			"EMAIL_ID_TABLE": "",
+			"FIFTH_SELECTION_MENU": "",
+			"FIRST_SELECTION_MENU": "",
+			"FOURTH_SELECTION_MENU": "",
+			"FULL_NAME": "",
+			"FULL_NAME_TABLE": "",
+			"GRADE_ID": "",
+			"ID": "",
+			"PHONE_NUM_TABLE": "",
+			"SCHOOL_YEAR": "",
+			"SECOND_SELECTION_MENU": "",
+			"SELECT_GRADE_AND_CLASS_TO_CONT": "",
+			"SL_NO": "",
+			"STUDENT_ID": "",
+			"STUDENT_ID_TABLE": "",
+			"THIRD_SELECTION_MENU": "",
+			"UPDATE_MULTIPLE_DATA": ""
+		},
+		"STUDENT_VIEW_EDIT": {
+			"ADDRESS": "",
+			"ADDRESS_IS": "",
+			"AT_HOME": "",
+			"Aadhar": "",
+			"BIRTH_PLACE": "",
+			"CATEGORY": "",
+			"COMMUNITY_POINT": "",
+			"DATE_OF_JOINING": "",
+			"DOB": "",
+			"DOB_IS": "",
+			"EMERGENCY_ADDRESS": "",
+			"EMERGENCY_CONTACT": "",
+			"EMERGENCY_DOB": "",
+			"EMERGENCY_EDUCATION": "",
+			"EMERGENCY_EMAILID": "",
+			"EMERGENCY_FIRSTNAME": "",
+			"EMERGENCY_LASTNAME": "",
+			"EMERGENCY_OCCUPATION": "",
+			"EMERGENCY_PHONE_NUM": "",
+			"EMERGENCY_RELATION": "",
+			"FATHER_EMAIL_ADDRESS": "",
+			"FATHER_FIRSTNAME": "",
+			"FATHER_LASTNAME": "",
+			"FATHER_MOBILE_NUMBER": "",
+			"FATHER_OCCUPATION": "",
+			"FEEDBACK": "",
+			"FIRSTNAME": "",
+			"FIRSTNAME_IS": "",
+			"GENDER": "",
+			"GENDER_FEMALE": "",
+			"GENDER_MALE": "",
+			"LASTNAME": "",
+			"LASTNAME_IS": "",
+			"MOTHER_EMAIL_ADDRESS": "",
+			"MOTHER_FIRSTNAME": "",
+			"MOTHER_LASTNAME": "",
+			"MOTHER_MOBILE_NUMBER": "",
+			"MOTHER_OCCUPATION": "",
+			"MOTHER_TOUNGE": "",
+			"NATIONALITY": "",
+			"NEW_PROFILE_FOR_STUDENT": "",
+			"NOTE_SCHOOL_COUNSELOR": "",
+			"NOTE_TRANSPORT_COUNSELOR": "",
+			"NOT_AVAILBALE": "",
+			"PARENT_INFO": "",
+			"PARENT_INFORMATION": "",
+			"PAST_SCHOOL_INFORMATION_HEADER": "",
+			"PAST_SCHOOL_INFO_ADDRESS": "",
+			"PAST_SCHOOL_INFO_CLASS_ID": "",
+			"PAST_SCHOOL_INFO_GRADE_ID": "",
+			"PAST_SCHOOL_INFO_HEADER": "",
+			"PAST_SCHOOL_INFO_SCHOOL_NAME": "",
+			"PAST_SCHOOL_INFO_YEAR_OF_PASSING": "",
+			"PHYSICIAN_ADDRESS": "",
+			"PHYSICIAN_CONTACT_INFO": "",
+			"PHYSICIAN_CONTACT_INFORMATION": "",
+			"PHYSICIAN_Email": "",
+			"PHYSICIAN_FAX": "",
+			"PHYSICIAN_PHONE_NUM": "",
+			"PROFILE_INFO": "",
+			"PROFILE_INFORMATION": "",
+			"PROFILE_INFO_OF_USER": "",
+			"RELIGION": "",
+			"STUDENT_ID": "",
+			"STUDENT_OTHER_DOCUMENTS": "",
+			"SUCCESSFULLY_ADDED_STUDENT": "",
+			"TRANSPORTATION": ""
+		},
+		"TEACHER_ATTENDANCE": {
+			"ATTENDANCE_HISTORY": "",
+			"INTIME_ATTENDANCE": "",
+			"NAME": "",
+			"OUTTIME_ATTENDANCE": "",
+			"SELECT_FROM_AND_TO": "",
+			"VIEW_ATTENDANCE": ""
+		},
+		"TEACHER_INFO": {
+			"CARD_TITLE": "",
+			"FIRST_SELECTION_MENU": "",
+			"SECOND_SELECTION_MENU": ""
+		},
+		"TEACHER_VIEW_EDIT": {
+			"ADDRESS": "",
+			"ADD_QUALIFICATION": "",
+			"AT_HOME": "",
+			"COMMUNITY_POINT": "",
+			"DEPARTMENT": "",
+			"EMERGENCY_ADDRESS": "",
+			"EMERGENCY_CONTACT": "",
+			"EMERGENCY_EMAILID": "",
+			"EMERGENCY_PHONE_NUM": "",
+			"EMERGENCY_RELATION": "",
+			"EXPERIENCE": "",
+			"EXP_ADDRESS": "",
+			"EXP_ORGANIZATION_NAME": "",
+			"EXP_VALID_FROM": "",
+			"EXP_VALID_TILL": "",
+			"FEEDBACK": "",
+			"FIRSTNAME_IS": "",
+			"JOINING_DATE": "",
+			"LASTNAME": "",
+			"LASTNAME_IS": "",
+			"NEW_PROFILE_FOR_STAFF": "",
+			"NOTE_SCHOOL_COUNSELOR": "",
+			"NOTE_TRANSPORT_COUNSELOR": "",
+			"NO_USER_TYPE_SELECT": "",
+			"PHONE": "",
+			"PHONE_IS": "",
+			"PHYSICIAN_ADDRESS": "",
+			"PHYSICIAN_CONTACT_INFO": "",
+			"PHYSICIAN_FAX": "",
+			"PHYSICIAN_PHONE_NUM": "",
+			"POSITION": "",
+			"QUALIFICATION": "",
+			"QUALIFICATION_NAME": "",
+			"QUALIFICATION_ORGANIZATION_NAME": "",
+			"QUALIFICATION_UNIVERSITY": "",
+			"QUALIFICATION_VALID_FROM": "",
+			"SELECT_USER_TYPE": "",
+			"STAFF_ACHIEVMENTS": "",
+			"TRANSPORTATION": "",
+			"USER_TYPE_STAFF": "",
+			"USER_TYPE_TEACHER": ""
+		}
+	}
+}

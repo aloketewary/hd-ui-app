@@ -1,0 +1,19 @@
+<ng-template #loadingTemplate>
+  <span [ngSwitch]="type" class="flex-full">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" *ngSwitchCase="'circular'"
+      class="flex-full m-t-10 m-b-10">
+      <mat-progress-spinner diameter="40" strokeWidth="2" color="accent" mode="indeterminate"></mat-progress-spinner>
+    </div>
+    <div class="loading-container" *ngSwitchDefault>
+      <div class="loader">
+        <div class="loading-slide">
+          <div class="slide"></div>
+          <div class="slide"></div>
+          <div class="slide"></div>
+        </div>
+      </div>
+    </div>
+  </span>
+</ng-template>
+<ng-container *ngTemplateOutlet="!isLoading ? bodyTemplate : loadingTemplate"></ng-container>
+<!-- <ng-template #thenTemplate *ngTemplateOutlet="bodyTemplate"></ng-template> -->

@@ -1,0 +1,81 @@
+$font-family: "Raleway", sans-serif;
+$primary-text-color: "#212121";
+$icons-text-color: "#FFFFFF";
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return $primary-text-color; // Lighter backgorund, return dark color
+  } @else {
+    @return $icons-text-color; // Darker background, return light color
+  }
+}
+
+.app-root-style {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  font-family: $font-family;
+}
+
+.body-404 {
+  color: #fff;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: $font-family;
+}
+
+.app-font {
+  &.family {
+    &-lato {
+      font-family: "Lato", sans-serif;
+    }
+
+    &-roboto {
+      font-family: "Roboto", sans-serif;
+    }
+
+    &-raleway {
+      font-family: "Raleway", sans-serif;
+    }
+  }
+
+  &.style {
+    &-normal {
+      font-style: normal;
+    }
+
+    &-italic {
+      font-style: italic;
+    }
+  }
+
+  @each $var
+    in (
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      bold,
+      bolder,
+      lighter,
+      normal
+    )
+  {
+    &.weight-#{$var} {
+      font-weight: $var;
+    }
+  }
+
+  @for $i from 1 to 100 {
+    &.size-#{$i} {
+      font-size: $i * 1px - 1px;
+    }
+  }
+}

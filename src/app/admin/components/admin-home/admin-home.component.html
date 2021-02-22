@@ -1,0 +1,59 @@
+<div class="app-root-style" [ngClass]="{'app-dark-theme': dataHandler.isDarkMode}">
+  <mat-sidenav-container #sidenav class="sidenav-root-container">
+    <mat-sidenav [mode]="isMobileView?'over':'side'" [opened]="!isMobileView" [disableClose]="!isMobileView" #sidenav class="sidenav-main mat-typography">
+      <mat-toolbar class="default-theme" color="primary">
+        <div class="p-l-0 ellipsis" fxLayout="column" fxLayoutAlign="center start">
+          <a [routerLink]="rootLogoUrl"
+            class="no-underline cursor-pointer valign-center p-r-20 col-accent">HardwareDash Admin</a>
+        </div>
+      </mat-toolbar>
+      <mat-nav-list class="dashboard">
+        <a mat-list-item [routerLink]="'/admin/dashboard'">
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+          <p matLine>Dashboard</p>
+        </a>
+        <a mat-list-item [routerLink]="'/admin/config'">
+          <mat-icon mat-list-icon>tune</mat-icon>
+          <p matLine>Config</p>
+        </a>
+        <a mat-list-item [routerLink]="'/admin/users'">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <p matLine>Users</p>
+        </a>
+        <a mat-list-item [routerLink]="'/admin/price-list'">
+          <mat-icon mat-list-icon>payments</mat-icon>
+          <p matLine>Price List</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="my-content" id="header-editor-panel">
+        <mat-toolbar class="mat-elevation-z8" color="primary" style="min-height:64px;">
+          <button *ngIf="isMobileView" type="button" mat-icon-button (click)="sidenav.open()">
+            <mat-icon svgIcon="menu"></mat-icon>
+          </button>
+          <div class="p-l-10 ellipsis" fxLayout="column" fxLayoutAlign="center start" *ngIf="isMobileView">
+            <a [routerLink]="rootLogoUrl"
+              class="no-underline cursor-pointer valign-center p-r-20 col-accent">{{userProfile?.schoolName}}</a>
+            <span class="school-font size-11 weight-400 m-t--10 col-accent">Year: {{userProfile?.schoolYear}}</span>
+          </div>
+          <span class="spacer"></span>
+          <div class="app-logo">
+          </div>
+          <span class="spacer"></span>
+          <button mat-icon-button matTooltip="{{'APP.SETTINGS.THEME.BUTTON.TEXT' | translate:locale.language}}" matTooltipPosition="before" (click)="dataHandler.isDarkMode = !dataHandler.isDarkMode">
+            <mat-icon svgIcon="theme-light-dark"></mat-icon>
+          </button>
+          <button matTooltip="{{'APP.GOTO_DASHBOARD' | translate:locale.language}}" matTooltipPosition="before"
+            routerLink="/home/dashboard/{{userProfile?.schoolId}}/{{dataHandler.schoolYear.value}}" mat-icon-button>
+            <mat-icon svgIcon="view-dashboard"></mat-icon>
+          </button>
+        </mat-toolbar>
+        <router-outlet class="mat-typography"></router-outlet>
+      </div>
+    </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+</div>

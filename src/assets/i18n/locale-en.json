@@ -1,0 +1,911 @@
+{
+  "APP": {
+    "BENGALI": "বাংলা",
+    "CHANGE_LANGUAGE": "Change language",
+    "ENGLISH": "English",
+    "GOTO_DASHBOARD": "Go to Dashboard",
+    "HINDI": "हिंदी",
+    "PROJECT_NAME": "Hardware Dash",
+    "TITLE": {
+      "DASHBOARD": "{{schoolName}} Dashboard"
+    },
+    "SETTINGS": {
+      "THEME": {
+        "BUTTON": {
+          "TEXT": "Toggle Theme"
+        }
+      }
+    }
+  },
+  "ADMIN": {
+    "CONFIG": {
+      "HEADER": {
+        "TITLE": "Application Configuration"
+      },
+      "FORM": {
+        "KEY": {
+          "TITLE": "Key"
+        },
+        "VALUE": {
+          "TITLE": "Value"
+        },
+        "USED_FOR": {
+          "TITLE": "Select used for"
+        },
+        "IS_ACTIVE": {
+          "TITLE": "Is Active?"
+        }
+      },
+      "BUTTON": {
+        "EDIT": "Edit {{name}}",
+        "DELETE": "Delete {{name}}",
+        "MODAL": {
+          "CANCEL": "CANCEL",
+          "DELETE": "DELETE"
+        }
+      },
+      "MODAL": {
+        "TITLE": "{{keyName}} Delete?",
+        "SUB_TITLE": "Delete this key value config ^ If you delete this you can't undone this change."
+      }
+    },
+    "USERS": {
+      "HEADER": {
+        "TITLE": "Users List"
+      }
+    },
+    "PRICE_LIST": {
+      "HEADER": {
+        "TITLE": "Price List"
+      }
+    }
+  },
+  "COMMON": {
+    "AVAILABLE": {
+      "PROFILE": {
+        "STUDENT": "Student",
+        "TEACHER": "Teacher"
+      }
+    },
+    "CANCEL_BUTTON": "CANCEL",
+    "ERROR": {
+      "PLEASE_RETRY_AGAIN": "Please try again after some time",
+      "PLEASE_SELECT_JPG_OR_PNG_FILE": "Please select jpg or png file.",
+      "PROFILE_PIC_NOT_ADDED": "Please add profile pic of {{user}}",
+      "SCHOOLID_OR_STUDENT_ID_MUST_NOT_NULL": "School Id and Student Id must not blank",
+      "STUDENT_ID_MUST_NOT_NULL": "Student Id must not blank"
+    },
+    "HERE_IS_NOTHING": "Here is nothing to display...",
+    "INVALID": "invalid",
+    "NETWORK_STATUS": "No Network Available",
+    "OK_BUTTON": "OK",
+    "OR": "OR",
+    "REQUIRED": "required",
+    "SELECT_NONE": "None",
+    "STEPPER_NEXT": "NEXT",
+    "STEPPER_PREV": "PREV",
+    "STEPPER_SAVE": "SAVE",
+    "STEPPER_UPDATE": "UPDATE",
+    "STEPPER_UPDATE_EXISTING": "UPDATE EXISTING"
+  },
+  "COMMUNICATION": {
+    "EXAM": {
+      "EXAM": "Exam",
+      "PAPER": "Paper",
+      "SCHEDULE": "Schedule"
+    },
+    "PRAYER": {
+      "HEADER": {
+        "ADDPRAYER": "Add Prayer",
+        "TITLE": "Prayer title",
+        "TITLEDETAIL": "Prayer"
+      }
+    }
+  },
+  "DASHBOARD": {
+    "ACADEMIC_YEAR": "Academic Year",
+    "ACTIVE_ROUTE": "Active Route",
+    "CIRCULARS": "Class circulars/notifications",
+    "DISCUS_WITH_PARENT": "Discus with Parent",
+    "DRIVER": "Driver",
+    "EXAM": "Exam Details",
+    "GALLERY": "Gallery",
+    "HELP": "Help",
+    "LOGOUT": "Log out",
+    "PHOTO_ALBUMS": "Photo Album",
+    "PRAYER": "Prayer",
+    "ROUTE": "Route",
+    "SCHEDULE_MEETING": "Schedule Meeting",
+    "SCHOOL_NOTIFICATION": "School Notification",
+    "SECTION_GRADE": "Section/Grade",
+    "SECTION_NOTIFICATION": "Section Notification",
+    "SEND_SMS_EMAILS": "Send SMS/Emails",
+    "SETTINGS": "Settings",
+    "STAFF": "Staff",
+    "STUDENT": "Student",
+    "STUDENTATTENDANCE": "Student Attendance History",
+    "TEACHER": "Teacher",
+    "TEACHERATTENDANCE": "Teacher/Staff Attendance History"
+  },
+  "IMPORT_EXPORT": {
+    "EXPORT": {
+      "HEADER": {
+        "TITLE": "Import Bulk Student Data"
+      }
+    },
+    "PUBLISH": {
+      "HEADER": {
+        "TITLE": "Publish Temp Data"
+      },
+      "TABLE": {
+        "HEADER": {
+          "CLASSID": "Class ID",
+          "DOB": "DOB",
+          "FATHERFULLNAME": "Father Name",
+          "FIRSTNAME": "First name",
+          "GENDER": "Gender",
+          "LASTNAME": "Last name",
+          "SECTIONID": "Section ID"
+        }
+      }
+    }
+  },
+  "LIBRARY": {
+    "ERRORS": {
+      "NO": {
+        "BOOKS": {
+          "ISSUED": "No Books Issued to this User!"
+        }
+      }
+    },
+    "SCHOOLS": {
+      "HEADER": {
+        "TITLE": "School Library"
+      },
+      "TAB": {
+        "ALL": {
+          "ISSUED": {
+            "BOOKS": "All Issued Books"
+          }
+        },
+        "ISSUED_BOOKS": "Issued Books",
+        "ISSUED_BOOK_TO": {
+          "STAFF": "Issued Books To Staffs",
+          "STUDENT": "Issued Books To Students"
+        },
+        "VIEW_ADD_BOOKS": "View / Add Books"
+      },
+      "VIEW_ADD": {
+        "BOOK": {
+          "AUTHOR": "by {{author}}"
+        }
+      }
+    }
+  },
+  "LOGIN": {
+    "BACK_TO_LOGIN_FROM_FORGOTPWD": "Go back to login",
+    "CREATE_AN_ACCOUNT": "Create an account",
+    "DONT_HAVE_ACCOUNT": "Don't have an account?",
+    "EMAIL": "Email",
+    "EMAIL_IS": "Email is",
+    "ENTER_VALID_MAIL": "Enter valid email id",
+    "FORGOT_PASS": "Forgot Password?",
+    "FORGOT_SUCCESSFULL_MSG": "Email is sent to provided email id follow the steps given in the email",
+    "LOGIN_BUTTON": "LOGIN",
+    "LOGIN_TO_YOUR_ACCOUNT": "LOGIN TO YOUR ACCOUNT",
+    "LOGIN_WITH_FACEBOOK": "LOGIN WITH FACEBOOK",
+    "LOGIN_WITH_GOOGLE": "LOGIN WITH GOOGLE",
+    "PASSWORD": "Password",
+    "PASSWORD_IS": "Password is",
+    "RECOVER_YOUR_PASSWORD": "RECOVER YOUR PASSWORD",
+    "SEND_RESET_LINK": "SEND RESET LINK",
+    "SUCCESSFULLY_AUTHORIZED": "Login Successful",
+    "SUCCESSFULLY_AUTHORIZED_WITH_USERNAME": "Welcome ",
+    "WELCOME_TO": "{{projectName}}"
+  },
+  "LOGOUT": {
+    "BUTTON": {
+      "CANCEL": "CANCEL",
+      "LOGOUT_TEXT": "LOGOUT"
+    },
+    "SURE_MESSAGE": "Are sure you want to logout?",
+    "TITLE": "Logout"
+  },
+  "MANAGEMENT": {
+    "EXAMS": {
+      "HEADER": {
+        "TITLE": "Exams Management"
+      }
+    }
+  },
+  "MANAGE_CLASS_TEACHER": {
+    "HEADER": {
+      "TEXT": "Manage Class Teacher"
+    }
+  },
+  "PERMISSION": {
+    "COMMON": {
+      "TYPE": {
+        "EXECUTE": "Write",
+        "NONE": "None",
+        "READ": "Read"
+      }
+    },
+    "TEACHER": {
+      "HEADER": {
+        "TITLE": "Manage User Permission"
+      }
+    }
+  },
+  "PROFILE": {
+    "CHANGE": {
+      "PASSWORD": {
+        "FORM": {
+          "CONFIRM_PASSWORD": {
+            "ERROR": {
+              "MAXLENGTH": "Confirm Password max length 16",
+              "MINLENGTH": "Confirm Password min length 6 required",
+              "MISMATCH": "New Password & Confirm Password doesn't match",
+              "REQUIRED": "Confirm Password is required"
+            },
+            "TEXT": "Confirm Password"
+          },
+          "CURRENT": {
+            "ERROR": {
+              "MAXLENGTH": "Current Password max length 16",
+              "MINLENGTH": "Current Password min length 6 required",
+              "REQUIRED": "Current Password is required"
+            },
+            "TEXT": "Current Password"
+          },
+          "NEW_PASSWORD": {
+            "ERROR": {
+              "MAXLENGTH": "New Password max length 16",
+              "MINLENGTH": "New Password min length 6 required",
+              "REQUIRED": "New Password is required"
+            },
+            "TEXT": "New Password"
+          }
+        },
+        "HEADER": {
+          "TITLE": "Change Password"
+        }
+      }
+    },
+    "MINE": {
+      "HEADER": {
+        "TITLE": "My Profile"
+      }
+    }
+  },
+  "SCHEDULE": {
+    "DETAILS": {
+      "CLASS": {
+        "PERIODS": {
+          "CARD": {
+            "HEADER": "Class Periods Management"
+          }
+        }
+      },
+      "INFO": {
+        "CARD": {
+          "HEADER": "Schedule Details for {{seasonName}}",
+          "NEW": {
+            "HEADER": "Add New Schedule Details"
+          }
+        }
+      },
+      "TIMEMANAGEMENT": {
+        "CARD": {
+          "HEADER": "School Timing Management"
+        },
+        "FORM": {
+          "END": {
+            "DATE": "End Date"
+          },
+          "NAME": {
+            "TITLE": "Schedule Name"
+          },
+          "START": {
+            "DATE": "Start Date"
+          }
+        }
+      }
+    }
+  },
+  "SECTION": {
+    "ADD": {
+      "BUTTON": {
+        "ADD": "ADD"
+      },
+      "HEADER": {
+        "TITLE": "Add Section"
+      }
+    },
+    "COMMON": {
+      "BUTTON": {
+        "CANCEL": "CANCEL"
+      },
+      "CLASS_ROOM_NUMBER": {
+        "ERROR": {
+          "REQUIRED": "Class Room Number is required"
+        },
+        "TEXT": "Class Room Number"
+      },
+      "ID": {
+        "ERROR": {
+          "REQUIRED": "Section ID is required"
+        },
+        "TEXT": "Section ID"
+      },
+      "NAME": {
+        "ERROR": {
+          "REQUIRED": "Section Name is required"
+        },
+        "TEXT": "Section Name"
+      }
+    },
+    "EDIT": {
+      "BUTTON": {
+        "UPDATE": "UPDATE"
+      },
+      "HEADER": {
+        "TITLE": "Edit Section"
+      }
+    }
+  },
+  "SIDEBAR": {
+    "MENU": {
+      "ACADEMIC_YEAR": "Academic Year",
+      "ACTIVE_ROUTE": "Active Route",
+      "ACTIVE_TIMETABLE": "Active Timetable",
+      "ADD_NEW": "Add New",
+      "APPOINTMENT": "Appointment",
+      "CLASS_CHANNEL": "Class Channel",
+      "CLASS_EVENTS": "Class Events",
+      "CLASS_SECTION": "Class/Section",
+      "COMMUNICATIONS": "Communications",
+      "DRIVER": "Driver",
+      "IMPORT_EXPORT": {
+        "SUB": {
+          "EXCEL_IMPORT": "Import Bulk Student",
+          "PUBLISH_TEMP_DATA": "Publish Temp Data"
+        },
+        "TITLE": "Import / Export"
+      },
+      "LIBRARY": {
+        "CHILDREN": {
+          "SCHOOL": "School Library"
+        },
+        "TITLE": "Library"
+      },
+      "LOGOUT": "Log out",
+      "MANAGEMENT": {
+        "CHILDREN": {
+          "ATTENDANCE": "Attendance",
+          "EXAM": "Exam",
+          "MARKS": "Marks"
+        },
+        "TITLE": "Management"
+      },
+      "MY_PROFILE": "My Profile",
+      "PERMISSIONS": {
+        "SUB": {
+          "TEACHER_PERMISSION": "User Permission"
+        },
+        "TITLE": "Settings"
+      },
+      "ROUTE": "Route",
+      "SCHOOL_CHANNEL": "School Channel",
+      "SCHOOL_EVENTS": "School Events",
+      "SCHOOL_SCHEDULING": "School Scheduling",
+      "STAFF": "Staff",
+      "STUDENT": "Student",
+      "TEACHER": "Teacher",
+      "TEACHER_LIST_BY_SUBJECT": "Teacher List By Subject",
+      "TIMETABLE": "TimeTable",
+      "TRANSPORTATION": "Transportation",
+      "USER_INFO": "User Info",
+      "VIEW_RESPOND": "View & Respond"
+    }
+  },
+  "SUBJECT": {
+    "ADD": {
+      "BUTTON": {
+        "ADD": "ADD"
+      },
+      "HEADER": {
+        "TITLE": "Add Subject"
+      }
+    },
+    "COMMON": {
+      "BUTTON": {
+        "CANCEL": "CANCEL"
+      },
+      "CODE": {
+        "ERROR": {
+          "REQUIRED": "Subject Name is required"
+        },
+        "TEXT": "Subject Code"
+      },
+      "NAME": {
+        "ERROR": {
+          "REQUIRED": "Subject Name is required"
+        },
+        "TEXT": "Subject Name"
+      },
+      "PRE_REQUIREMENT": {
+        "TEXT": "Pre Requirement"
+      },
+      "TYPE": {
+        "ERROR": {
+          "REQUIRED": "Subject Type is required"
+        },
+        "OPTIONS": {
+          "COMPULSARY": "Compulsory",
+          "ELECTIVE": "Elective"
+        },
+        "TEXT": "Subject Type"
+      }
+    }
+  },
+  "TIMETABLE": {
+    "INFO": {
+      "CARD": {
+        "HEADER": "Time Table for {{sYear}}"
+      },
+      "DISPLAY": {
+        "EVENT": {
+          "HEADER": {
+            "ATTENDANCETYPE": "Attendance Type: ",
+            "FOR": "Display School Timetable for {{schedule}}"
+          }
+        }
+      },
+      "TAB": {
+        "SCHOOL_TIMETABLE": "School Timetable",
+        "SCHOOL_TIMETABLE_SETTING": "School Timetable Setting",
+        "TEACHER_TIMETABLE": "Teacher Timetable"
+      }
+    }
+  },
+  "TITLE": {
+    "PROFILE": {
+      "CHANGE_PASSWORD": "Change Password for {{user}} | {{school}} - {{app}}",
+      "MINE": "Update Profile for {{user}} | {{school}} - {{app}}"
+    }
+  },
+  "TRANSPORTATION": {
+    "MANAGE_ROUTE": {
+      "HEADER": {
+        "TITLE": "Route Details"
+      },
+      "ROUTE": {
+        "DRIVER": {
+          "CAPTION": "Select Driver",
+          "ERROR": "Driver is"
+        },
+        "ID": "Auto generated System ID",
+        "LOCATION": {
+          "END": "End Location",
+          "START": "Start Location"
+        },
+        "NAME": {
+          "CAPTION": "Route Name",
+          "ERROR": "Route Name is"
+        },
+        "NAVIGATE": {
+          "CAPTION": "Calculate Navigation"
+        },
+        "SAVE": {
+          "CAPTION": "SAVE"
+        },
+        "TYPE": {
+          "DROPOFF": "Dropoff",
+          "PICKUP": "Pickup",
+          "TITLE": "Route Type"
+        }
+      }
+    },
+    "ROUTE": {
+      "CARD": {
+        "FOOTER": {
+          "ROUTE": {
+            "TYPE": "Route Type"
+          }
+        }
+      },
+      "HEADER": {
+        "TITLE": "Transportation Routes"
+      }
+    }
+  },
+  "USER": {
+    "OPERATION": {
+      "REMOVE": {
+        "ERROR": "There is some, Error try again later!",
+        "SUCCESS": "User removed successfully!"
+      }
+    },
+    "STAFF": {
+      "INFO": {
+        "HEADER": {
+          "TITLE": "Staffs List"
+        },
+        "MENU": {
+          "REMOVE": "Remove Staff",
+          "SELECTION": {
+            "FIRST": "View Staff Data",
+            "SECOND": "Edit Staff Data",
+            "THIRD": "Transportation History"
+          }
+        }
+      }
+    },
+    "TEACHER": {
+      "INFO": {
+        "ADD": {
+          "HEADER": {
+            "TITLE": "Add New Teacher"
+          }
+        },
+        "COMMON": {
+          "FORM": {
+            "ADDRESS": {
+              "ERROR": {
+                "REQUIRED": "Address is required"
+              },
+              "TEXT": "Address"
+            },
+            "CONFIRMEMAIL": {
+              "ERROR": {
+                "INVALID": "Email ID is invalid",
+                "MATCH": "Confirm email and email should match",
+                "REQUIRED": "Email ID is required"
+              },
+              "TEXT": "Confirm Email ID"
+            },
+            "DOB": {
+              "ERROR": {
+                "REQUIRED": "Date of birth is required"
+              },
+              "TEXT": "Date of birth"
+            },
+            "EMAIL": {
+              "ERROR": {
+                "INVALID": "Email ID is invalid",
+                "REQUIRED": "Email ID is required"
+              },
+              "TEXT": "Email ID"
+            },
+            "FIRSTNAME": {
+              "ERROR": {
+                "REQUIRED": "First name is required"
+              },
+              "TEXT": "First name"
+            },
+            "FULLNAME": {
+              "ERROR": {
+                "REQUIRED": "Full name is required"
+              },
+              "TEXT": "Full name"
+            },
+            "GENDER": {
+              "ERROR": {
+                "REQUIRED": "Gender is required"
+              },
+              "OPTIONS": {
+                "FEMALE": "Female",
+                "MALE": "Male"
+              },
+              "TEXT": "Gender"
+            },
+            "LASTNAME": {
+              "ERROR": {
+                "REQUIRED": "Last name is required"
+              },
+              "TEXT": "Last name"
+            },
+            "MARITAL_STATUS": {
+              "ERROR": {
+                "REQUIRED": "Marital Status is required"
+              },
+              "OPTIONS": {
+                "MARRIED": "Married",
+                "SINGLE": "Single"
+              },
+              "TEXT": "Marital Status"
+            },
+            "QRCODE": {
+              "NOTAVAILABLE": {
+                "TEXT": "QR Code unavailable"
+              },
+              "TEXT": "QR Code"
+            }
+          }
+        },
+        "DETAILS": {
+          "ID_TABLE": "ID",
+          "ROLE_TABLE": "Role"
+        },
+        "EDIT": {
+          "HEADER": {
+            "TITLE": "Profile info of {{userFirstName}} {{userLastName}}"
+          }
+        },
+        "HEADER": {
+          "TITLE": "Teachers List"
+        },
+        "MENU": {
+          "MORE": "More Details",
+          "REMOVE": "Remove Teacher",
+          "SELECTION": {
+            "FIRST": "View Teacher Data",
+            "SECOND": "Edit Teacher Data",
+            "THIRD": "Transportation History"
+          }
+        },
+        "STEPPER": {
+          "TITLE": {
+            "EMERGENCY_CONTACT": "Emergency Contact",
+            "EXPERIENCE": "Experience",
+            "PHYSICIAN_CONTACT_INFO": "Physician Contact Info",
+            "PROFILE_INFO": "Profile info",
+            "QUALIFICATION": "Qualification",
+            "ROUTE_DETAILS": "Route Details",
+            "SUBJECTS_FILES": "Mandatory Files"
+          }
+        },
+        "VIEW": {
+          "TITLE": {
+            "EMERGENCY_CONTACT": "Emergency Contact",
+            "EXPERIENCE": "Experience",
+            "PHYSICIAN_CONTACT_INFO": "Physician Contact Information",
+            "PROFILE_INFO": "Profile information",
+            "QUALIFICATION": "Qualification",
+            "ROUTE_DETAILS": "Route Details",
+            "SUBJECTS_FILES": "Mandatory Files"
+          }
+        }
+      }
+    }
+  },
+  "USER_INFO": {
+    "DRIVER_INFO": {
+      "CARD_TITLE": "Driver List",
+      "FIRST_SELECTION_MENU": "View Driver Data",
+      "SECOND_SELECTION_MENU": "Edit Driver Data",
+      "THIRD_SELECTION_MENU": "Transportation History"
+    },
+    "DRIVER_VIEW_EDIT": {
+      "ADDRESS": "Address",
+      "ADD_QUALIFICATION": "Add Qualification",
+      "AT_HOME": "At Home",
+      "COMMUNITY_POINT": "Community Point",
+      "DEPARTMENT": "Department",
+      "DOB": "DOB",
+      "DOB_IS": "DOB is",
+      "EMAIL_FIELD": "Email",
+      "EMAIL_FIELD_IS": "Email is",
+      "EMERGENCY_ADDRESS": "Address",
+      "EMERGENCY_CONTACT": "Emergency Contact",
+      "EMERGENCY_EMAILID": "Email id",
+      "EMERGENCY_PHONE_NUM": "Phone No.",
+      "EMERGENCY_RELATION": "Relation",
+      "EXPERIENCE": "Experience",
+      "EXPIRY_DATE": "Expiry Date",
+      "EXP_ADDRESS": "Address",
+      "EXP_ORGANIZATION_NAME": "Organization name",
+      "EXP_VALID_FROM": "Valid from",
+      "EXP_VALID_TILL": "Valid till",
+      "FEEDBACK": "Feedback",
+      "FIRSTNAME": "First name",
+      "FIRSTNAME_IS": "First name",
+      "GENDER": "Gender",
+      "GENDER_FEMALE": "Female",
+      "GENDER_MALE": "Male",
+      "ISSUED_DATE": "Issued Date",
+      "JOINING_DATE": "Joining Date",
+      "LASTNAME": "Last name",
+      "LASTNAME_IS": "Last name is",
+      "MARITAL_STATUS": "Marital Status",
+      "MARITAL_STATUS_MARRIED": "Married",
+      "MARITAL_STATUS_SINGLE": "Single",
+      "NEW_PROFILE_FOR_DRIVER": "Add New Driver",
+      "NOTE_SCHOOL_COUNSELOR": "School Counselor",
+      "NOTE_TRANSPORT_COUNSELOR": "Transport Counselor",
+      "PERMANENT_ADDRESS": "Parmanent Address",
+      "PHONE": "Phone",
+      "PHONE_IS": "Phone is",
+      "PHYSICIAN_ADDRESS": "Address",
+      "PHYSICIAN_CONTACT_INFO": "Physician Contact Info",
+      "PHYSICIAN_CONTACT_INFORMATION": "Physician Contact Information",
+      "PHYSICIAN_FAX": "FAX no",
+      "PHYSICIAN_PHONE_NUM": "Phone no",
+      "POSITION": "Position",
+      "PRESENT_ADDRESS": "Present Address",
+      "PROFILE_INFO": "Profile info",
+      "PROFILE_INFORMATION": "Profile information",
+      "PROFILE_INFO_OF_USER": "Profile info of {{userFirstName}} {{userLastName}}",
+      "QR_CODE": "QR code",
+      "QR_CODE_NOT_GENERATED": "QR code is not generated yet",
+      "QUALIFICATION": "Qualification",
+      "QUALIFICATION_ORGANIZATION_NAME": "Organization name",
+      "QUALIFICATION_UNIVERSITY": "University",
+      "QUALIFICATION_VALID_FROM": "Valid from",
+      "QUALIFICATION_VALID_TILL": "Valid till",
+      "STAFF_ACHIEVMENTS": "Staff Achievments",
+      "TRANSPORTATION": "Transportation"
+    },
+    "EDIT_ADMIN_DATA": {
+      "ACADEMIC_YEAR": "Academic year",
+      "ACADEMIC_YEAR_INVALID": "Academic year must be in order",
+      "ACADEMIC_YEAR_IS": "Academic year is",
+      "ACADEMIC_YEAR_PATTERN_IS": "as example 2017-2018",
+      "ADMIN_PROCESS_TITLE": "Admin Process",
+      "EMAIL_ID": "Email",
+      "EMAIL_ID_IS": "Email is",
+      "PHONE": "Phone",
+      "PHONE_IS": "Phone is",
+      "SELECT_CLASS": "Select Class data",
+      "SELECT_GRADE": "Select Grade data first",
+      "STUDENT_ID": "Student ID",
+      "UPDATE_MULTIPLE_STUDENT": "UPDATE SELECTED STUDENTS",
+      "UPDATE_STUDENT": "UPDATE STUDENT DATA"
+    },
+    "STUDENT_ATTENDANCE": {
+      "BY_CLASS": "Attendance History By Class",
+      "BY_SUBJECT": "Attendance History By Subject",
+      "NAME": "Student Attendance"
+    },
+    "STUDENT_INFO": {
+      "ADD_NEW_STUDENT": "Add New Students",
+      "CARD_TITLE_REG": "Registered Students List",
+      "CARD_TITLE_UNREG": "Non Registered Students List",
+      "CLASS_ID": "Class",
+      "DOB": "Date of Birth",
+      "EMAIL_ID_TABLE": "Email Id",
+      "FIFTH_SELECTION_MENU": "Transportation History",
+      "FIRST_SELECTION_MENU": "View",
+      "FOURTH_SELECTION_MENU": "Attendance History",
+      "FULL_NAME": "Full name",
+      "FULL_NAME_TABLE": "Full Name",
+      "GRADE_ID": "Grade",
+      "ID": "ID",
+      "PHONE_NUM_TABLE": "Phone number",
+      "SCHOOL_YEAR": "School year",
+      "SECOND_SELECTION_MENU": "Edit",
+      "SELECT_GRADE_AND_CLASS_TO_CONT": "Select Grade and Class to continue...",
+      "SL_NO": "#",
+      "STUDENT_ID": "Student ID",
+      "STUDENT_ID_TABLE": "Student Id",
+      "THIRD_SELECTION_MENU": "Edit Admin Data",
+      "UPDATE_MULTIPLE_DATA": "PROCESS {{selectedLength}} STUDENT(S) DATA "
+    },
+    "STUDENT_VIEW_EDIT": {
+      "ADDRESS": "Address",
+      "ADDRESS_IS": "Address is",
+      "AT_HOME": "At Home",
+      "Aadhar": "Aadhar",
+      "BIRTH_PLACE": "Birth place",
+      "CATEGORY": "Category",
+      "COMMUNITY_POINT": "Community Point",
+      "DATE_OF_JOINING": "Date of joining",
+      "DOB": "DOB",
+      "DOB_IS": "DOB is",
+      "EMERGENCY_ADDRESS": "Address",
+      "EMERGENCY_CONTACT": "Guardian/Emergency Contact",
+      "EMERGENCY_DOB": "Date of birth",
+      "EMERGENCY_EDUCATION": "Education details",
+      "EMERGENCY_EMAILID": "Email id",
+      "EMERGENCY_FIRSTNAME": "Guardian's first name",
+      "EMERGENCY_LASTNAME": "Guardian's Last name",
+      "EMERGENCY_OCCUPATION": "Occupation",
+      "EMERGENCY_PHONE_NUM": "Phone No.",
+      "EMERGENCY_RELATION": "Relation",
+      "FATHER_EMAIL_ADDRESS": "Father's email address",
+      "FATHER_FIRSTNAME": "Father's first name",
+      "FATHER_LASTNAME": "Father's last name",
+      "FATHER_MOBILE_NUMBER": "Mobile number",
+      "FATHER_OCCUPATION": "Father's occupation",
+      "FEEDBACK": "Feedback",
+      "FIRSTNAME": "First name",
+      "FIRSTNAME_IS": "First name",
+      "GENDER": "Gender",
+      "GENDER_FEMALE": "Female",
+      "GENDER_MALE": "Male",
+      "LASTNAME": "Last name",
+      "LASTNAME_IS": "Last name is",
+      "MOTHER_EMAIL_ADDRESS": "Mother's email address",
+      "MOTHER_FIRSTNAME": "Mother's first name",
+      "MOTHER_LASTNAME": "Mother's last name",
+      "MOTHER_MOBILE_NUMBER": "Mobile number",
+      "MOTHER_OCCUPATION": "Mother's occupation",
+      "MOTHER_TOUNGE": "Mother tounge",
+      "NATIONALITY": "Nationality",
+      "NEW_PROFILE_FOR_STUDENT": "Add New Student",
+      "NOTE_SCHOOL_COUNSELOR": "School Counselor",
+      "NOTE_TRANSPORT_COUNSELOR": "Transport Counselor",
+      "NOT_AVAILBALE": "information not availble",
+      "PARENT_INFO": "Parent Info",
+      "PARENT_INFORMATION": "Parent Information",
+      "PAST_SCHOOL_INFORMATION_HEADER": "Past School Information",
+      "PAST_SCHOOL_INFO_ADDRESS": "Address",
+      "PAST_SCHOOL_INFO_CLASS_ID": "Section",
+      "PAST_SCHOOL_INFO_GRADE_ID": "Grade",
+      "PAST_SCHOOL_INFO_HEADER": "Past School Info",
+      "PAST_SCHOOL_INFO_SCHOOL_NAME": "School name",
+      "PAST_SCHOOL_INFO_YEAR_OF_PASSING": "Year of passing",
+      "PHYSICIAN_ADDRESS": "Address",
+      "PHYSICIAN_CONTACT_INFO": "Physician Contact Info",
+      "PHYSICIAN_CONTACT_INFORMATION": "Physician Contact Information",
+      "PHYSICIAN_Email": "Email",
+      "PHYSICIAN_FAX": "FAX no",
+      "PHYSICIAN_PHONE_NUM": "Phone no",
+      "PROFILE_INFO": "Profile info",
+      "PROFILE_INFORMATION": "Profile information",
+      "PROFILE_INFO_OF_USER": "Profile info of {{userFirstName}} {{userLastName}}",
+      "RELIGION": "Religion",
+      "STUDENT_ID": "Student ID",
+      "STUDENT_OTHER_DOCUMENTS": "Student Other Documents",
+      "SUCCESSFULLY_ADDED_STUDENT": "{{user}} successfully added",
+      "TRANSPORTATION": "Transportation"
+    },
+    "TEACHER_ATTENDANCE": {
+      "ATTENDANCE_HISTORY": "Attendance History",
+      "INTIME_ATTENDANCE": "In Time Attendance",
+      "NAME": "Teacher Attendance",
+      "OUTTIME_ATTENDANCE": "Out Time Attendance",
+      "SELECT_FROM_AND_TO": "Select From date and to date to continue...",
+      "VIEW_ATTENDANCE": "View Attendance"
+    },
+    "TEACHER_INFO": {
+      "CARD_TITLE": "",
+      "FIRST_SELECTION_MENU": "",
+      "SECOND_SELECTION_MENU": ""
+    },
+    "TEACHER_VIEW_EDIT": {
+      "ADDRESS": "Address",
+      "ADD_QUALIFICATION": "Add Qualification",
+      "AT_HOME": "At Home",
+      "COMMUNITY_POINT": "Community Point",
+      "DEPARTMENT": "Department",
+      "EMERGENCY_ADDRESS": "Address",
+      "EMERGENCY_CONTACT": "Emergency Contact",
+      "EMERGENCY_EMAILID": "Email id",
+      "EMERGENCY_PHONE_NUM": "Phone No.",
+      "EMERGENCY_RELATION": "Relation",
+      "EXPERIENCE": "Experience",
+      "EXP_ADDRESS": "Address",
+      "EXP_ORGANIZATION_NAME": "Organization name",
+      "EXP_VALID_FROM": "Valid from",
+      "EXP_VALID_TILL": "Valid till",
+      "FEEDBACK": "Feedback",
+      "FIRSTNAME_IS": "First name",
+      "JOINING_DATE": "Joining Date",
+      "LASTNAME": "Last name",
+      "LASTNAME_IS": "Last name is",
+      "NEW_PROFILE_FOR_STAFF": "Add New Staff",
+      "NOTE_SCHOOL_COUNSELOR": "School Counselor",
+      "NOTE_TRANSPORT_COUNSELOR": "Transport Counselor",
+      "NO_USER_TYPE_SELECT": "None",
+      "PHONE": "Phone",
+      "PHONE_IS": "Phone is",
+      "PHYSICIAN_ADDRESS": "Address",
+      "PHYSICIAN_CONTACT_INFO": "Physician Contact Info",
+      "PHYSICIAN_FAX": "FAX no",
+      "PHYSICIAN_PHONE_NUM": "Phone no",
+      "POSITION": "Designation",
+      "QUALIFICATION": "Qualification",
+      "QUALIFICATION_NAME": "Qualification Name",
+      "QUALIFICATION_ORGANIZATION_NAME": "Organization name",
+      "QUALIFICATION_UNIVERSITY": "University",
+      "QUALIFICATION_VALID_FROM": "Passed Year",
+      "SELECT_USER_TYPE": "Select User Type",
+      "STAFF_ACHIEVMENTS": "Staff Achievments",
+      "TRANSPORTATION": "Is Transportation ?",
+      "USER_TYPE_STAFF": "Staff",
+      "USER_TYPE_TEACHER": "Teacher"
+    }
+  }
+}

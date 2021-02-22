@@ -1,0 +1,44 @@
+.login- {
+    &card {
+        padding: 0 !important;
+        overflow-y: auto;
+        height: 100%;
+        width: 100%;
+    }
+    &date {
+        color: darkgray;
+    }
+    &div {
+        height: 100vh;
+        width: 100vw;
+        &-md {
+            width: 30vw;
+            height: 100vh;
+        }
+        &-sm {
+            width: 50vw;
+            height: 100vh;
+        }
+    }
+}
+
+.generic-div-login {
+    width: 0vw;
+    &-md {
+        width: 70vw;
+    }
+    &-sm {
+        width: 50vw;
+    }
+    &-text {
+        width: 75%;
+    }
+}
+
+.m-t-33-p {
+    margin-top: 33%;
+}
+
+.login-as-radio-button {
+    margin: 5px;
+}
