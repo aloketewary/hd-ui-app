@@ -31,8 +31,10 @@
     "@ngrx/store": "^11.0.1",
     "angular-l10n": "^11.0.0",
     "angular-material-rail-drawer": "0.0.6",
+    "express": "^4.17.1",
     "moment": "^2.29.1",
     "ngx-store": "^2.1.0",
+    "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
