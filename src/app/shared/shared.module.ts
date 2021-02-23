@@ -1,6 +1,5 @@
 import { L10nIntlModule, L10nTranslationModule, L10nRoutingModule } from 'angular-l10n';
 import { WebStorageModule } from 'ngx-store';
-import { environment } from 'src/environments/environment';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';

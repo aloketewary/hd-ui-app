@@ -56,7 +56,31 @@
     },
     "PRICE_LIST": {
       "HEADER": {
-        "TITLE": "Price List"
+        "TITLE": "Product Price List"
+      }
+    },
+    "PRODUCT": {
+      "ID": "ID",
+      "SELECT": "Select",
+      "SL_NO": "#",
+      "NAME": "Name",
+      "BUY_PRICE": "Buy Price",
+      "WHOLE_SALE_PRICE": "Whole Sale Price",
+      "STOCK": "Stock",
+      "SELLING_PRICE": "Selling Price",
+      "ON_SALE_PRICE": "On Sale Price",
+      "SECOND_SELECTION_MENU": "Delete",
+      "MODAL": {
+        "TITLE": "Delete {{keyName}}?",
+        "SUB_TITLE": "By delete this Product ^ After deletion you can't undone this change."
+      },
+      "BUTTON": {
+        "EDIT": "Edit {{name}}",
+        "DELETE": "Delete {{name}}",
+        "MODAL": {
+          "CANCEL": "CANCEL",
+          "DELETE": "DELETE"
+        }
       }
     }
   },

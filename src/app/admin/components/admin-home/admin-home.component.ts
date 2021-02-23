@@ -9,6 +9,7 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { DataHandlerService } from '../../../shared/service/handler/data-handler.service';
 import { BaseComponent } from '../../../shared/class/base-component';
 import { filter, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home',
@@ -35,6 +36,7 @@ export class AdminHomeComponent extends BaseComponent implements OnInit, OnDestr
     public media: MediaObserver,
     public dataHandler: DataHandlerService,
     @Inject(L10N_LOCALE) public locale: L10nLocale,
+    private router: Router,
   ) {
     super('AdminDashboardComponent', snackBar, logger, translation);
     this.currentMode = 'side';
@@ -56,5 +58,10 @@ export class AdminHomeComponent extends BaseComponent implements OnInit, OnDestr
   ngOnDestroy(): void {
     this.watcher.unsubscribe();
 
+  }
+
+  routeIsActive(routePath: string): boolean {
+    const mainUrl = this.router.url;
+    return mainUrl.includes(routePath);
   }
 }

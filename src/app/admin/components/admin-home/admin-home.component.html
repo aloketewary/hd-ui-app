@@ -8,19 +8,19 @@
         </div>
       </mat-toolbar>
       <mat-nav-list class="dashboard">
-        <a mat-list-item [routerLink]="'/admin/dashboard'">
+        <a mat-list-item [routerLink]="'/admin/dashboard'" [ngClass]="{'bg-amber-gradient': routeIsActive('dashboard')}">
           <mat-icon mat-list-icon>dashboard</mat-icon>
           <p matLine>Dashboard</p>
         </a>
-        <a mat-list-item [routerLink]="'/admin/config'">
+        <a mat-list-item [routerLink]="'/admin/config'" [ngClass]="{'bg-amber-gradient': routeIsActive('config')}">
           <mat-icon mat-list-icon>tune</mat-icon>
           <p matLine>Config</p>
         </a>
-        <a mat-list-item [routerLink]="'/admin/users'">
+        <a mat-list-item [routerLink]="'/admin/users'" [ngClass]="{'bg-amber-gradient': routeIsActive('users')}">
           <mat-icon mat-list-icon>supervisor_account</mat-icon>
           <p matLine>Users</p>
         </a>
-        <a mat-list-item [routerLink]="'/admin/price-list'">
+        <a mat-list-item [routerLink]="'/admin/price-list'" [ngClass]="{'bg-amber-gradient': routeIsActive('price-list')}">
           <mat-icon mat-list-icon>payments</mat-icon>
           <p matLine>Price List</p>
         </a>
