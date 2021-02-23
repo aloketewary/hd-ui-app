@@ -325,3 +325,7 @@ tr.element-row:not(.expanded-row):active {
     margin-right: auto;
   }
 }
+
+.table-container {
+  overflow-x: scroll;
+}

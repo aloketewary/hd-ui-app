@@ -51,6 +51,7 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
   private paginator: MatPaginator;
   private sort: MatSort;
   selection = new SelectionModel<ProductData>(true, []);
+  public isSearch: boolean;
   constructor(
     protected snackBar: MatSnackBar,
     protected logger: LoggerService,

@@ -3,19 +3,35 @@
     <div fxLayout="row" fxLayoutAlign="start center" class="primary-info-div flex-full">
       <mat-card class="primary-info-card flex-full">
         <mat-toolbar color="primary">
-          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-            {{'ADMIN.PRICE_LIST.HEADER.TITLE' | translate:locale.language}}
-          </div>
-          <span class="spacer"></span>
-          <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler">
-            <em class="material-icons">add</em>
-          </button>
+          <ng-container *ngIf="isSearch; else elseTemplate">
+            <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
+              <mat-icon svgIcon="magnify" class="m-r-10" matPrefix></mat-icon>
+              <mat-form-field class="flex-full" floatLabel="never">
+                <input matInput (keyup)="applyFilter($event.target.value)" class="flex-full" placeholder="Search">
+              </mat-form-field>
+              <button mat-icon-button (click)="isSearch = !isSearch; applyFilter('')">
+                <mat-icon svgIcon="close"></mat-icon>
+              </button>
+            </div>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              {{'ADMIN.PRICE_LIST.HEADER.TITLE' | translate:locale.language}}
+            </div>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="isSearch = !isSearch" *ngIf="productDataList.length > 0">
+              <mat-icon svgIcon="magnify"></mat-icon>
+            </button>
+            <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler">
+              <em class="material-icons">add</em>
+            </button>
+          </ng-template>
         </mat-toolbar>
         <mat-card-content>
           <ng-template #serviceData>
             <ng-container *ngIf="productList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
             <ng-template #thenTemplate>
-              <div style="padding: 32px">
+              <div class="table-container">
                 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8 flex-full"
                   matSort matSortDisableClear>
                   <ng-container [matColumnDef]="column.columnDef" *ngFor="let column of columns; let cIndex = index">

@@ -36,7 +36,7 @@
           <div class="p-l-10 ellipsis" fxLayout="column" fxLayoutAlign="center start" *ngIf="isMobileView">
             <a [routerLink]="rootLogoUrl"
               class="no-underline cursor-pointer valign-center p-r-20 col-accent">{{userProfile?.schoolName}}</a>
-            <span class="school-font size-11 weight-400 m-t--10 col-accent">Year: {{userProfile?.schoolYear}}</span>
+            <span class="school-font size-11 weight-400 m-t--10 col-accent">{{userProfile?.schoolYear}}</span>
           </div>
           <span class="spacer"></span>
           <div class="app-logo">
@@ -46,7 +46,7 @@
             <mat-icon svgIcon="theme-light-dark"></mat-icon>
           </button>
           <button matTooltip="{{'APP.GOTO_DASHBOARD' | translate:locale.language}}" matTooltipPosition="before"
-            routerLink="/home/dashboard/{{userProfile?.schoolId}}/{{dataHandler.schoolYear.value}}" mat-icon-button>
+            routerLink="/admin/dashboard" mat-icon-button>
             <mat-icon svgIcon="view-dashboard"></mat-icon>
           </button>
         </mat-toolbar>
