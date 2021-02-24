@@ -1,0 +1,11 @@
+.file-upload {
+  margin: -24px !important;
+}
+
+.inner-modal-content {
+  display: block !important;
+  padding: 0 24px;
+  max-height: 65vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

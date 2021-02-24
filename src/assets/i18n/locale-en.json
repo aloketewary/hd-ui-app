@@ -69,6 +69,7 @@
       "STOCK": "Stock",
       "SELLING_PRICE": "Selling Price",
       "ON_SALE_PRICE": "On Sale Price",
+      "FIRST_SELECTION_MENU": "Edit",
       "SECOND_SELECTION_MENU": "Delete",
       "MODAL": {
         "TITLE": "Delete {{keyName}}?",
@@ -80,6 +81,41 @@
         "MODAL": {
           "CANCEL": "CANCEL",
           "DELETE": "DELETE"
+        }
+      },
+      "HEADER": {
+        "TITLE": "{{addOrEdit}} Product"
+      },
+      "FORM": {
+        "NAME": {
+          "TITLE": "Product Name"
+        },
+        "BUY_PRICE": {
+          "TITLE": "Buy Price"
+        },
+        "ON_SALE_PRICE": {
+          "TITLE": "On Sale Price"
+        },
+        "ON_SALE": {
+          "TITLE": "On Sale ?"
+        },
+        "PARENT_ID" : {
+          "TITLE": "Parent ID"
+        },
+        "SELLING_PRICE": {
+          "TITLE": "Selling Price"
+        },
+        "STOCK": {
+          "TITLE": "Stock"
+        },
+        "WHOLE_SALE_PRICE": {
+          "TITLE": "Whole Sale Price"
+        },
+        "VARIANT": {
+          "TITLE": "Variant"
+        },
+        "VARIANT_NAME": {
+          "TITLE": "Variant Name"
         }
       }
     }

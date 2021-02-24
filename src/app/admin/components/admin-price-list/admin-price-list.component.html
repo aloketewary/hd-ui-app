@@ -22,7 +22,7 @@
             <button mat-icon-button (click)="isSearch = !isSearch" *ngIf="productDataList.length > 0">
               <mat-icon svgIcon="magnify"></mat-icon>
             </button>
-            <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler">
+            <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler" (click)="manageProductDialog()" >
               <em class="material-icons">add</em>
             </button>
           </ng-template>
@@ -114,11 +114,11 @@
                             </span>
                           </div>
                           <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full">
-                            <!-- <button mat-raised-button (click)="gotoIndividualStudentDetails(element)"
+                            <button mat-raised-button (click)="manageProductDialog(element)"
                               color="primary">
-                              <mat-icon svgIcon="eye"></mat-icon>
-                              <span>{{'USER_INFO.STUDENT_INFO.FIRST_SELECTION_MENU' | translate:lang}}</span>
-                            </button> -->
+                              <mat-icon svgIcon="pencil"></mat-icon>
+                              <span>{{'ADMIN.PRODUCT.FIRST_SELECTION_MENU' | translate:lang}}</span>
+                            </button>
                             <button mat-raised-button color="warn" (click)="deleteProduct(element)">
                               <mat-icon svgIcon="delete"></mat-icon>
                               <span>{{'ADMIN.PRODUCT.SECOND_SELECTION_MENU' | translate:lang}}</span>
@@ -139,7 +139,7 @@
                 <mat-paginator #paginator [pageSizeOptions]="dataHandler.tablePageSize" showFirstLastButtons>
                 </mat-paginator>
               </div>
-              <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
+              <!-- <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
                 fxLayoutAlign="center end" class="flex-full">
                 <div fxLayout="row" fxLayoutAlign="end center" class="spaceIn flex-full m-r-10">
                   <button mat-raised-button color="primary" (click)="gotoMultipleNonRegEditStudentDetails()">
@@ -147,7 +147,7 @@
                     selection.selected.length } }}
                   </button>
                 </div>
-              </div>
+              </div> -->
             </ng-template>
             <ng-template #elseTemplate>
               <app-no-data></app-no-data>

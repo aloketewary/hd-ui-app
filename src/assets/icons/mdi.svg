@@ -6475,5 +6475,8 @@
     <g id="format-list-bulleted-square">
         <path d="M3,4H7V8H3V4M9,5V7H21V5H9M3,10H7V14H3V10M9,11V13H21V11H9M3,16H7V20H3V16M9,17V19H21V17H9" />
     </g>
+    <g id="identifier">
+       <path fill="currentColor" d="M10 7V9H9V15H10V17H6V15H7V9H6V7H10M16 7C17.11 7 18 7.9 18 9V15C18 16.11 17.11 17 16 17H12V7M16 9H14V15H16V9Z" />
+    </g>
 	</defs>
 </svg>

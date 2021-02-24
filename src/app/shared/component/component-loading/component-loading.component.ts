@@ -13,7 +13,7 @@ export class ComponentLoadingComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

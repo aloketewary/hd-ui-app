@@ -14,6 +14,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CommonDialogService } from 'src/app/shared/service/common/dialog/common-dialog.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MediaObserver } from '@angular/flex-layout';
+import { AppConfigModel } from '../../models/app-config.model';
+import { AdminPriceManagerComponent } from '../admin-price-manager/admin-price-manager.component';
 
 @Component({
   selector: 'app-admin-price-list',
@@ -60,7 +64,9 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
     configLoader: ConfigLoaderService,
     private productService: ProductService,
     public dataHandler: DataHandlerService,
-    private commonDialog: CommonDialogService
+    private commonDialog: CommonDialogService,
+    private dialog: MatDialog,
+    public media: MediaObserver,
   ) {
     super('AdminPriceListComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
@@ -196,8 +202,38 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
           productData.variant = element.productVariant.variant;
           productData.variantName = element.productVariant.variantName;
           productData.wholeSalePrice = element.productVariant.wholeSalePrice;
+          productData.isActive = element.isActive;
           this.productDataList.push(productData);
         });
+      }
+    });
+  }
+
+  manageProductDialog(productModel?: ProductData): void {
+    let MAX_WIDTH = '80vw';
+    let MIN_WIDTH = '60vw';
+    let MAX_HEIGHT = 'auto';
+    let MIN_HEIGHT = 'auto';
+    if (this.media.isActive('xs') || this.media.isActive('sm')) {
+      MAX_WIDTH = '100vw';
+      MIN_WIDTH = '100vw';
+      MAX_HEIGHT = '100vh';
+      MIN_HEIGHT = '100vh';
+    }
+    const dialogRef = this.dialog.open(AdminPriceManagerComponent, {
+      disableClose: true,
+      maxWidth: MAX_WIDTH,
+      minHeight: MIN_HEIGHT,
+      minWidth: MIN_WIDTH,
+      maxHeight: MAX_HEIGHT
+    });
+    dialogRef.componentInstance.productModel = productModel ? productModel : new ProductData();
+    dialogRef.componentInstance.isEditMode = productModel ? true : false;
+    dialogRef.afterClosed().subscribe((result: AppConfigModel) => {
+      if (result) {
+        this.showMessage(`${result.key} ${productModel ? 'Updated the Product.' : 'Product added.'}`);
+        this.getServerData();
+        this.logger.info(this.className, 'upload files of ', result.key, ' success');
       }
     });
   }

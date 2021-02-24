@@ -9,10 +9,11 @@ import { ConfigListComponent } from './components/config-list/config-list.compon
 import { ConfigComponent } from './components/config/config.component';
 import { AdminUserListComponent } from './components/admin-user-list/admin-user-list.component';
 import { AdminPriceListComponent } from './components/admin-price-list/admin-price-list.component';
+import { AdminPriceManagerComponent } from './components/admin-price-manager/admin-price-manager.component';
 
 
 @NgModule({
-  declarations: [ConfigComponent, AdminDashboardComponent, AdminHomeComponent, ConfigListComponent, AdminUserListComponent, AdminPriceListComponent],
+  declarations: [ConfigComponent, AdminDashboardComponent, AdminHomeComponent, ConfigListComponent, AdminUserListComponent, AdminPriceListComponent, AdminPriceManagerComponent],
   imports: [
     CommonModule,
     SharedModule,

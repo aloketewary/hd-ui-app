@@ -6,7 +6,7 @@ import { LoggerService } from '../../shared/service/log/logger.service';
 import { ConfigLoaderService } from '../../shared/service/loader/config-loader.service';
 import { AbstractHttpService } from 'src/app/shared/service/http/abstract-http.service';
 import { Observable } from 'rxjs';
-import { ProductData } from '../models/product';
+import { Product, ProductData } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +35,19 @@ export class ProductService extends AbstractHttpService {
      const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_ROOT_URL}/${product.id}`;
      return this.deleteCallReturnBoolean<T>(url, this.config.RETRY_TIME,
        `(deleteProduct) delete product`);
+  }
+
+  updateProduct<T>(id: string, product: Product): Observable<T> {
+    // tslint:disable-next-line:max-line-length
+    const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_ROOT_URL}`;
+    return this.patchCallReturnObject<T, Product>(url, product, this.config.RETRY_TIME,
+      `(updateProduct) fetched available product list `);
+  }
+
+  addNewProduct<T>(product: Product): Observable<T> {
+    // tslint:disable-next-line:max-line-length
+    const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_MANAGE_URL}`;
+    return this.postCallReturnObject<T, Product>(url, product, this.config.RETRY_TIME,
+      `(addNewProduct) fetched available product list `);
   }
 }

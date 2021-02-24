@@ -43,7 +43,7 @@ export class ConfigListComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.configService.getConfigList<AppConfigModel>('app').subscribe(data => {
-      this.logger.info(this.className, `fetched data is ${data}`)
+      this.logger.info(this.className, `fetched data is ${data}`);
       if (data != null) {
         this.configModelList = data;
       }
