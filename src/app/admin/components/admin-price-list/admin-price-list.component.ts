@@ -18,6 +18,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MediaObserver } from '@angular/flex-layout';
 import { AppConfigModel } from '../../models/app-config.model';
 import { AdminPriceManagerComponent } from '../admin-price-manager/admin-price-manager.component';
+import { FilesUploadComponent } from '../files-upload/files-upload.component';
+import { FilesModel } from 'src/app/shared/model/files-model.model';
 
 @Component({
   selector: 'app-admin-price-list',
@@ -185,6 +187,7 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
   getServerData(): void {
     this.productService.getProductList<Product>().subscribe(data => {
       if (data != null) {
+        this.productDataList = [];
         this.productList = data;
         this.productList.forEach(element => {
           const productData = new ProductData();
@@ -205,6 +208,8 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
           productData.isActive = element.isActive;
           this.productDataList.push(productData);
         });
+        this.dataSource.data = this.productDataList;
+        this.selection.clear();
       }
     });
   }
@@ -234,6 +239,53 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
         this.showMessage(`${result.key} ${productModel ? 'Updated the Product.' : 'Product added.'}`);
         this.getServerData();
         this.logger.info(this.className, 'upload files of ', result.key, ' success');
+      }
+    });
+  }
+
+  deleteListProduct(): void {
+    this.commonDialog.confirm(
+      this.translation.translate('ADMIN.PRODUCT.MODAL.TITLE', { keyName: 'Products' }),
+      this.translation.translate('ADMIN.PRODUCT.MODAL.SUB_TITLE'), 'delete-alert',
+      this.translation.translate('ADMIN.PRODUCT.BUTTON.MODAL.DELETE'),
+      this.translation.translate('ADMIN.PRODUCT.BUTTON.MODAL.CANCEL')
+    ).subscribe(confirmation => {
+      if (confirmation) {
+        const ids = this.selection.selected.map(val => val.id);
+        this.productService.deleteAllProduct<ProductData>(ids).subscribe(data => {
+          if (data) {
+            this.showMessage(`${ids} removed from the list.`);
+            this.getServerData();
+          }
+        });
+      }
+    });
+  }
+
+  uploadFileDialog(): void {
+    let maxWidth = '80vw';
+    let minWidth = '60vw';
+    let maxHeight = 'auto';
+    let minHeight = 'auto';
+    if (this.media.isActive('xs') || this.media.isActive('sm')) {
+      maxWidth = '100vw';
+      minWidth = '100vw';
+      maxHeight = '100vh';
+      minHeight = '100vh';
+    }
+    const dialogRef = this.dialog.open(FilesUploadComponent, {
+      disableClose: true,
+      maxWidth,
+      minHeight,
+      minWidth,
+      maxHeight
+    });
+    dialogRef.componentInstance.config = this.config;
+    dialogRef.afterClosed().subscribe((result: FilesModel) => {
+      if (result) {
+        this.getServerData();
+        this.showMessage(`${result.fileName} Added to the list.`);
+        this.logger.info(this.className, 'upload files of ', result.fileName, ' success');
       }
     });
   }

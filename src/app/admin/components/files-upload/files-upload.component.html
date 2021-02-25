@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutAlign="center start" class="file-upload">
+  <mat-toolbar color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      Upload File
+    </div>
+  </mat-toolbar>
+  <div class="dashboard-info-card m-t-20 flex-full m-b-10">
+    <!-- Upload  -->
+    <form id="file-upload-form" class="uploader">
+      <input #fileInput id="file-upload" type="file" name="fileUpload" (change)="onFileChange($event);"
+        accept="*" />
+
+      <label for="file-upload" id="file-drag">
+        <img id="file-image" src="#" alt="Preview" class="hidden">
+        <div id="start">
+          <i class="material-icons">file_download</i>
+          <div>{{title}}</div>
+          <div id="notimage" class="hidden">Please select an image</div>
+          <span id="file-upload-btn" class="btn bg-primary-light">Select a file</span>
+          <button mat-raised-button *ngIf="fileLogo" (click)="reset();$event.stopPropagation()" color="warn">Remove
+            selected
+            file</button>
+        </div>
+        <div id="response">
+          <div id="messages" *ngIf="displayMsg">{{processMsg}}</div>
+        </div>
+      </label>
+    </form>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" class="flex-full p-r-20 m-b-10">
+    <button *ngIf="fileLogo" mat-raised-button color="primary" (click)="uploadCurrentFile()">UPLOAD
+      <mat-icon svgIcon="import"></mat-icon>
+    </button>
+    <button mat-raised-button mat-dialog-close>CLOSE</button>
+  </div>
+</div>

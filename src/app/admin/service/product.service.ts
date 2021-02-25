@@ -32,22 +32,30 @@ export class ProductService extends AbstractHttpService {
 
   deleteProduct<T>(product: ProductData): Observable<boolean> {
      // tslint:disable-next-line:max-line-length
-     const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_ROOT_URL}/${product.id}`;
+     const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_MANAGE_URL}/${product.id}`;
      return this.deleteCallReturnBoolean<T>(url, this.config.RETRY_TIME,
        `(deleteProduct) delete product`);
   }
 
   updateProduct<T>(id: string, product: Product): Observable<T> {
     // tslint:disable-next-line:max-line-length
-    const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_ROOT_URL}`;
+    const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_MANAGE_URL}/${id}`;
     return this.patchCallReturnObject<T, Product>(url, product, this.config.RETRY_TIME,
-      `(updateProduct) fetched available product list `);
+      `(updateProduct) update product list `);
   }
 
   addNewProduct<T>(product: Product): Observable<T> {
     // tslint:disable-next-line:max-line-length
     const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_MANAGE_URL}`;
     return this.postCallReturnObject<T, Product>(url, product, this.config.RETRY_TIME,
-      `(addNewProduct) fetched available product list `);
+      `(addNewProduct) add new product list `);
   }
+
+  deleteAllProduct<T>(id: string[]): Observable<T[]> {
+    const ids = id.join(',');
+    // tslint:disable-next-line:max-line-length
+    const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_BULK_URL}/${ids}`;
+    return this.deleteCallReturnList<T>(url, this.config.RETRY_TIME,
+      `(deleteAllProduct) delete product list`);
+ }
 }

@@ -74,7 +74,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<boolean>(url))
     );
@@ -85,7 +85,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForObject<T>(data)),
       tap((t: T) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<T>(url))
     );
@@ -96,7 +96,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
       tap((t: T[]) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<T[]>(url))
     );
@@ -112,7 +112,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<boolean>(url))
     );
@@ -123,7 +123,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForObject<T>(data)),
       tap((t: T) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<T>(url))
     );
@@ -134,7 +134,7 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
       tap((t: T[]) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<T[]>(url))
     );
@@ -145,9 +145,20 @@ export class AbstractHttpService {
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
-        return this.logger.info(this.className, logMsg);
+        return this.logger.info(this.className, logMsg, t);
       }),
       catchError(this.handleError<boolean>(url))
+    );
+  }
+
+  deleteCallReturnList<T>(url: string, retryTime: number, logMsg: string): Observable<T[]> {
+    return this.http.delete<CommonResponse<T>>(url, ).pipe(
+      retry(retryTime),
+      map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
+      tap((t: T[]) => {
+        return this.logger.info(this.className, logMsg, t);
+      }),
+      catchError(this.handleError<T[]>(url))
     );
   }
 

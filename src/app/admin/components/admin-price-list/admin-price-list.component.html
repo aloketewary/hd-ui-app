@@ -22,6 +22,9 @@
             <button mat-icon-button (click)="isSearch = !isSearch" *ngIf="productDataList.length > 0">
               <mat-icon svgIcon="magnify"></mat-icon>
             </button>
+            <button mat-icon-button (click)="uploadFileDialog()">
+              <mat-icon svgIcon="file-upload"></mat-icon>
+            </button>
             <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler" (click)="manageProductDialog()" >
               <em class="material-icons">add</em>
             </button>
@@ -139,15 +142,15 @@
                 <mat-paginator #paginator [pageSizeOptions]="dataHandler.tablePageSize" showFirstLastButtons>
                 </mat-paginator>
               </div>
-              <!-- <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
+              <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
                 fxLayoutAlign="center end" class="flex-full">
                 <div fxLayout="row" fxLayoutAlign="end center" class="spaceIn flex-full m-r-10">
-                  <button mat-raised-button color="primary" (click)="gotoMultipleNonRegEditStudentDetails()">
-                    {{'USER_INFO.STUDENT_INFO.UPDATE_MULTIPLE_DATA' | translate:lang:{selectedLength:
+                  <button mat-raised-button color="primary" (click)="deleteListProduct()">
+                    {{'ADMIN.PRODUCT.DELETE_MULTIPLE_DATA' | translate:lang:{selectedLength:
                     selection.selected.length } }}
                   </button>
                 </div>
-              </div> -->
+              </div>
             </ng-template>
             <ng-template #elseTemplate>
               <app-no-data></app-no-data>

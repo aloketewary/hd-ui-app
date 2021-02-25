@@ -117,7 +117,8 @@
         "VARIANT_NAME": {
           "TITLE": "Variant Name"
         }
-      }
+      },
+      "DELETE_MULTIPLE_DATA": "Delete {{selectedLength}} data ?"
     }
   },
   "COMMON": {
