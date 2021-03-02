@@ -428,5 +428,53 @@
     "loginType": "teacherapp",
     "isChildAvailable": false,
     "child": []
+  },
+  {
+    "icon": "view-dashboard",
+    "name": "SIDEBAR.MENU.DASHBOARD.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_ADMIN"
+    ],
+    "href": "/admin/dashboard",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": []
+  },
+  {
+    "icon": "tune-variant",
+    "name": "SIDEBAR.MENU.CONFIG.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_ADMIN"
+    ],
+    "href": "/admin/config",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": []
+  },
+  {
+    "icon": "account-group",
+    "name": "SIDEBAR.MENU.USER.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_ADMIN"
+    ],
+    "href": "/admin/users",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": []
+  },
+  {
+    "icon": "cash-multiple",
+    "name": "SIDEBAR.MENU.PRICE_LIST.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_ADMIN"
+    ],
+    "href": "/admin/price-list",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": []
   }
 ]

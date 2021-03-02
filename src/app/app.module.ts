@@ -1,12 +1,14 @@
 import { HttpClient, HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
-import { APP_INITIALIZER, Injectable, NgModule, Optional } from '@angular/core';
+import { APP_INITIALIZER, Inject, Injectable, NgModule, Optional, PLATFORM_ID } from '@angular/core';
 import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   L10nIntlModule,
   L10nLoader,
+  L10nLocale,
   L10nProvider,
   L10nRoutingModule,
+  L10nStorage,
   L10nTranslationLoader,
   L10nTranslationModule,
 } from 'angular-l10n';
@@ -20,6 +22,10 @@ import { TranslationLoaderService } from './shared/service/loader/translation-lo
 import { LogLoaderService } from './shared/service/log/log-loader.service';
 import { httpInterceptorProviders } from './shared/interceptor/http-interceptor.provider';
 import { StoreModule } from '@ngrx/store';
+import { isPlatformBrowser } from '@angular/common';
+import { StorageService } from './shared/service/storage/storage.service';
+import { ENCRYPTION_SECRET_KEY, ROOT_LOGO_URL } from './shared/util/injection.token';
+import { environment } from '../environments/environment.prod';
 
 @Injectable() export class HttpTranslationLoader implements L10nTranslationLoader {
 
@@ -38,6 +44,22 @@ import { StoreModule } from '@ngrx/store';
 
 }
 
+@Injectable() export class AppStorage implements L10nStorage {
+
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private storageService: StorageService) { }
+
+  public async read(): Promise<L10nLocale | null> {
+    return Promise.resolve(this.storageService.getCookieData<L10nLocale>('locale'));
+  }
+
+  public async write(locale: L10nLocale): Promise<void> {
+    if (isPlatformBrowser(this.platformId)) {
+      this.storageService.setCookieData('locale', locale);
+    }
+  }
+
+}
+
 @NgModule({
   declarations: [
     AppComponent
@@ -48,9 +70,10 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     HttpClientModule,
     L10nRoutingModule.forRoot(),
-    L10nTranslationModule.forRoot(TranslationLoaderService,{
-        translationLoader: HttpTranslationLoader
-      }),
+    L10nTranslationModule.forRoot(TranslationLoaderService, {
+      storage: AppStorage,
+      translationLoader: HttpTranslationLoader,
+    }),
     L10nIntlModule,
     SharedModule,
     StoreModule.forRoot({}, {})
@@ -59,6 +82,8 @@ import { StoreModule } from '@ngrx/store';
     { provide: APP_INITIALIZER, useFactory: init, deps: [ConfigLoaderService], multi: true },
     { provide: APP_INITIALIZER, useFactory: logPublisherFactory, deps: [LogLoaderService], multi: true },
     { provide: APP_INITIALIZER, useFactory: initL10n, deps: [L10nLoader], multi: true },
+    { provide: ENCRYPTION_SECRET_KEY, useValue: environment.SECRET_KEY },
+    { provide: ROOT_LOGO_URL, useValue: '/home/dashboard' },
     { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig },
     httpInterceptorProviders
   ],
@@ -66,15 +91,15 @@ import { StoreModule } from '@ngrx/store';
 })
 export class AppModule { }
 
-export function init(config: ConfigLoaderService) {
+export function init(config: ConfigLoaderService): () => void {
   return () => config.load();
 }
 
-export function logPublisherFactory(provider: LogLoaderService) {
+export function logPublisherFactory(provider: LogLoaderService): () => void {
   return () => provider.load();
 }
 
-export function initL10n(l10nLoader: L10nLoader): Function {
+export function initL10n(l10nLoader: L10nLoader): () => void {
   return () => l10nLoader.init();
 }
 

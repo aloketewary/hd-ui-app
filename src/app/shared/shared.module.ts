@@ -73,5 +73,6 @@ export class SharedModule {
     iconReg.addSvgIcon('auth-error-alert', sanitize.bypassSecurityTrustResourceUrl('../../assets/icons/custom/auth-error-alert.svg'));
     iconReg.addSvgIcon('books-alert', sanitize.bypassSecurityTrustResourceUrl('../../assets/icons/custom/books-alert.svg'));
     iconReg.addSvgIcon('auth-access-alert', sanitize.bypassSecurityTrustResourceUrl('../../assets/icons/custom/auth-access-alert.svg'));
+    iconReg.addSvgIcon('settings', sanitize.bypassSecurityTrustResourceUrl('../../assets/icons/custom/settings.svg'));
   }
 }

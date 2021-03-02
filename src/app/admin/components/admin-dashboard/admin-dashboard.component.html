@@ -1,30 +1,48 @@
 <div class="inner-sidenav-content">
   <div class="p-b-0">
-    <div fxLayout="row" fxLayoutAlign="start center" class="primary-info-div flex-full">
-      <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
-        <mat-card class="flex-full">
-          <mat-card-content>
-              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                <mat-icon class="circle app-font size-35">tune</mat-icon>
-                <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2px">
-                  <span class="app-font size-35">54</span>
-                  <span class="app-font size-12 family-lato">TOTAL CONFIG</span>
-                </div>
+    <div class="dashboard-info-div" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.lt-lg="space-evenly"
+      fxLayoutAlign="start" fxLayoutWrap cdkDropList (cdkDropListDropped)="drop($event)">
+      <ng-container *ngFor="let dInfo of dashboardDataList">
+        <mat-card [@flipState]="dInfo.flip" (mouseenter)="matElevationAdd($event)"
+          (mouseleave)="matElevationRemove($event)"
+          [ngClass]="{'box':true, 'dashboard-info-card': isMobileView, 'dashboard-info-card-gt-xs': !isMobileView}"
+          *ngIf="dInfo.isEnable" (click)="redirectTo(dInfo)" fxFlex="90" fxFlex.gt-xs="46"
+          fxFlex.gt-sm="30" fxFlex.gt-md="23" cdkDrag>
+          <div *cdkDragPreview [innerHtml]="dInfo.name | translate:locale.language"> </div>
+          <mat-card-header class="box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="$event.stopPropagation();toggleFlip(dInfo)">
+              <mat-icon svgIcon="dots-vertical"></mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content class="box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <div class="icon-gt-xs m-t-20" *ngIf="dInfo.icon">
+                <mat-icon [svgIcon]="dInfo.icon" class="dash-icon-gt-xs m-b-10" color="accent"></mat-icon>
               </div>
+              <div class="icon-gt-xs m-t-10 dashboard-icon-dark" *ngIf="(!dInfo.icon && dInfo.imageUrl)">
+                <img onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+                  [src]="getImgUrl(dInfo.imageUrl)" alt="dInfo?.name" />
+              </div>
+              <div class="content ellipsis flex-full">
+                <div class="number-gt-xs ellipsis">{{getTheDataToBeShown(dInfo?.processName)}}</div>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-divider> </mat-divider>
+          <mat-card-actions class="p-t--10 p-r-10 p-b-10 p-l-25 box-side box-front" *ngIf="dInfo.flip === 'inactive'">
+            <span [innerHtml]="dInfo.name | translate:locale.language"></span>
+          </mat-card-actions>
+          <mat-card-header class="box-side box-back" *ngIf="dInfo.flip === 'active'">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="$event.stopPropagation();toggleFlip(dInfo)">
+              <mat-icon svgIcon="close"></mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content class="box-side box-back m-l-10 m-r-10 m-b-10 m-t-10" *ngIf="dInfo.flip === 'active'">
+            <span class="font-nor-14-500" [innerHtml]="dInfo.info"></span>
           </mat-card-content>
         </mat-card>
-        <mat-card class="flex-full">
-          <mat-card-content>
-              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                <mat-icon class="circle app-font size-35">supervisor_account</mat-icon>
-                <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="2px">
-                  <span class="app-font size-35">54</span>
-                  <span class="app-font size-12 family-lato">TOTAL USERS</span>
-                </div>
-              </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
+      </ng-container>
     </div>
   </div>
-</div>

@@ -7,9 +7,9 @@
             <div fxLayout="row" fxLayoutAlign="start center" class="flex-full">
               <mat-icon svgIcon="magnify" class="m-r-10" matPrefix></mat-icon>
               <mat-form-field class="flex-full" floatLabel="never">
-                <input matInput (keyup)="applyFilter($event.target.value)" class="flex-full" placeholder="Search">
+                <input matInput (keyup)="applyFilter($any($event).target.value)" class="flex-full" placeholder="Search">
               </mat-form-field>
-              <button mat-icon-button (click)="isSearch = !isSearch; applyFilter('')">
+              <button mat-icon-button (click)="isSearch = !isSearch; applyFilter(null)">
                 <mat-icon svgIcon="close"></mat-icon>
               </button>
             </div>
@@ -77,41 +77,41 @@
                             <span fxLayout="column" fxLayoutAlign="center start" class="m-l-40">
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME' |
-                                  translate:lang}}: </span>
+                                  translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.productName}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ID' |
-                                  translate:lang}}:
+                                  translate:locale.language}}:
                                 </span>
                                 <span class="school-font size-18 weight-700">{{element?.id}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.BUY_PRICE'
                                   |
-                                  translate:lang}}: </span>
+                                  translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.buyPrice}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.WHOLE_SALE_PRICE' |
-                                  translate:lang}}: </span>
+                                  translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.wholeSalePrice}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.STOCK' |
-                                  translate:lang}}: </span>
+                                  translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.stockTotal}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.SELLING_PRICE' |
-                                  translate:lang}}:
+                                  translate:locale.language}}:
                                 </span>
                                 <span class="school-font size-18 weight-700">{{element?.sellingPrice}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ON_SALE_PRICE'
                                   |
-                                  translate:lang}}: </span>
+                                  translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.onSalePrice}}</span>
                               </div>
                             </span>
@@ -120,11 +120,11 @@
                             <button mat-raised-button (click)="manageProductDialog(element)"
                               color="primary">
                               <mat-icon svgIcon="pencil"></mat-icon>
-                              <span>{{'ADMIN.PRODUCT.FIRST_SELECTION_MENU' | translate:lang}}</span>
+                              <span>{{'ADMIN.PRODUCT.FIRST_SELECTION_MENU' | translate:locale.language}}</span>
                             </button>
                             <button mat-raised-button color="warn" (click)="deleteProduct(element)">
                               <mat-icon svgIcon="delete"></mat-icon>
-                              <span>{{'ADMIN.PRODUCT.SECOND_SELECTION_MENU' | translate:lang}}</span>
+                              <span>{{'ADMIN.PRODUCT.SECOND_SELECTION_MENU' | translate:locale.language}}</span>
                             </button>
                           </div>
                         </div>
@@ -134,7 +134,7 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
                     [class.expanded-row]="expandedElement === element"
-                    (click)="expandedElement === element ? expandedElement = '' : expandedElement = element"
+                    (click)="expandedElement === element ? expandedElement = null : expandedElement = element"
                     [class.bg-accent-light]="expandedElement === element">
                   </tr>
                   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
@@ -146,7 +146,7 @@
                 fxLayoutAlign="center end" class="flex-full">
                 <div fxLayout="row" fxLayoutAlign="end center" class="spaceIn flex-full m-r-10">
                   <button mat-raised-button color="primary" (click)="deleteListProduct()">
-                    {{'ADMIN.PRODUCT.DELETE_MULTIPLE_DATA' | translate:lang:{selectedLength:
+                    {{'ADMIN.PRODUCT.DELETE_MULTIPLE_DATA' | translate:locale.language:{selectedLength:
                     selection.selected.length } }}
                   </button>
                 </div>

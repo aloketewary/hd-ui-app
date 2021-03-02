@@ -4,7 +4,7 @@
       {{'ADMIN.PRODUCT.HEADER.TITLE' | translate:locale.language:{addOrEdit: addOrEditText} }}
     </div>
   </mat-toolbar>
-  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full">
+  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full" [formGroup]="productForm">
     <div fxLayout="column" fxLayoutAlign="center start" class="flex-full inner-modal-content">
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
         class="flex-full">
@@ -13,7 +13,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.NAME.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="productForm.controls['productName']" maxlength="50" required>
+              <input matInput formControlName="productName" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['productName'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.NAME.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -27,7 +27,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.BUY_PRICE.TITLE' | translate:locale.language}}</mat-label>
-              <input type="number" matInput [formControl]="productForm.controls['buyPrice']" maxlength="50" required>
+              <input type="number" matInput formControlName="buyPrice" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['buyPrice'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.BUY_PRICE.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -44,7 +44,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.VARIANT.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="productForm.controls['variant']" maxlength="50" required>
+              <input matInput formControlName="variant" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['variant'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.VARIANT.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -58,7 +58,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.VARIANT_NAME.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="productForm.controls['variantName']" maxlength="50" required>
+              <input matInput formControlName="variantName" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['variantName'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.VARIANT_NAME.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -75,7 +75,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.ON_SALE_PRICE.TITLE' | translate:locale.language}}</mat-label>
-              <input type="number" matInput [formControl]="productForm.controls['onSalePrice']" maxlength="50" required>
+              <input type="number" matInput formControlName="onSalePrice" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['onSalePrice'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.ON_SALE_PRICE.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -86,8 +86,7 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
           <div fxFlex="100">
-            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent"
-              [formControl]="productForm.controls['onSale']">
+            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent" formControlName="onSale">
               {{'ADMIN.PRODUCT.FORM.ON_SALE.TITLE' | translate:locale.language}}
             </mat-slide-toggle>
           </div>
@@ -100,7 +99,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.PARENT_ID.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="productForm.controls['parentId']" maxlength="50" required>
+              <input matInput formControlName="parentId" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['parentId'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.PARENT_ID.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -114,7 +113,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.SELLING_PRICE.TITLE' | translate:locale.language}}</mat-label>
-              <input type="number" matInput [formControl]="productForm.controls['sellingPrice']" maxlength="50" required>
+              <input type="number" matInput formControlName="sellingPrice" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['sellingPrice'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.SELLING_PRICE.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -131,7 +130,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.STOCK.TITLE' | translate:locale.language}}</mat-label>
-              <input type="number" matInput [formControl]="productForm.controls['stockTotal']" maxlength="50" required>
+              <input type="number" matInput formControlName="stockTotal" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['stockTotal'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.STOCK.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -145,7 +144,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.PRODUCT.FORM.WHOLE_SALE_PRICE.TITLE' | translate:locale.language}}</mat-label>
-              <input type="number" matInput [formControl]="productForm.controls['wholeSalePrice']" maxlength="50" required>
+              <input type="number" matInput formControlName="wholeSalePrice" maxlength="50" required>
               <mat-error *ngIf="productForm.controls['wholeSalePrice'].hasError('required')">
                 {{'ADMIN.PRODUCT.FORM.WHOLE_SALE_PRICE.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -159,8 +158,7 @@
         class="flex-full">
         <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
           <div fxFlex="100">
-            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent"
-              [formControl]="productForm.controls['isActive']">
+            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent" formControlName="isActive">
               {{'ADMIN.CONFIG.FORM.IS_ACTIVE.TITLE' | translate:locale.language}}
             </mat-slide-toggle>
           </div>

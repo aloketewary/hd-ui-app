@@ -53,29 +53,9 @@
 		}
 	},
 	"DASHBOARD": {
-		"ACADEMIC_YEAR": "",
-		"ACTIVE_ROUTE": "",
-		"CIRCULARS": "",
-		"DISCUS_WITH_PARENT": "",
-		"DRIVER": "",
-		"EXAM": "",
-		"GALLERY": "",
-		"HELP": "",
-		"LOGOUT": "",
-		"PHOTO_ALBUMS": "",
-		"PRAYER": "",
-		"ROUTE": "",
-		"SCHEDULE_MEETING": "",
-		"SCHOOL_NOTIFICATION": "",
-		"SECTION_GRADE": "",
-		"SECTION_NOTIFICATION": "",
-		"SEND_SMS_EMAILS": "",
-		"SETTINGS": "",
-		"STAFF": "",
-		"STUDENT": "",
-		"STUDENTATTENDANCE": "",
-		"TEACHER": "",
-		"TEACHERATTENDANCE": ""
+    "CONFIG": "কনফিগারেশন",
+    "PRODUCT": "পণ্য",
+    "PRICELIST": "মূল্য তালিকা"
 	},
 	"IMPORT_EXPORT": {
 		"EXPORT": {

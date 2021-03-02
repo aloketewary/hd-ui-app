@@ -107,10 +107,6 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
         columnDef: 'sellingPrice', header: this.translation.translate('ADMIN.PRODUCT.SELLING_PRICE'),
         cell: (element: ProductData) => `${element.sellingPrice}`
       },
-      {
-        columnDef: 'onSalePrice', header: this.translation.translate('ADMIN.PRODUCT.ON_SALE_PRICE'),
-        cell: (element: ProductData) => `${element.onSalePrice}`
-      },
     ];
     this.displayedColumns = this.columns.map(c => c.columnDef);
     this.getServerData();

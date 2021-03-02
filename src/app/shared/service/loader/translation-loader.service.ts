@@ -1,5 +1,13 @@
-import { L10nConfig } from 'angular-l10n';
+import { L10nConfig, L10nLocale, L10nStorage } from 'angular-l10n';
 
+export class Storage implements L10nStorage {
+  read(): Promise<L10nLocale> {
+    throw new Error('Method not implemented.');
+  }
+  write(locale: L10nLocale): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+}
 
 export const TranslationLoaderService: L10nConfig = {
   format: 'language',

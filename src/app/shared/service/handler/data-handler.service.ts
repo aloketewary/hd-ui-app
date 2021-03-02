@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataHandlerService {
+export class DataHandlerService implements OnDestroy {
 
   private AvailableLanguages: any[] = [];
   private ProjectName = '';
@@ -15,7 +15,7 @@ export class DataHandlerService {
   private SidenavMenu: Array<any> = [];
   private SchoolYear: BehaviorSubject<string>;
   private SchoolName = '';
-  private LoginAs: 'teacherapp' | 'adminapp' = 'teacherapp';
+  private LoginAs: 'teacherapp' | 'adminapp' = 'adminapp';
   private IsDarkMode = false;
 
   public get schoolName(): string {
@@ -29,7 +29,7 @@ export class DataHandlerService {
     this.SchoolYear = new BehaviorSubject<string>('');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.SchoolYear.unsubscribe();
   }
 

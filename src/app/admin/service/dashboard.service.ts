@@ -10,7 +10,7 @@ import { LoggerService } from 'src/app/shared/service/log/logger.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminDashboardService extends AbstractHttpService {
+export class DashboardService extends AbstractHttpService {
 
   config: AppConfig;
   constructor(
@@ -19,7 +19,7 @@ export class AdminDashboardService extends AbstractHttpService {
     protected logger: LoggerService,
     configLoader: ConfigLoaderService
   ) {
-    super('AdminDashboardService', http, snackBar, logger);
+    super('ConfigService', http, snackBar, logger);
     this.config = configLoader.getConfigData();
   }
 

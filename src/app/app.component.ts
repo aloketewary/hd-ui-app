@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BaseComponent } from './shared/class/base-component';
 import { LoggerService } from './shared/service/log/logger.service';
 import { environment } from 'src/environments/environment';
+import { MenuLoaderService } from './shared/service/loader/menu-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,9 @@ export class AppComponent extends BaseComponent implements OnInit {
     public translation: L10nTranslationService,
     @Inject(L10N_LOCALE) public locale: L10nLocale,
     @Inject(L10N_CONFIG) private l10nConfig: L10nConfig,
-    public dataHandler: DataHandlerService) {
+    public dataHandler: DataHandlerService,
+    private menuLoader: MenuLoaderService
+  ) {
     super('AppComponent', snackBar, logger, translation);
   }
 
@@ -47,5 +50,10 @@ export class AppComponent extends BaseComponent implements OnInit {
     this.dataHandler.textAreaMaxRows = 4;
     this.dataHandler.textAreaMinRows = 4;
     this.dataHandler.tablePageSize = environment.TABLE_PAGE_SIZE;
+    this.getMenuList();
+  }
+
+  getMenuList(): void {
+    this.menuLoader.load();
   }
 }

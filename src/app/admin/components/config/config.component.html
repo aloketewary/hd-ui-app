@@ -4,7 +4,7 @@
       {{'ADMIN.CONFIG.HEADER.TITLE' | translate:locale.language}}
     </div>
   </mat-toolbar>
-  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full">
+  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full" [formGroup]="configForm">
     <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
         class="flex-full">
@@ -13,7 +13,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.CONFIG.FORM.KEY.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="configForm.controls['key']" maxlength="50" required>
+              <input matInput formControlName="key" maxlength="50" required>
               <mat-error *ngIf="configForm.controls['key'].hasError('required')">
                 {{'ADMIN.CONFIG.FORM.KEY.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -27,7 +27,7 @@
             <mat-form-field class="flex-full" appearance="outline"
               [hideRequiredMarker]="dataHandler.showRequiredMarker">
               <mat-label>{{'ADMIN.CONFIG.FORM.VALUE.TITLE' | translate:locale.language}}</mat-label>
-              <input matInput [formControl]="configForm.controls['value']" maxlength="50" required>
+              <input matInput formControlName="value" maxlength="50" required>
               <mat-error *ngIf="configForm.controls['value'].hasError('required')">
                 {{'ADMIN.CONFIG.FORM.VALUE.TITLE' | translate:locale.language}}
                 <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
@@ -55,8 +55,7 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
           <div fxFlex="100">
-            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent"
-              [formControl]="configForm.controls['isActive']">
+            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent" formControlName="isActive">
               {{'ADMIN.CONFIG.FORM.IS_ACTIVE.TITLE' | translate:locale.language}}
             </mat-slide-toggle>
           </div>

@@ -164,29 +164,9 @@
     }
   },
   "DASHBOARD": {
-    "ACADEMIC_YEAR": "Academic Year",
-    "ACTIVE_ROUTE": "Active Route",
-    "CIRCULARS": "Class circulars/notifications",
-    "DISCUS_WITH_PARENT": "Discus with Parent",
-    "DRIVER": "Driver",
-    "EXAM": "Exam Details",
-    "GALLERY": "Gallery",
-    "HELP": "Help",
-    "LOGOUT": "Log out",
-    "PHOTO_ALBUMS": "Photo Album",
-    "PRAYER": "Prayer",
-    "ROUTE": "Route",
-    "SCHEDULE_MEETING": "Schedule Meeting",
-    "SCHOOL_NOTIFICATION": "School Notification",
-    "SECTION_GRADE": "Section/Grade",
-    "SECTION_NOTIFICATION": "Section Notification",
-    "SEND_SMS_EMAILS": "Send SMS/Emails",
-    "SETTINGS": "Settings",
-    "STAFF": "Staff",
-    "STUDENT": "Student",
-    "STUDENTATTENDANCE": "Student Attendance History",
-    "TEACHER": "Teacher",
-    "TEACHERATTENDANCE": "Teacher/Staff Attendance History"
+   "CONFIG": "Configurations",
+   "PRODUCT": "Products",
+   "PRICELIST": "Price List"
   },
   "IMPORT_EXPORT": {
     "EXPORT": {
@@ -417,57 +397,18 @@
   },
   "SIDEBAR": {
     "MENU": {
-      "ACADEMIC_YEAR": "Academic Year",
-      "ACTIVE_ROUTE": "Active Route",
-      "ACTIVE_TIMETABLE": "Active Timetable",
-      "ADD_NEW": "Add New",
-      "APPOINTMENT": "Appointment",
-      "CLASS_CHANNEL": "Class Channel",
-      "CLASS_EVENTS": "Class Events",
-      "CLASS_SECTION": "Class/Section",
-      "COMMUNICATIONS": "Communications",
-      "DRIVER": "Driver",
-      "IMPORT_EXPORT": {
-        "SUB": {
-          "EXCEL_IMPORT": "Import Bulk Student",
-          "PUBLISH_TEMP_DATA": "Publish Temp Data"
-        },
-        "TITLE": "Import / Export"
+      "DASHBOARD": {
+        "TITLE": "Dashboard"
       },
-      "LIBRARY": {
-        "CHILDREN": {
-          "SCHOOL": "School Library"
-        },
-        "TITLE": "Library"
+      "CONFIG": {
+        "TITLE": "Config"
       },
-      "LOGOUT": "Log out",
-      "MANAGEMENT": {
-        "CHILDREN": {
-          "ATTENDANCE": "Attendance",
-          "EXAM": "Exam",
-          "MARKS": "Marks"
-        },
-        "TITLE": "Management"
+      "USER": {
+        "TITLE": "Users"
       },
-      "MY_PROFILE": "My Profile",
-      "PERMISSIONS": {
-        "SUB": {
-          "TEACHER_PERMISSION": "User Permission"
-        },
-        "TITLE": "Settings"
-      },
-      "ROUTE": "Route",
-      "SCHOOL_CHANNEL": "School Channel",
-      "SCHOOL_EVENTS": "School Events",
-      "SCHOOL_SCHEDULING": "School Scheduling",
-      "STAFF": "Staff",
-      "STUDENT": "Student",
-      "TEACHER": "Teacher",
-      "TEACHER_LIST_BY_SUBJECT": "Teacher List By Subject",
-      "TIMETABLE": "TimeTable",
-      "TRANSPORTATION": "Transportation",
-      "USER_INFO": "User Info",
-      "VIEW_RESPOND": "View & Respond"
+      "PRICE_LIST": {
+        "TITLE": "Price List"
+      }
     }
   },
   "SUBJECT": {
