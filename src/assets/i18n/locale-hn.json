@@ -305,60 +305,21 @@
 		}
 	},
 	"SIDEBAR": {
-		"MENU": {
-			"ACADEMIC_YEAR": "",
-			"ACTIVE_ROUTE": "",
-			"ACTIVE_TIMETABLE": "",
-			"ADD_NEW": "",
-			"APPOINTMENT": "",
-			"CLASS_CHANNEL": "",
-			"CLASS_EVENTS": "",
-			"CLASS_SECTION": "",
-			"COMMUNICATIONS": "",
-			"DRIVER": "",
-			"IMPORT_EXPORT": {
-				"SUB": {
-					"EXCEL_IMPORT": "",
-					"PUBLISH_TEMP_DATA": ""
-				},
-				"TITLE": ""
-			},
-			"LIBRARY": {
-				"CHILDREN": {
-					"SCHOOL": ""
-				},
-				"TITLE": ""
-			},
-			"LOGOUT": "",
-			"MANAGEMENT": {
-				"CHILDREN": {
-					"ATTENDANCE": "",
-					"EXAM": "",
-					"MARKS": ""
-				},
-				"TITLE": ""
-			},
-			"MY_PROFILE": "",
-			"PERMISSIONS": {
-				"SUB": {
-					"TEACHER_PERMISSION": ""
-				},
-				"TITLE": ""
-			},
-			"ROUTE": "",
-			"SCHOOL_CHANNEL": "",
-			"SCHOOL_EVENTS": "",
-			"SCHOOL_SCHEDULING": "",
-			"STAFF": "",
-			"STUDENT": "",
-			"TEACHER": "",
-			"TEACHER_LIST_BY_SUBJECT": "",
-			"TIMETABLE": "",
-			"TRANSPORTATION": "",
-			"USER_INFO": "",
-			"VIEW_RESPOND": ""
-		}
-	},
+    "MENU": {
+      "DASHBOARD": {
+        "TITLE": "डैशबोर्ड"
+      },
+      "CONFIG": {
+        "TITLE": "विन्यास"
+      },
+      "USER": {
+        "TITLE": "उपयोगकर्ता"
+      },
+      "PRICE_LIST": {
+        "TITLE": "मूल्य सूची"
+      }
+    }
+  },
 	"SUBJECT": {
 		"ADD": {
 			"BUTTON": {

@@ -34,8 +34,8 @@ export class ProductVariant {
   variant: string;
   variantName: string;
   wholeSalePrice: number;
-  buyPriceUnit: string;
-  sellingPriceUnit: string;
+  unit: string;
+  multiText: string;
 
   withBuyPrice(buyPrice: number): ProductVariant {
     this.buyPrice = buyPrice;
@@ -92,13 +92,13 @@ export class ProductVariant {
     return this;
   }
 
-  withBuyPriceUnit(buyPriceUnit: string): ProductVariant {
-    this.buyPriceUnit = buyPriceUnit;
+  withUnit(unit: string): ProductVariant {
+    this.unit = unit;
     return this;
   }
 
-  withSellingPriceUnit(sellingPriceUnit: string): ProductVariant {
-    this.sellingPriceUnit = sellingPriceUnit;
+  withMultiText(multiText: string): ProductVariant {
+    this.multiText = multiText;
     return this;
   }
 }
@@ -119,6 +119,6 @@ export class ProductData {
   variant: string;
   variantName: string;
   wholeSalePrice: number;
-  buyPriceUnit: string;
-  sellingPriceUnit: string;
+  unit: string;
+  multiText: string;
 }

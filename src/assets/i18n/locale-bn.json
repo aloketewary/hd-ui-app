@@ -285,60 +285,21 @@
 		}
 	},
 	"SIDEBAR": {
-		"MENU": {
-			"ACADEMIC_YEAR": "",
-			"ACTIVE_ROUTE": "",
-			"ACTIVE_TIMETABLE": "",
-			"ADD_NEW": "",
-			"APPOINTMENT": "",
-			"CLASS_CHANNEL": "",
-			"CLASS_EVENTS": "",
-			"CLASS_SECTION": "",
-			"COMMUNICATIONS": "",
-			"DRIVER": "",
-			"IMPORT_EXPORT": {
-				"SUB": {
-					"EXCEL_IMPORT": "",
-					"PUBLISH_TEMP_DATA": ""
-				},
-				"TITLE": ""
-			},
-			"LIBRARY": {
-				"CHILDREN": {
-					"SCHOOL": ""
-				},
-				"TITLE": ""
-			},
-			"LOGOUT": "",
-			"MANAGEMENT": {
-				"CHILDREN": {
-					"ATTENDANCE": "",
-					"EXAM": "",
-					"MARKS": ""
-				},
-				"TITLE": ""
-			},
-			"MY_PROFILE": "",
-			"PERMISSIONS": {
-				"SUB": {
-					"TEACHER_PERMISSION": ""
-				},
-				"TITLE": ""
-			},
-			"ROUTE": "",
-			"SCHOOL_CHANNEL": "",
-			"SCHOOL_EVENTS": "",
-			"SCHOOL_SCHEDULING": "",
-			"STAFF": "",
-			"STUDENT": "",
-			"TEACHER": "",
-			"TEACHER_LIST_BY_SUBJECT": "",
-			"TIMETABLE": "",
-			"TRANSPORTATION": "",
-			"USER_INFO": "",
-			"VIEW_RESPOND": ""
-		}
-	},
+    "MENU": {
+      "DASHBOARD": {
+        "TITLE": "ড্যাশবোর্ড"
+      },
+      "CONFIG": {
+        "TITLE": "কনফিগার"
+      },
+      "USER": {
+        "TITLE": "ব্যবহারকারী"
+      },
+      "PRICE_LIST": {
+        "TITLE": "মূল্য তালিকা"
+      }
+    }
+  },
 	"SUBJECT": {
 		"ADD": {
 			"BUTTON": {
