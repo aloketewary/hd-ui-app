@@ -11,6 +11,8 @@ import { AdminUserListComponent } from './components/admin-user-list/admin-user-
 import { AdminPriceListComponent } from './components/admin-price-list/admin-price-list.component';
 import { AdminPriceManagerComponent } from './components/admin-price-manager/admin-price-manager.component';
 import { FilesUploadComponent } from './components/files-upload/files-upload.component';
+import { AdminProductUnitListComponent } from './components/admin-product-unit-list/admin-product-unit-list.component';
+import { AdminProductUnitComponent } from './components/admin-product-unit/admin-product-unit.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { FilesUploadComponent } from './components/files-upload/files-upload.com
     AdminUserListComponent,
     AdminPriceListComponent,
     FilesUploadComponent,
-    AdminPriceManagerComponent
+    AdminPriceManagerComponent,
+    AdminProductUnitListComponent,
+    AdminProductUnitComponent
   ],
   imports: [
     CommonModule,

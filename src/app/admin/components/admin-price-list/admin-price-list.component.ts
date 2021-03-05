@@ -201,6 +201,8 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
           productData.variant = element.productVariant.variant;
           productData.variantName = element.productVariant.variantName;
           productData.wholeSalePrice = element.productVariant.wholeSalePrice;
+          productData.unit = element.productVariant.unit;
+          productData.multiText = element.productVariant.multiText;
           productData.isActive = element.isActive;
           this.productDataList.push(productData);
         });

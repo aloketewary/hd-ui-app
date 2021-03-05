@@ -1,0 +1,94 @@
+<div fxLayout="column" fxLayoutAlign="center start" class="file-upload">
+  <mat-toolbar color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      {{'ADMIN.PRODUCT_UNIT.HEADER.TITLE' | translate:locale.language}}
+    </div>
+  </mat-toolbar>
+  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full" [formGroup]="productForm">
+    <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
+        class="flex-full">
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.PRODUCT_UNIT.FORM.NAME.TITLE' | translate:locale.language}}</mat-label>
+              <input matInput formControlName="name" maxlength="50" required>
+              <mat-error *ngIf="productForm.controls['name'].hasError('required')">
+                {{'ADMIN.PRODUCT_UNIT.FORM.NAME.TITLE' | translate:locale.language}}
+                <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+              </mat-error>
+              <mat-icon matSuffix svgIcon="alphabetical" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLE.TITLE' | translate:locale.language}}</mat-label>
+              <input matInput formControlName="multiple" maxlength="50" required type="number">
+              <mat-error *ngIf="productForm.controls['multiple'].hasError('required')">
+                {{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLE.TITLE' | translate:locale.language}}
+                <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+              </mat-error>
+              <mat-icon matSuffix svgIcon="close-box-multiple-outline" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
+      class="flex-full">
+      <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+        <div fxFlex="100">
+          <mat-form-field class="flex-full" appearance="outline"
+            [hideRequiredMarker]="dataHandler.showRequiredMarker">
+            <mat-label>{{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLEWITH.TITLE' | translate:locale.language}}</mat-label>
+            <input matInput formControlName="multipleWith" maxlength="50">
+            <mat-error *ngIf="productForm.controls['multipleWith'].hasError('required')">
+              {{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLEWITH.TITLE' | translate:locale.language}}
+              <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+            </mat-error>
+            <mat-icon matSuffix svgIcon="close-box-multiple-outline" color="primary"></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+        <div fxFlex="100">
+          <mat-form-field class="flex-full" appearance="outline"
+            [hideRequiredMarker]="dataHandler.showRequiredMarker">
+            <mat-label>{{'ADMIN.PRODUCT_UNIT.FORM.UNIT.TITLE' | translate:locale.language}}</mat-label>
+            <input matInput formControlName="unit" maxlength="50" required>
+            <mat-error *ngIf="productForm.controls['unit'].hasError('required')">
+              {{'ADMIN.PRODUCT_UNIT.FORM.UNIT.TITLE' | translate:locale.language}}
+              <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+            </mat-error>
+            <mat-icon matSuffix svgIcon="weight-gram" color="primary"></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
+        class="flex-full">
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent" formControlName="readOnly">
+              {{'ADMIN.PRODUCT_UNIT.FORM.READONLY.TITLE' | translate:locale.language}}
+            </mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-slide-toggle labelPosition="before" class="example-margin" color="accent" formControlName="isActive">
+              {{'ADMIN.PRODUCT_UNIT.FORM.IS_ACTIVE.TITLE' | translate:locale.language}}
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full m-b-20 p-r-20">
+      <button mat-stroked-button color="primary" type="submit">SUBMIT</button>
+      <button mat-stroked-button mat-dialog-close color="warn">CANCEL</button>
+    </div>
+  </form>
+</div>

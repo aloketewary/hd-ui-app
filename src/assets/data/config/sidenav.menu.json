@@ -476,5 +476,17 @@
     "loginType": "adminapp",
     "isChildAvailable": false,
     "child": []
+  },
+  {
+    "icon": "ruler",
+    "name": "SIDEBAR.MENU.UNIT.TITLE",
+    "isShow": false,
+    "userRole": [
+      "ROLE_ADMIN"
+    ],
+    "href": "/admin/product-units",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": []
   }
 ]

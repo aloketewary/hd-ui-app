@@ -118,7 +118,34 @@
           "TITLE": "Variant Name"
         }
       },
-      "DELETE_MULTIPLE_DATA": "Delete {{selectedLength}} data ?"
+      "DELETE_MULTIPLE_DATA": "Delete {{selectedLength}} data ?",
+      "UNIT": "Unit",
+      "NAME_TRANS": "Translated Name"
+    },
+    "PRODUCT_UNIT": {
+      "HEADER": {
+        "TITLE": "Product Unit List"
+      },
+      "FORM": {
+        "NAME": {
+          "TITLE": "Name"
+        },
+        "MULTIPLE": {
+          "TITLE": "Multiple"
+        },
+        "MULTIPLEWITH": {
+          "TITLE": "Multiple With"
+        },
+        "UNIT": {
+          "TITLE": "Unit"
+        },
+        "READONLY": {
+          "TITLE": "Read Only?"
+        },
+        "IS_ACTIVE": {
+          "TITLE":"Is Active?"
+        }
+      }
     }
   },
   "COMMON": {
@@ -408,6 +435,9 @@
       },
       "PRICE_LIST": {
         "TITLE": "Price List"
+      },
+      "UNIT": {
+        "TITLE": "Product Unit"
       }
     }
   },

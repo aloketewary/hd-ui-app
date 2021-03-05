@@ -6,6 +6,7 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminUserListComponent } from './components/admin-user-list/admin-user-list.component';
 import { ConfigListComponent } from './components/config-list/config-list.component';
 import { AdminPriceListComponent } from './components/admin-price-list/admin-price-list.component';
+import { AdminProductUnitListComponent } from './components/admin-product-unit-list/admin-product-unit-list.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'config', component: ConfigListComponent, canActivate: [] },
       { path: 'users', component: AdminUserListComponent, canActivate: [] },
       { path: 'price-list', component: AdminPriceListComponent, canActivate: [] },
+      { path: 'product-units', component: AdminProductUnitListComponent, canActivate: [] },
     ]
   },
 

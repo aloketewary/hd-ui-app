@@ -1,26 +1,34 @@
-import { L10nIntlModule, L10nTranslationModule, L10nRoutingModule } from 'angular-l10n';
-import { WebStorageModule } from 'ngx-store';
-
+import { MatIconRegistry } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { CovalentLayoutModule } from '@covalent/core/layout';
+import { CovalentStepsModule } from '@covalent/core/steps';
+import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
+import { CovalentHighlightModule } from '@covalent/highlight';
+import { CovalentHttpModule } from '@covalent/http';
+import { CovalentMarkdownModule } from '@covalent/markdown';
+import { L10nIntlModule, L10nRoutingModule, L10nTranslationModule } from 'angular-l10n';
+import { DrawerRailModule } from 'angular-material-rail-drawer';
+import { WebStorageModule } from 'ngx-store';
 import { MaterialImportModule } from '../material-import/material-import.module';
+import { CommonConfirmDialogComponent } from './component/common-confirm-dialog/common-confirm-dialog.component';
 import {
   ComponentLoadingComponent
 } from './component/component-loading/component-loading.component';
 import { FourZeroFourComponent } from './component/four-zero-four/four-zero-four.component';
 import { HttpLoaderComponent } from './component/http-loader/http-loader.component';
+import { NoDataComponent } from './component/no-data/no-data.component';
+import { NoNetworkComponent } from './component/no-network/no-network.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeGuard } from './guard/home.guard';
 import { SharedRoutingModule } from './shared-routing.module';
-import { NoNetworkComponent } from './component/no-network/no-network.component';
-import { DrawerRailModule } from 'angular-material-rail-drawer';
-import { CommonConfirmDialogComponent } from './component/common-confirm-dialog/common-confirm-dialog.component';
-import { NoDataComponent } from './component/no-data/no-data.component';
+
+
 
 @NgModule({
   declarations: [FourZeroFourComponent, HttpLoaderComponent,
@@ -36,7 +44,15 @@ import { NoDataComponent } from './component/no-data/no-data.component';
     FormsModule,
     WebStorageModule,
     L10nRoutingModule,
-    DrawerRailModule
+    DrawerRailModule,
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    // (optional) Additional Covalent Modules imports
+    CovalentHttpModule.forRoot(),
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentDynamicFormsModule,
+    CovalentBaseEchartsModule,
   ],
   providers: [AuthGuard, HomeGuard],
   exports: [
@@ -52,7 +68,15 @@ import { NoDataComponent } from './component/no-data/no-data.component';
     NoNetworkComponent,
     L10nRoutingModule,
     DrawerRailModule,
-    NoDataComponent
+    NoDataComponent,
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    // (optional) Additional Covalent Modules imports
+    CovalentHttpModule,
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentDynamicFormsModule,
+    CovalentBaseEchartsModule,
   ]
 })
 /**

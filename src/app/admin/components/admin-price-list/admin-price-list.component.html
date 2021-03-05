@@ -78,7 +78,12 @@
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME' |
                                   translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.productName}}</span>
+                                <span class="school-font size-20 weight-700">{{element?.productName}}</span>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME_TRANS' |
+                                  translate:locale.language}}: </span>
+                                <span class="school-font size-20 weight-700">{{element?.multiText | translate:locale.language}}</span>
                               </div>
                               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
                                 <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ID' |
@@ -113,6 +118,12 @@
                                   |
                                   translate:locale.language}}: </span>
                                 <span class="school-font size-18 weight-700">{{element?.onSalePrice}}</span>
+                              </div>
+                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.UNIT'
+                                  |
+                                  translate:locale.language}}: </span>
+                                <span class="school-font size-18 weight-700">{{element?.unit}}</span>
                               </div>
                             </span>
                           </div>
