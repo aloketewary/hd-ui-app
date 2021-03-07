@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { L10nLocale, L10nTranslationService, L10N_LOCALE } from 'angular-l10n';
 import { BaseComponent } from 'src/app/shared/class/base-component';
 import { AppConfig } from 'src/app/shared/model/app-config';
+import { CommonDialogService } from 'src/app/shared/service/common/dialog/common-dialog.service';
 import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
 import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
 import { LoggerService } from 'src/app/shared/service/log/logger.service';
@@ -31,7 +32,8 @@ export class AdminProductUnitListComponent extends BaseComponent implements OnIn
     public dataHandler: DataHandlerService,
     private dialog: MatDialog,
     public media: MediaObserver,
-    private productUnitService: ProductUnitService
+    private productUnitService: ProductUnitService,
+    private commonDialog: CommonDialogService
   ) {
     super('AdminProductUnitListComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
@@ -82,8 +84,29 @@ export class AdminProductUnitListComponent extends BaseComponent implements OnIn
     });
   }
 
-  deleteConfig(config){
-
+  deleteConfig(productUnit: ProductUnit): void{
+    this.commonDialog.confirm(
+      this.translation.translate('ADMIN.CONFIG.MODAL.TITLE', { keyName: productUnit.name }),
+      this.translation.translate('ADMIN.CONFIG.MODAL.SUB_TITLE'), 'delete-alert',
+      this.translation.translate('ADMIN.CONFIG.BUTTON.MODAL.DELETE'),
+      this.translation.translate('ADMIN.CONFIG.BUTTON.MODAL.CANCEL')
+    ).subscribe(confirmation => {
+      if (confirmation) {
+        this.productUnitService.deleteProductUnit(productUnit).subscribe(data => {
+          if (data) {
+            this.showMessage(`${productUnit.name} removed from the list.`);
+            this.productUnitList.splice(this.productUnitList.indexOf(productUnit));
+          }
+        });
+      }
+    });
   }
 
+  getMultipleWithName(id: string): string {
+    const productUnits = this.config.UNITS as Array<ProductUnit>;
+    const units = productUnits.filter(val => val.id === id);
+    if (units.length > 0) {
+      return `${units[0].name} (${units[0].unit})`;
+    } else { return ''; }
+  }
 }

@@ -44,7 +44,13 @@
           <mat-form-field class="flex-full" appearance="outline"
             [hideRequiredMarker]="dataHandler.showRequiredMarker">
             <mat-label>{{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLEWITH.TITLE' | translate:locale.language}}</mat-label>
-            <input matInput formControlName="multipleWith" maxlength="50">
+            <input type="text" aria-label="Multiple with" matInput formControlName="multipleWith" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let units of filteredOptions | async" value="{{units.name}} ({{units.unit}})"
+              (click)="setMultipleWith(units)" >
+                {{units.name}} ({{units.unit}})
+              </mat-option>
+            </mat-autocomplete>
             <mat-error *ngIf="productForm.controls['multipleWith'].hasError('required')">
               {{'ADMIN.PRODUCT_UNIT.FORM.MULTIPLEWITH.TITLE' | translate:locale.language}}
               <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>

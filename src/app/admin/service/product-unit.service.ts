@@ -36,7 +36,7 @@ export class ProductUnitService extends AbstractHttpService {
     const bodyData = {
       name: unit.name,
       readOnly: unit.readOnly,
-      is_active: unit.isActive,
+      isActive: unit.isActive,
       multiple: unit.multiple,
       multipleWith: unit.multipleWith,
       unit: unit.unit
@@ -44,7 +44,7 @@ export class ProductUnitService extends AbstractHttpService {
     return this.postCallReturnBoolean<T, {
       name: string,
       readOnly: boolean,
-      is_active: boolean,
+      isActive: boolean,
       multiple: number,
       multipleWith: string,
       unit: string

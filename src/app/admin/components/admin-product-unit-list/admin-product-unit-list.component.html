@@ -12,17 +12,18 @@
             <ng-container *ngIf="productUnitList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
             <ng-template #thenTemplate>
               <mat-nav-list>
-                <mat-list-item *ngFor="let unit of productUnitList; ngForTrackBy: unit.id">
-                  <div mat-line>{{unit.name}}</div>
-                  <p mat-line>{{unit.unit}} </p>
-                  <button mat-icon-button color="accent" (click)="manageProductUnitDialog(unit)"
-                    matTooltip="{{'ADMIN.PRODUCT_UNIT.BUTTON.EDIT' | translate:locale.language:{name: unit.name} }}"
-                    matTooltipPosition="above">
+                <mat-list-item *ngFor="let productUnit of productUnitList;">
+                  <mat-icon mat-list-icon>receipt_long</mat-icon>
+                  <div mat-line>{{productUnit.name}}</div>
+                  <p mat-line>{{productUnit.multiple}} {{productUnit.unit}} {{productUnit.multipleWith ? 'x ' : ''}} {{getMultipleWithName(productUnit.multipleWith)}}</p>
+                  <button mat-icon-button color="accent" (click)="manageProductUnitDialog(productUnit)"
+                    matTooltip="{{'ADMIN.PRODUCT_UNIT.BUTTON.EDIT' | translate:locale.language:{name: productUnit.name} }}"
+                    matTooltipPosition="above" *ngIf="!productUnit.readOnly" >
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-icon-button color="warn" (click)="deleteConfig(config)"
-                    matTooltip="{{'ADMIN.PRODUCT_UNIT.BUTTON.DELETE' | translate:locale.language:{name: unit.name} }}"
-                    matTooltipPosition="above">
+                  <button mat-icon-button color="warn" (click)="deleteConfig(productUnit)"
+                    matTooltip="{{'ADMIN.PRODUCT_UNIT.BUTTON.DELETE' | translate:locale.language:{name: productUnit.name} }}"
+                    matTooltipPosition="above" *ngIf="!productUnit.readOnly">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </mat-list-item>
