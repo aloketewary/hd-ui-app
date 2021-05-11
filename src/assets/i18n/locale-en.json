@@ -116,6 +116,9 @@
         },
         "VARIANT_NAME": {
           "TITLE": "Variant Name"
+        },
+        "UNIT": {
+          "TITLE": "Unit"
         }
       },
       "DELETE_MULTIPLE_DATA": "Delete {{selectedLength}} data ?",

@@ -232,11 +232,11 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
     });
     dialogRef.componentInstance.productModel = productModel ? productModel : new ProductData();
     dialogRef.componentInstance.isEditMode = productModel ? true : false;
-    dialogRef.afterClosed().subscribe((result: AppConfigModel) => {
+    dialogRef.afterClosed().subscribe((result: ProductData) => {
       if (result) {
-        this.showMessage(`${result.key} ${productModel ? 'Updated the Product.' : 'Product added.'}`);
+        this.showMessage(`${result.productName} ${productModel ? 'Updated the Product.' : 'Product added.'}`);
         this.getServerData();
-        this.logger.info(this.className, 'upload files of ', result.key, ' success');
+        this.logger.info(this.className, 'upload files of ', result.productName, ' success');
       }
     });
   }

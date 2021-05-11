@@ -163,6 +163,23 @@
             </mat-slide-toggle>
           </div>
         </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.PRODUCT.FORM.UNIT.TITLE' | translate:locale.language}}</mat-label>
+              <input type="text" aria-label="Unit" matInput formControlName="unit" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let units of config.UNITS" [value]="units.unit">{{units.unit}}</mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="productForm.controls['unit'].hasError('required')">
+                {{'ADMIN.PRODUCT.FORM.UNIT.TITLE' | translate:locale.language}}
+                <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+              </mat-error>
+              <mat-icon matSuffix svgIcon="cash-100" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full m-b-20 p-r-20">

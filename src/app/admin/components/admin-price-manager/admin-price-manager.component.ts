@@ -9,6 +9,7 @@ import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.
 import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
 import { LoggerService } from 'src/app/shared/service/log/logger.service';
 import { Product, ProductData, ProductVariant } from '../../models/product';
+import { ProductUnit } from '../../models/product-unit';
 import { ProductService } from '../../service/product.service';
 
 @Component({
@@ -61,7 +62,9 @@ export class AdminPriceManagerComponent extends BaseComponent implements OnInit,
       variant: new FormControl(this.productModel.variant, Validators.compose([Validators.required])),
       variantName: new FormControl(this.productModel.variantName, Validators.compose([Validators.required])),
       wholeSalePrice: new FormControl(this.productModel.wholeSalePrice, Validators.compose([Validators.required])),
-      isActive: new FormControl(this.productModel.isActive, Validators.compose([]))
+      isActive: new FormControl(this.productModel.isActive, Validators.compose([])),
+      unit: new FormControl(this.productModel.unit, Validators.compose([])),
+      multiText: new FormControl(this.productModel.multiText, Validators.compose([]))
     });
   }
 
@@ -78,7 +81,9 @@ export class AdminPriceManagerComponent extends BaseComponent implements OnInit,
       .withStockTotal(this.productForm.controls.stockTotal.value)
       .withVariant(this.productForm.controls.variant.value)
       .withVariantName(this.productForm.controls.variantName.value)
-      .withWholeSalePrice(this.productForm.controls.wholeSalePrice.value);
+      .withWholeSalePrice(this.productForm.controls.wholeSalePrice.value)
+      .withUnit(this.productForm.controls.unit.value)
+      .withMultiText('');
       const bodyData = new Product()
         .withId(this.productModel.id)
         .withPproductName(this.productForm.controls.productName.value)
