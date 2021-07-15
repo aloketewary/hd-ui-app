@@ -14,20 +14,19 @@ import { HttpLoaderService } from '../service/loader/http-loader.service';
 import { CommonDialogService } from '../service/common/dialog/common-dialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { tap } from 'rxjs/operators';
+import { AuthService } from '../service/auth/auth.service';
+import { LoginResponse } from '../model/user-profile';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  private config: AppConfig;
   constructor(
     private router: Router,
-    // private auth: AuthService,
-    configProvider: ConfigLoaderService,
+    private auth: AuthService,
     private httpLoader: HttpLoaderService,
     private commonDialog: CommonDialogService,
     private dialog: MatDialog
   ) {
-    this.config = configProvider.getConfigData();
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -53,7 +52,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     // });
                   } else {
                     this.dialog.closeAll();
-                    // this.auth.logout();
+                    this.auth.logout();
                     // Set our navigation extras object
                     // that passes on our global query params and fragment
                     const navigationExtras: NavigationExtras = {
@@ -81,7 +80,7 @@ export class AuthInterceptor implements HttpInterceptor {
       })).toPromise();
     }
     this.httpLoader.show();
-    const token = 'lol'; // this.auth.getToken();
+    const token: LoginResponse = this.auth.getToken();
     let isUploadUrl: boolean;
     let isExcelUpload: boolean;
     const headerSettings: { [name: string]: string | string[]; } = {};
@@ -104,7 +103,7 @@ export class AuthInterceptor implements HttpInterceptor {
     // HttpHeader object immutable - copy values
 
     if (token) {
-      // headerSettings.autherizationKey = token;
+      headerSettings.Authorization = `${token.tokenType} ${token.accessToken}`;
       if (isUploadUrl) {
         headerSettings['Content-Type'] = 'multipart/form-data';
         // headerSettings['enctype'] = 'multipart/form-data';
@@ -133,5 +132,7 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 
 function isEqualsIgnoreCase(val: any, val2: any): boolean {
-  return val === val2;
+  return  typeof val === 'string' && typeof val2 === 'string'
+  ? val.localeCompare(val2, undefined, { sensitivity: 'accent' }) === 0
+  : val === val2;
 }

@@ -10,19 +10,19 @@
         <mat-card-content>
           <ng-container *ngIf="!isLoading; then thenTemplate; else elseTemplate"></ng-container>
           <ng-template #thenTemplate>
-            <ng-container *ngIf="configModelList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
+            <ng-container *ngIf="userProfileList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
             <ng-template #thenTemplate>
               <mat-nav-list>
-                <mat-list-item *ngFor="let config of configModelList">
-                  <div mat-line>{{config.key}}</div>
-                  <p mat-line>{{config.value}} </p>
+                <mat-list-item *ngFor="let user of userProfileList">
+                  <div mat-line>{{user.email}}</div>
+                  <p mat-line>{{toJoinString(user.roles)}} </p>
                   <button mat-icon-button color="accent"
-                    matTooltip="{{'ADMIN.CONFIG.BUTTON.EDIT' | translate:locale.language:{name: config.key} }}"
+                    matTooltip="{{'ADMIN.CONFIG.BUTTON.EDIT' | translate:locale.language:{name: user.email} }}"
                     matTooltipPosition="above">
                     <mat-icon>edit</mat-icon>
                   </button>
                   <button mat-icon-button color="warn"
-                    matTooltip="{{'ADMIN.CONFIG.BUTTON.DELETE' | translate:locale.language:{name: config.key} }}"
+                    matTooltip="{{'ADMIN.CONFIG.BUTTON.DELETE' | translate:locale.language:{name: user.email} }}"
                     matTooltipPosition="above">
                     <mat-icon>delete</mat-icon>
                   </button>

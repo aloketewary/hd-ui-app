@@ -1,16 +1,21 @@
-import { L10N_LOCALE, L10nLocale, L10nTranslationService, L10N_CONFIG, L10nConfig } from 'angular-l10n';
-import { BaseComponent } from 'src/app/shared/class/base-component';
-import { FormErrorStateMatcher } from 'src/app/shared/class/form-error-state-matcher';
-import { AppConfig } from 'src/app/shared/model/app-config';
-import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
-import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
-import { LoggerService } from 'src/app/shared/service/log/logger.service';
-
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { L10nConfig, L10nLocale, L10nTranslationService, L10N_CONFIG, L10N_LOCALE } from 'angular-l10n';
+import { BaseComponent } from 'src/app/shared/class/base-component';
+import { FormErrorStateMatcher } from 'src/app/shared/class/form-error-state-matcher';
+import { AppConfig } from 'src/app/shared/model/app-config';
+import { LoginResponse, UserProfile } from 'src/app/shared/model/user-profile';
+import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
+import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
+import { LoggerService } from 'src/app/shared/service/log/logger.service';
+import { StorageService } from 'src/app/shared/service/storage/storage.service';
+import { environment } from 'src/environments/environment';
+import { LoginRequest } from '../../models/login-request';
+import { LoginService } from '../../services/login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -39,6 +44,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     @Inject(L10N_CONFIG) private l10nConfig: L10nConfig,
+    private loginService: LoginService,
+    private storage: StorageService,
+    private router: Router
   ) {
     super('LoginComponent', snackBar, logger, translation);
     this.config = configProvider.getConfigData();
@@ -66,6 +74,28 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   onLoginSubmit(): void {
-
+    if (this.loginForm.valid) {
+      const loginBody = new LoginRequest()
+        .withUsername(this.loginForm.controls.emailField.value)
+        .withPassword(this.loginForm.controls.password.value)
+      this.loginService.signin<LoginResponse>(loginBody).subscribe(data => {
+        if (data)  {
+          this.loginService.isLogin.next(true);
+          // this.localStorageService.set(this.config['USER_PROFILE_DATA'], this.gdHandler.userProfile);
+          this.showMessage(this.translation.translate('LOGIN.SUCCESSFULLY_AUTHORIZED_WITH_USERNAME')
+            + ' ' + data.email + '! ' + this.translation.translate('LOGIN.SUCCESSFULLY_AUTHORIZED'));
+          this.isLoginInitiated = false;
+          const myDate = new Date();
+          myDate.setHours( myDate.getHours() + 1 );
+          this.storage.setCookieData(environment.LOGIN_PERSISTENCE_NAME, data, myDate);
+          const currentUrl = this.returnUrl || `/home/dashboard/`;
+          this.router.navigate([currentUrl]);
+        } else {
+          this.isLoginInitiated = false;
+          this.showMessage(this.translation.translate('COMMON.ERROR.PLEASE_RETRY_AGAIN'));
+          this.logger.error(this.className, this.translation.translate('COMMON.ERROR.PLEASE_RETRY_AGAIN'));
+        }
+      }, error => this.snackBar.open(error?.message));
+    }
   }
 }

@@ -64,14 +64,17 @@
                     [routerLink]="'/auth/forgotpassword'">{{'LOGIN.FORGOT_PASS'
                     | translate:locale.language}}</a>
                 </div>
-                <!-- <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" *ngIf="loginForm.controls['emailField'].value">
-                                    <label id="radio-group-label">Login as</label>
-                                    <mat-radio-group aria-labelledby="radio-group-label" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" [formControl]="loginForm.controls['loginAs']">
-                                        <mat-radio-button class="login-as-radio-button" *ngFor="let type of loginTypes" [value]="type.value" [disabled]="type.isDisabled">
-                                            {{type.name}}
-                                        </mat-radio-button>
-                                    </mat-radio-group>
-                                </div> -->
+                <!-- <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px"
+                  *ngIf="loginForm.controls['emailField'].value">
+                  <label id="radio-group-label">Login as</label>
+                  <mat-radio-group aria-labelledby="radio-group-label" fxLayout="column" fxLayoutAlign="center start"
+                    fxLayoutGap="10px" formControlName="loginAs">
+                    <mat-radio-button class="login-as-radio-button" *ngFor="let type of loginTypes" [value]="type.value"
+                      [disabled]="type.isDisabled">
+                      {{type.name}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div> -->
                 <div fxLayout="row" fxLayoutAlign="center" class="m-t-20 flex-full">
                   <ng-container *ngIf="!isLoginInitiated; else elseTemplate">
                     <button class="flex-full" type="submit" [disabled]="loginForm.invalid" mat-raised-button

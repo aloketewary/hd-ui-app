@@ -1,7 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import SimpleCrypto from "simple-crypto-js";
 import { ENCRYPTION_SECRET_KEY } from 'src/app/shared/util/injection.token';
-
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +9,12 @@ export class EncryptDecryptService {
 
   private className = 'EncryptDecryptService';
   protected readonly encryptSecretKey: string;
+  private simpleCrypto: SimpleCrypto;
   constructor(
     private injector: Injector
   ) {
     this.encryptSecretKey = this.injector.get<string>(ENCRYPTION_SECRET_KEY);
+    this.simpleCrypto = new SimpleCrypto(this.encryptSecretKey)
   }
 
   /**
@@ -22,7 +23,7 @@ export class EncryptDecryptService {
    */
   encryptData<T>(data: string | T | Array<T> | number): string | null {
     try {
-      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+      return this.simpleCrypto.encrypt(JSON.stringify(data));
     } catch (e) {
       console.error(this.className, e);
     }
@@ -34,11 +35,11 @@ export class EncryptDecryptService {
    * @param data encrypt text
    */
   decryptData<T>(data: string): T {
-    if (data !== null) {
+    if (data) {
       try {
-        const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
-        if (bytes.toString()) {
-          return JSON.parse(bytes.toString(CryptoJS.enc.Utf8)) as T;
+        const bytes = this.simpleCrypto.decrypt(data);
+        if (bytes) {
+          return bytes as unknown as T;
         }
         return null;
       } catch (e) {

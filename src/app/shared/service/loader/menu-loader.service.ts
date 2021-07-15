@@ -1,8 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataHandlerService } from '../handler/data-handler.service';
 import { LoggerService } from '../log/logger.service';
 import { environment } from '../../../../environments/environment.prod';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'No-Auth': 'True',
+  })
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +24,7 @@ export class MenuLoaderService {
 
   load(): Promise<any> {
     this.logger.log('MenuLoaderService', `getting menu details`);
-    const promise = this.http.get(environment.MENU_LOCATION)
+    const promise = this.http.get(environment.MENU_LOCATION, httpOptions)
       .toPromise()
       .then((menus: any[]) => {
         this.dataHandler.sidenavMenu = menus;

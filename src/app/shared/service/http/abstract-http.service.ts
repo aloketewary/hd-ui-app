@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
@@ -10,6 +10,7 @@ import { CommonResponse } from '../../model/common-response';
 import { AppUtil } from '../../util/app-util';
 import { LoggerService } from '../log/logger.service';
 import { Inject } from '@angular/core';
+import { PageableResponse } from '../../model/pageable-response';
 
 @Injectable({
   providedIn: 'root'
@@ -69,8 +70,8 @@ export class AbstractHttpService {
    * @param bodyData post body data
    * @param logMsg logger messages
    */
-  postCallReturnBoolean<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string): Observable<boolean> {
-    return this.http.post<CommonResponse<T>>(url, bodyData).pipe(
+  postCallReturnBoolean<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<boolean> {
+    return this.http.post<CommonResponse<T>>(url, bodyData, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
@@ -80,8 +81,8 @@ export class AbstractHttpService {
     );
   }
 
-  postCallReturnObject<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string): Observable<T> {
-    return this.http.post<CommonResponse<T>>(url, bodyData).pipe(
+  postCallReturnObject<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T> {
+    return this.http.post<CommonResponse<T>>(url, bodyData, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForObject<T>(data)),
       tap((t: T) => {
@@ -91,8 +92,8 @@ export class AbstractHttpService {
     );
   }
 
-  postCallReturnList<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string): Observable<T[]> {
-    return this.http.post<CommonResponse<T>>(url, bodyData).pipe(
+  postCallReturnList<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T[]> {
+    return this.http.post<CommonResponse<T>>(url, bodyData, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
       tap((t: T[]) => {
@@ -107,8 +108,8 @@ export class AbstractHttpService {
    * @param url Url to be called
    * @param logMsg Logger message
    */
-  getCallReturnBoolean<T>(url: string, retryTime: number, logMsg: string): Observable<boolean> {
-    return this.http.get<CommonResponse<T>>(url).pipe(
+  getCallReturnBoolean<T>(url: string, retryTime: number, logMsg: string,httpOptions?: { headers: HttpHeaders}): Observable<boolean> {
+    return this.http.get<CommonResponse<T>>(url, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
@@ -118,8 +119,8 @@ export class AbstractHttpService {
     );
   }
 
-  getCallReturnObject<T>(url: string, retryTime: number, logMsg: string): Observable<T> {
-    return this.http.get<CommonResponse<T>>(url).pipe(
+  getCallReturnObject<T>(url: string, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T> {
+    return this.http.get<CommonResponse<T>>(url, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForObject<T>(data)),
       tap((t: T) => {
@@ -129,8 +130,8 @@ export class AbstractHttpService {
     );
   }
 
-  getCallReturnList<T>(url: string, retryTime: number, logMsg: string): Observable<T[]> {
-    return this.http.get<CommonResponse<T>>(url).pipe(
+  getCallReturnList<T>(url: string, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T[]> {
+    return this.http.get<CommonResponse<T>>(url, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
       tap((t: T[]) => {
@@ -140,8 +141,8 @@ export class AbstractHttpService {
     );
   }
 
-  deleteCallReturnBoolean<T>(url: string, retryTime: number, logMsg: string): Observable<boolean> {
-    return this.http.delete<CommonResponse<T>>(url).pipe(
+  deleteCallReturnBoolean<T>(url: string, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<boolean> {
+    return this.http.delete<CommonResponse<T>>(url,httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForBoolean<T>(data)),
       tap((t: boolean) => {
@@ -151,8 +152,8 @@ export class AbstractHttpService {
     );
   }
 
-  deleteCallReturnList<T>(url: string, retryTime: number, logMsg: string): Observable<T[]> {
-    return this.http.delete<CommonResponse<T>>(url, ).pipe(
+  deleteCallReturnList<T>(url: string, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T[]> {
+    return this.http.delete<CommonResponse<T>>(url, httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForList<T>(data)),
       tap((t: T[]) => {
@@ -162,8 +163,8 @@ export class AbstractHttpService {
     );
   }
 
-  patchCallReturnObject<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string): Observable<T> {
-    return this.http.patch<CommonResponse<T>>(url, bodyData).pipe(
+  patchCallReturnObject<T, E>(url: string, bodyData: E, retryTime: number, logMsg: string, httpOptions?: { headers: HttpHeaders}): Observable<T> {
+    return this.http.patch<CommonResponse<T>>(url, bodyData,httpOptions).pipe(
       retry(retryTime),
       map((data: CommonResponse<T>) => this.mapTheResultForObject<T>(data)),
       tap((t: T) => {

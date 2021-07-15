@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CookiesStorageService, LocalStorageService, SessionStorageService } from 'ngx-store';
 import { environment } from 'src/environments/environment';
+import { UserProfile } from '../../model/user-profile';
 import { EncryptDecryptService } from '../encrypt/encrypt-decrypt.service';
 import { AbstractHttpService } from '../http/abstract-http.service';
 import { LoggerService } from '../log/logger.service';
@@ -23,16 +24,17 @@ export class StorageService extends AbstractHttpService {
     private sessionStorageService: SessionStorageService,
     private cookieStorageService: CookiesStorageService) {
     super('StorageService', http, snackBar, logger);
-    // this.startListen();
+    this.startListen();
   }
 
   getLocalData<T>(param: any): T {
-    return this.encryptDecryptService.decryptData<T>(this.localStorageService.get(param));
+    // return this.encryptDecryptService.decryptData<T>(this.localStorageService.get(param));
+    return this.localStorageService.get(param);
   }
 
   async setLocalData(key: string, param: any): Promise<any> {
     this.logger.debug(this.className, `Set Localstorage Data for ${key}`);
-    this.localStorageService.set(key, this.encryptDecryptService.encryptData(param));
+    this.localStorageService.set(key, param);//this.encryptDecryptService.encryptData(param));
   }
 
   getSessionData<T>(param: any): T {
@@ -61,21 +63,21 @@ export class StorageService extends AbstractHttpService {
     return this.getCookieData('USER_DATA_KEY') ? this.getCookieData('USER_DATA_KEY')['userId'] : null;
   }
 
-  // getUserData<T>(): T {
-  //   const userData = this.getLocalData<UserProfile>('environment.USER_DATA_KEY');
-  //   if (!isNullOrUndefined(userData)) {
-  //     return userData as unknown as T;
-  //   }
-  //   return;
-  // }
+  getUserData<T>(): T {
+    const userData = this.getLocalData<UserProfile>('environment.USER_DATA_KEY');
+    if (!userData) {
+      return userData as unknown as T;
+    }
+    return null;
+  }
 
-  // startListen() {
-  //   this.cookieStorageService.observe(environment.LOGIN_PERSISTENCE_NAME).subscribe(val => {
-  //     if (isNullOrUndefined(val)) {
-  //       this.router.navigateByUrl('/auth/login');
-  //     }
-  //   });
-  // }
+  startListen() {
+    this.cookieStorageService.observe(environment.LOGIN_PERSISTENCE_NAME).subscribe(val => {
+      if (val) {
+        this.router.navigateByUrl('/auth/login');
+      }
+    });
+  }
 
   // getLoginType<T>(): T {
   //   const loginAs = this.getLocalData<string>(environment.LOGIN_AS_KEY);

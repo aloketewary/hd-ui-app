@@ -4,7 +4,7 @@
       <mat-toolbar class="default-theme" color="primary">
         <div class="p-l-0 ellipsis" fxLayout="column" fxLayoutAlign="center start">
           <a [routerLink]="rootLogoUrl"
-            class="no-underline cursor-pointer valign-center p-r-20 col-accent">HardwareDash Admin</a>
+            class="no-underline cursor-pointer valign-center p-r-20 col-accent">HardwareDash</a>
         </div>
       </mat-toolbar>
       <mat-nav-list style="overflow-y: auto; height: 70.5vh;">
@@ -61,8 +61,8 @@
           <div class="app-logo">
           </div>
           <span class="spacer"></span>
-          <button mat-icon-button matTooltip="{{'APP.GOTO_HOME' | translate:locale.language}}" matTooltipPosition="before" (click)="gotoHome()" aria-label="Goto Home">
-            <mat-icon [svgIcon]="'home'"></mat-icon>
+          <button mat-icon-button matTooltip="{{'APP.GOTO_ADMIN' | translate:locale.language}}" matTooltipPosition="before" (click)="gotoAdminHome()" aria-label="Goto Home">
+            <mat-icon [svgIcon]="'home-account'"></mat-icon>
           </button>
           <button mat-icon-button matTooltip="{{'APP.CHANGE_LANGUAGE' | translate:locale.language}}" matTooltipPosition="before" [matMenuTriggerFor]="menu" aria-label="Language menu">
             <mat-icon [svgIcon]="'translate'"></mat-icon>

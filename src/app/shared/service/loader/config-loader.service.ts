@@ -1,8 +1,15 @@
 import { AppConfig } from './../../model/app-config';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CommonResponse } from '../../model/common-response';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'No-Auth': 'True',
+  })
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +28,7 @@ export class ConfigLoaderService {
 
   load(): Promise<any> {
     console.log(`getting config data`);
-    const promise = this.http.get(environment.CONFIG_LOCATION)
+    const promise = this.http.get(environment.CONFIG_LOCATION, httpOptions)
       .toPromise()
       .then((settings: CommonResponse<any>) => {
         this.config = settings.result;

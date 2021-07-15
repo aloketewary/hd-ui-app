@@ -1,24 +1,25 @@
-import { Component, OnInit, OnDestroy, ViewChild, Inject } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { Subscription } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoggerService } from '../../../shared/service/log/logger.service';
-import { L10nTranslationService, L10nLocale, L10N_LOCALE, L10N_CONFIG, L10nConfig } from 'angular-l10n';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import { DataHandlerService } from '../../../shared/service/handler/data-handler.service';
-import { BaseComponent } from '../../../shared/class/base-component';
-import { filter, map } from 'rxjs/operators';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { isNullOrUndefined, isEqualsIgnoreCase } from '../../../shared/util/app-util';
-import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
+import { L10nConfig, L10nLocale, L10nTranslationService, L10N_CONFIG, L10N_LOCALE } from 'angular-l10n';
+import { Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/shared/class/base-component';
 import { AppConfig } from 'src/app/shared/model/app-config';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
+import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
+import { LoggerService } from 'src/app/shared/service/log/logger.service';
+import { isEqualsIgnoreCase } from 'src/app/shared/util/app-util';
+import { isNullOrUndefined } from 'util';
 
 @Component({
-  selector: 'app-admin-home',
-  templateUrl: './admin-home.component.html',
-  styleUrls: ['./admin-home.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   animations: [
     trigger('slideInOut', [
       state('in', style({
@@ -37,7 +38,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ]),
   ]
 })
-export class AdminHomeComponent extends BaseComponent implements OnInit, OnDestroy {
+export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
   config: AppConfig;
   isOpened = false;
   public currentMode: 'rail' | 'over' | 'side' | 'push';
@@ -60,7 +61,7 @@ export class AdminHomeComponent extends BaseComponent implements OnInit, OnDestr
     @Inject(L10N_CONFIG) private l10nConfig: L10nConfig,
     configLoader: ConfigLoaderService,
   ) {
-    super('AdminDashboardComponent', snackBar, logger, translation);
+    super('HomeComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
     this.currentMode = 'side';
     this.userProfile.userType = 'ADMIN';
@@ -118,7 +119,7 @@ export class AdminHomeComponent extends BaseComponent implements OnInit, OnDestr
     return rtrn && (loginType === this.dataHandler.loginAs);
   }
 
-  gotoHome() {
-    this.router.navigate(['/home/dashboard']);
+  gotoAdminHome() {
+    this.router.navigate(['/admin/dashboard']);
   }
 }
