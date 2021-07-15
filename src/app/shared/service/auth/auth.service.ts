@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../../model/user-profile';
+import { isNullOrUndefined } from '../../util/app-util';
 import { EncryptDecryptService } from '../encrypt/encrypt-decrypt.service';
 
 @Injectable({
@@ -61,5 +62,16 @@ export class AuthService {
    */
   public getAuthKey(): Observable<string> {
     return this.encDec.decryptData(this.cookieStorage.get(environment.LOGIN_PERSISTENCE_NAME));
+  }
+
+  public isAdmin(): boolean {
+    const loginData = this.encDec.decryptData<LoginResponse>(this.cookieStorage.get(environment.LOGIN_PERSISTENCE_NAME));
+    if (!isNullOrUndefined(loginData)) {
+      const adminExist = loginData.roles.filter(it=> it.name == 'ROLE_ADMIN');
+      if (adminExist.length > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 }

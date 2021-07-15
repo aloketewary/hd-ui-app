@@ -37,7 +37,7 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
   ) {
     super('AdminUserListComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
-    this.userProfileList = new Array<UserProfile>()
+    this.userProfileList = new Array<UserProfile>();
     this.userDataSource = new UserDatasource(this.userService);
    }
 

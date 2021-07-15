@@ -14,8 +14,8 @@
               <mat-nav-list>
                 <mat-list-item *ngFor="let productUnit of productUnitList;">
                   <mat-icon mat-list-icon>receipt_long</mat-icon>
-                  <div mat-line>{{productUnit.name}}</div>
-                  <p mat-line>{{productUnit.multiple}} {{productUnit.unit}} {{productUnit.multipleWith ? 'x ' : ''}} {{getMultipleWithName(productUnit.multipleWith)}}</p>
+                  <div mat-line>1 {{productUnit.name}}</div>
+                  <p mat-line>{{productUnit.multiple}} {{productUnit.multipleWith ? '' : productUnit.unit }} {{getMultipleWithName(productUnit.multipleWith)}}</p>
                   <button mat-icon-button color="accent" (click)="manageProductUnitDialog(productUnit)"
                     matTooltip="{{'ADMIN.PRODUCT_UNIT.BUTTON.EDIT' | translate:locale.language:{name: productUnit.name} }}"
                     matTooltipPosition="above" *ngIf="!productUnit.readOnly" >

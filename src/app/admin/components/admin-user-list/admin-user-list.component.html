@@ -10,7 +10,7 @@
         <mat-card-content>
           <ng-container *ngIf="!isLoading; then thenTemplate; else elseTemplate"></ng-container>
           <ng-template #thenTemplate>
-            <ng-container *ngIf="userProfileList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
+            <ng-container *ngIf="userProfileList?.length > 0 then thenTemplate; else elseTemplate"></ng-container>
             <ng-template #thenTemplate>
               <mat-nav-list>
                 <mat-list-item *ngFor="let user of userProfileList">

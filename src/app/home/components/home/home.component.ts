@@ -13,8 +13,7 @@ import { AppConfig } from 'src/app/shared/model/app-config';
 import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
 import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
 import { LoggerService } from 'src/app/shared/service/log/logger.service';
-import { isEqualsIgnoreCase } from 'src/app/shared/util/app-util';
-import { isNullOrUndefined } from 'util';
+import { isEqualsIgnoreCase, isNullOrUndefined } from 'src/app/shared/util/app-util';
 
 @Component({
   selector: 'app-home',
