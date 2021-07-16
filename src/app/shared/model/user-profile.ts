@@ -10,7 +10,7 @@ export class LoginResponse {
   accessToken: string;
   email: string;
   id: string;
-  roles: Array<Roles>;
+  roles: Array<string>;
   tokenType: string;
 }
 

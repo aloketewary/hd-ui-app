@@ -7,6 +7,9 @@ import { ConfigLoaderService } from '../../shared/service/loader/config-loader.s
 import { AbstractHttpService } from 'src/app/shared/service/http/abstract-http.service';
 import { Observable } from 'rxjs';
 import { Product, ProductData } from '../models/product';
+import { PageableResponse } from 'src/app/shared/model/pageable-response';
+import { retry, map, tap } from 'rxjs/operators';
+import { CommonResponse } from 'src/app/shared/model/common-response';
 
 @Injectable({
   providedIn: 'root'
@@ -58,4 +61,23 @@ export class ProductService extends AbstractHttpService {
     return this.deleteCallReturnList<T>(url, this.config.RETRY_TIME,
       `(deleteAllProduct) delete product list`);
  }
+
+ getPageableProductList<T>(filter: string, sortDirection: string, pageNumber: number, pageSize: number): Observable<PageableResponse<T>> {
+  // tslint:disable-next-line:max-line-length
+  const url = `${this.config.ROOT_URL + this.config.API_VERSION + this.config.PRODUCT_URL_PAGEABLE}?filter=${filter}&page=${pageNumber}&size=${pageSize}&sortOrder=${sortDirection}`;
+  return this.http.get<CommonResponse<PageableResponse<T>>>(url).pipe(
+    retry( this.config.RETRY_TIME),
+    map((data: CommonResponse<PageableResponse<T>>) => {
+      if (data.success) {
+        return data.result as PageableResponse<T>;
+      }
+      this.showMessage(data.desc);
+      return data.result as PageableResponse<T>;
+    }),
+    tap((t: PageableResponse<T>) => {
+      return this.logger.info(this.className, 'Get Users list', t);
+    }),
+  );
+}
+
 }

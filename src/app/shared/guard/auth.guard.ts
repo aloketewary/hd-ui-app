@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (!!isNullOrUndefined(this.storage.getCookieData(environment.LOGIN_PERSISTENCE_NAME))) {
       return true;
     }
-    const userData = this.storage.getUserData<UserProfile>();
     this.router.navigate([`/home/dashboard/`]);
     return false;
   }

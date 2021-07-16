@@ -4,12 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './shared/guard/auth.guard';
 import { HomeGuard } from './shared/guard/home.guard';
+import { AdminGuard } from './shared/guard/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('src/app/home/home.module').then(m => m.HomeModule), canLoad: [HomeGuard] },
   { path: 'auth', loadChildren: () => import('src/app/auth/auth.module').then(m => m.AuthModule), canLoad: [AuthGuard] },
-  { path: 'admin', loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule), canLoad: [] },
+  { path: 'admin', loadChildren: () => import('src/app/admin/admin.module').then(m => m.AdminModule), canLoad: [AdminGuard] },
   { path: '**', component: FourZeroFourComponent }
 ];
 

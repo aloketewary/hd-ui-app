@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
 import { ConfigLoaderService } from '../../../shared/service/loader/config-loader.service';
 import { L10nLocale, L10nTranslationService, L10N_LOCALE } from 'angular-l10n';
 import { LoggerService } from '../../../shared/service/log/logger.service';
@@ -8,7 +8,6 @@ import { BaseComponent } from '../../../shared/class/base-component';
 import { ProductService } from '../../service/product.service';
 import { Product, ProductData } from '../../models/product';
 import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
-import { MatTableDataSource } from '@angular/material/table';
 import { DataHandlerService } from '../../../shared/service/handler/data-handler.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -16,10 +15,12 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { CommonDialogService } from 'src/app/shared/service/common/dialog/common-dialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaObserver } from '@angular/flex-layout';
-import { AppConfigModel } from '../../models/app-config.model';
 import { AdminPriceManagerComponent } from '../admin-price-manager/admin-price-manager.component';
 import { FilesUploadComponent } from '../files-upload/files-upload.component';
 import { FilesModel } from 'src/app/shared/model/files-model.model';
+import { PriceDatasource } from '../../datasource/price-datasource';
+import { debounceTime, distinctUntilChanged, startWith, tap } from 'rxjs/operators';
+import { fromEvent, merge, of } from 'rxjs';
 
 @Component({
   selector: 'app-admin-price-list',
@@ -44,20 +45,19 @@ import { FilesModel } from 'src/app/shared/model/files-model.model';
     ])
   ],
 })
-export class AdminPriceListComponent extends BaseComponent implements OnInit, OnDestroy {
+export class AdminPriceListComponent extends BaseComponent implements OnInit, OnDestroy, AfterViewInit {
   config: AppConfig;
-  isLoading: boolean;
   productList: Array<Product>;
   productDataList: Array<ProductData>;
-  dataSource: MatTableDataSource<ProductData>;
   columns: any[];
-  private rIndex = 0;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   displayedColumns: any[];
   expandedElement: ProductData;
-  private paginator: MatPaginator;
-  private sort: MatSort;
   selection = new SelectionModel<ProductData>(true, []);
   public isSearch: boolean;
+  productDataSource: PriceDatasource;
+  private filteredValue: string = '';
   constructor(
     protected snackBar: MatSnackBar,
     protected logger: LoggerService,
@@ -72,9 +72,8 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
   ) {
     super('AdminPriceListComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
-    this.productList = [];
-    this.productDataList = [];
-    this.dataSource = new MatTableDataSource(this.productDataList);
+    this.productDataSource = new PriceDatasource(this.productService);
+    this.productDataSource.loadProductList('', 'asc', 0, this.dataHandler.tablePageSize[0]);
   }
 
   ngOnInit(): void {
@@ -109,49 +108,75 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
       },
     ];
     this.displayedColumns = this.columns.map(c => c.columnDef);
-    this.getServerData();
   }
 
-  @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.setDataSourceAttributes();
+  ngAfterViewInit() {
+    this.setSubsrciption();
   }
 
-  @ViewChild(MatPaginator, { static: false }) set matPaginator(mp: MatPaginator) {
-    this.paginator = mp;
-    this.setDataSourceAttributes();
-  }
+  setSubsrciption() {
+    // reset the paginator after sorting
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-  setDataSourceAttributes(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.productDataSource.counter$
+      .pipe(
+        tap((count) => {
+          this.paginator.length = count;
+        })
+      )
+      .subscribe();
+
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        startWith({}),
+        tap(() => this.loadProductList())
+      )
+      .subscribe();
   }
 
   applyFilter(filterValue: string): void {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    // server-side search
+    if (filterValue != null) {
+      filterValue = filterValue.trim(); // Remove whitespace
+      filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+      of(filterValue)
+        .pipe(
+          debounceTime(150),
+          distinctUntilChanged(),
+          tap(() => {
+            this.filteredValue = filterValue;
+            this.paginator.pageIndex = 0;
+            this.loadProductList();
+          })
+        )
+        .subscribe();
+    } else {
+      this.isSearch = !this.isSearch;
+      this.filteredValue = '';
+      this.paginator.pageIndex = 0;
+      this.loadProductList();
     }
+
   }
 
   ngOnDestroy(): void {
-    this.dataSource.disconnect();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    let numRows = 0;
+    this.productDataSource.counter$.toPromise().then(value =>
+      numRows = value
+    );
     return numSelected === numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle(): void {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+    // this.isAllSelected() ?
+    //   this.selection.clear() :
+    //   this.productDataSource.data.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
@@ -173,43 +198,20 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
         this.productService.deleteProduct(row).subscribe(data => {
           if (data) {
             this.showMessage(`${row.productName} removed from the list.`);
-            this.getServerData();
+            this.loadProductList();
           }
         });
       }
     });
   }
 
-  getServerData(): void {
-    this.productService.getProductList<Product>().subscribe(data => {
-      if (data != null) {
-        this.productDataList = [];
-        this.productList = data;
-        this.productList.forEach(element => {
-          const productData = new ProductData();
-          productData.id = element.id;
-          productData.slno = this.rIndex += 1;
-          productData.productName = element.productName;
-          productData.buyPrice = element.productVariant.buyPrice;
-          productData.variantId = element.productVariant.id;
-          productData.variantIsActive = element.productVariant.isActive;
-          productData.onSale = element.productVariant.onSale;
-          productData.onSalePrice = element.productVariant.onSalePrice;
-          productData.parentId = element.productVariant.parentId;
-          productData.sellingPrice = element.productVariant.sellingPrice;
-          productData.stockTotal = element.productVariant.stockTotal;
-          productData.variant = element.productVariant.variant;
-          productData.variantName = element.productVariant.variantName;
-          productData.wholeSalePrice = element.productVariant.wholeSalePrice;
-          productData.unit = element.productVariant.unit;
-          productData.multiText = element.productVariant.multiText;
-          productData.isActive = element.isActive;
-          this.productDataList.push(productData);
-        });
-        this.dataSource.data = this.productDataList;
-        this.selection.clear();
-      }
-    });
+  loadProductList(): void {
+    this.productDataSource.loadProductList(
+      this.filteredValue,
+      `${this.sort.active},${this.sort.direction}`,
+      this.paginator.pageIndex,
+      this.paginator.pageSize);
+    this.selection.clear();
   }
 
   manageProductDialog(productModel?: ProductData): void {
@@ -235,7 +237,7 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
     dialogRef.afterClosed().subscribe((result: ProductData) => {
       if (result) {
         this.showMessage(`${result.productName} ${productModel ? 'Updated the Product.' : 'Product added.'}`);
-        this.getServerData();
+        this.loadProductList();
         this.logger.info(this.className, 'upload files of ', result.productName, ' success');
       }
     });
@@ -253,7 +255,7 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
         this.productService.deleteAllProduct<ProductData>(ids).subscribe(data => {
           if (data) {
             this.showMessage(`${ids} removed from the list.`);
-            this.getServerData();
+            this.loadProductList();
           }
         });
       }
@@ -281,10 +283,14 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
     dialogRef.componentInstance.config = this.config;
     dialogRef.afterClosed().subscribe((result: FilesModel) => {
       if (result) {
-        this.getServerData();
+        this.loadProductList();
         this.showMessage(`${result.fileName} Added to the list.`);
         this.logger.info(this.className, 'upload files of ', result.fileName, ' success');
       }
     });
+  }
+
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
   }
 }

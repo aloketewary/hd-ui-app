@@ -9,7 +9,7 @@
               <mat-form-field class="flex-full" floatLabel="never">
                 <input matInput (keyup)="applyFilter($any($event).target.value)" class="flex-full" placeholder="Search">
               </mat-form-field>
-              <button mat-icon-button (click)="isSearch = !isSearch; applyFilter(null)">
+              <button mat-icon-button (click)="applyFilter(null)">
                 <mat-icon svgIcon="close"></mat-icon>
               </button>
             </div>
@@ -19,156 +19,159 @@
               {{'ADMIN.PRICE_LIST.HEADER.TITLE' | translate:locale.language}}
             </div>
             <span class="spacer"></span>
-            <button mat-icon-button (click)="isSearch = !isSearch" *ngIf="productDataList.length > 0">
+            <button mat-icon-button (click)="isSearch = !isSearch" *ngIf="productDataSource?.length() > 0">
               <mat-icon svgIcon="magnify"></mat-icon>
             </button>
             <button mat-icon-button (click)="uploadFileDialog()">
               <mat-icon svgIcon="file-upload"></mat-icon>
             </button>
-            <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler" (click)="manageProductDialog()" >
+            <button matTooltip="Add new config" matTooltipPosition="left" mat-mini-fab class="fab-toggler"
+              (click)="manageProductDialog()">
               <em class="material-icons">add</em>
             </button>
           </ng-template>
         </mat-toolbar>
         <mat-card-content>
-          <ng-template #serviceData>
-            <ng-container *ngIf="productList.length > 0 then thenTemplate; else elseTemplate"></ng-container>
-            <ng-template #thenTemplate>
-              <div class="table-container">
-                <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8 flex-full"
-                  matSort matSortDisableClear>
-                  <ng-container [matColumnDef]="column.columnDef" *ngFor="let column of columns; let cIndex = index">
-                    <ng-container *ngIf="cIndex === 0; else headerElseTemplate">
-                      <th mat-header-cell *matHeaderCellDef>
-                        <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()">
-                        </mat-checkbox>
-                      </th>
+          <div class="example-container">
+            <div class="example-loading-shade" *ngIf="productDataSource.loading$ | async">
+            </div>
+
+            <div class="example-table-container">
+              <div [style.display]="(productDataSource.counter$ | async) > 0 ? null: 'none'">
+                <div class="table-container">
+                  <table mat-table [dataSource]="productDataSource" multiTemplateDataRows class="mat-elevation-z8 flex-full"
+                    matSort matSortActive="slno" matSortDirection="asc" matSortDisableClear>
+                    <ng-container [matColumnDef]="column.columnDef" *ngFor="let column of columns; let cIndex = index">
+                      <ng-container *ngIf="cIndex === 0; else headerElseTemplate">
+                        <th mat-header-cell *matHeaderCellDef>
+                          <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                          </mat-checkbox>
+                        </th>
+                      </ng-container>
+                      <ng-template #headerElseTemplate>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                          {{column.header}}
+                        </th>
+                      </ng-template>
+
+                      <td mat-cell *matCellDef="let row;">
+                        <ng-container *ngIf="cIndex === 0; then thenTemplate; else elseTemplate"></ng-container>
+                        <ng-template #thenTemplate>
+                          <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+                          </mat-checkbox>
+                        </ng-template>
+                        <ng-template #elseTemplate>
+                          {{ column.cell(row) == 'null' ? 'NA' : column.cell(row) == 'undefined' ? 'NA' :
+                          column.cell(row) }}
+                        </ng-template>
+                      </td>
                     </ng-container>
-                    <ng-template #headerElseTemplate>
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                        {{column.header}}
-                      </th>
-                    </ng-template>
 
-                    <td mat-cell *matCellDef="let row;">
-                      <ng-container *ngIf="cIndex === 0; then thenTemplate; else elseTemplate"></ng-container>
-                      <ng-template #thenTemplate>
-                        <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
-                          [aria-label]="checkboxLabel(row)">
-                        </mat-checkbox>
-                      </ng-template>
-                      <ng-template #elseTemplate>
-                        {{ column.cell(row) == 'null' ? 'NA' : column.cell(row) == 'undefined' ? 'NA' :
-                        column.cell(row) }}
-                      </ng-template>
-                    </td>
-                  </ng-container>
-
-                  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-                  <ng-container matColumnDef="expandedDetail" class="flex-full">
-                    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-                      <div class="element-detail"
-                        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                        <div fxLayout="column" fxLayoutAlign="center start" class="m-t-10 m-b-10 flex-full">
-                          <div fxLayout="row" fxLayoutAlign="start center" class="flex-full m-b-20">
-                            <span fxLayout="column" fxLayoutAlign="center start" class="m-l-40">
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME' |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-20 weight-700">{{element?.productName}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME_TRANS' |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-20 weight-700">{{element?.multiText | translate:locale.language}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ID' |
-                                  translate:locale.language}}:
-                                </span>
-                                <span class="school-font size-18 weight-700">{{element?.id}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.BUY_PRICE'
-                                  |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.buyPrice}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.WHOLE_SALE_PRICE' |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.wholeSalePrice}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.STOCK' |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.stockTotal}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.SELLING_PRICE' |
-                                  translate:locale.language}}:
-                                </span>
-                                <span class="school-font size-18 weight-700">{{element?.sellingPrice}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ON_SALE_PRICE'
-                                  |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.onSalePrice}}</span>
-                              </div>
-                              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                                <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.UNIT'
-                                  |
-                                  translate:locale.language}}: </span>
-                                <span class="school-font size-18 weight-700">{{element?.unit}}</span>
-                              </div>
-                            </span>
-                          </div>
-                          <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full">
-                            <button mat-raised-button (click)="manageProductDialog(element)"
-                              color="primary">
-                              <mat-icon svgIcon="pencil"></mat-icon>
-                              <span>{{'ADMIN.PRODUCT.FIRST_SELECTION_MENU' | translate:locale.language}}</span>
-                            </button>
-                            <button mat-raised-button color="warn" (click)="deleteProduct(element)">
-                              <mat-icon svgIcon="delete"></mat-icon>
-                              <span>{{'ADMIN.PRODUCT.SECOND_SELECTION_MENU' | translate:locale.language}}</span>
-                            </button>
+                    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+                    <ng-container matColumnDef="expandedDetail" class="flex-full">
+                      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                        <div class="element-detail"
+                          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                          <div fxLayout="column" fxLayoutAlign="center start" class="m-t-10 m-b-10 flex-full">
+                            <div fxLayout="row" fxLayoutAlign="start center" class="flex-full m-b-20">
+                              <span fxLayout="column" fxLayoutAlign="center start" class="m-l-40">
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME' |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-20 weight-700">{{element?.productName}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.NAME_TRANS' |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-20 weight-700">{{element?.multiText | translate:locale.language}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ID' |
+                                    translate:locale.language}}:
+                                  </span>
+                                  <span class="school-font size-18 weight-700">{{element?.id}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.BUY_PRICE'
+                                    |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-18 weight-700">{{element?.buyPrice}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.WHOLE_SALE_PRICE' |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-18 weight-700">{{element?.wholeSalePrice}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.STOCK' |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-18 weight-700">{{element?.stockTotal}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.SELLING_PRICE' |
+                                    translate:locale.language}}:
+                                  </span>
+                                  <span class="school-font size-18 weight-700">{{element?.sellingPrice}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.ON_SALE_PRICE'
+                                    |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-18 weight-700">{{element?.onSalePrice}}</span>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                                  <span class="school-font size-14 weight-400">{{'ADMIN.PRODUCT.UNIT'
+                                    |
+                                    translate:locale.language}}: </span>
+                                  <span class="school-font size-18 weight-700">{{element?.unit}}</span>
+                                </div>
+                              </span>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full">
+                              <button mat-raised-button (click)="manageProductDialog(element)"
+                                color="primary">
+                                <mat-icon svgIcon="pencil"></mat-icon>
+                                <span>{{'ADMIN.PRODUCT.FIRST_SELECTION_MENU' | translate:locale.language}}</span>
+                              </button>
+                              <button mat-raised-button color="warn" (click)="deleteProduct(element)">
+                                <mat-icon svgIcon="delete"></mat-icon>
+                                <span>{{'ADMIN.PRODUCT.SECOND_SELECTION_MENU' | translate:locale.language}}</span>
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                  </ng-container>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
-                    [class.expanded-row]="expandedElement === element"
-                    (click)="expandedElement === element ? expandedElement = null : expandedElement = element"
-                    [class.bg-accent-light]="expandedElement === element">
-                  </tr>
-                  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-                </table>
-                <mat-paginator #paginator [pageSizeOptions]="dataHandler.tablePageSize" showFirstLastButtons>
-                </mat-paginator>
-              </div>
-              <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
-                fxLayoutAlign="center end" class="flex-full">
-                <div fxLayout="row" fxLayoutAlign="end center" class="spaceIn flex-full m-r-10">
-                  <button mat-raised-button color="primary" (click)="deleteListProduct()">
-                    {{'ADMIN.PRODUCT.DELETE_MULTIPLE_DATA' | translate:locale.language:{selectedLength:
-                    selection.selected.length } }}
-                  </button>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+                      [class.expanded-row]="expandedElement === element"
+                      (click)="expandedElement === element ? expandedElement = null : expandedElement = element"
+                      [class.bg-accent-light]="expandedElement === element">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row" (click)="onRowClicked(row)"></tr>
+                  </table>
+                  <mat-paginator #paginator [pageSizeOptions]="dataHandler.tablePageSize" showFirstLastButtons>
+                  </mat-paginator>
+                </div>
+                <div *ngIf="selection.hasValue()" fxLayout="column" fxLayoutAlign.gt-sm="end center" fxLayout.gt-sm="row"
+                  fxLayoutAlign="center end" class="flex-full">
+                  <div fxLayout="row" fxLayoutAlign="end center" class="spaceIn flex-full m-r-10">
+                    <button mat-raised-button color="primary" (click)="deleteListProduct()">
+                      {{'ADMIN.PRODUCT.DELETE_MULTIPLE_DATA' | translate:locale.language:{selectedLength:
+                      selection.selected.length } }}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </ng-template>
-            <ng-template #elseTemplate>
-              <app-no-data></app-no-data>
-            </ng-template>
-          </ng-template>
-          <app-component-loading [type]="'circular'" [isLoading]="isLoading" [bodyTemplate]="serviceData">
-          </app-component-loading>
+              <ng-container *ngIf="(productDataSource.counter$ | async) <= 0">
+                <app-no-data></app-no-data>
+              </ng-container>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
       <!-- <div class="fab-container">

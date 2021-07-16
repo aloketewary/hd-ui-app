@@ -67,7 +67,7 @@ export class AuthService {
   public isAdmin(): boolean {
     const loginData = this.encDec.decryptData<LoginResponse>(this.cookieStorage.get(environment.LOGIN_PERSISTENCE_NAME));
     if (!isNullOrUndefined(loginData)) {
-      const adminExist = loginData.roles.filter(it=> it.name == 'ROLE_ADMIN');
+      const adminExist = loginData.roles.filter(it=> it == 'ROLE_ADMIN');
       if (adminExist.length > 0) {
         return true;
       }

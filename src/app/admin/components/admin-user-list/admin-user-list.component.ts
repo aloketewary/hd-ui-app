@@ -1,7 +1,5 @@
-import { UserCdkDatasource } from './../../datasource/user-cdk-datasource';
-import { tap } from 'rxjs/operators';
 import { UserDatasource } from './../../datasource/user-datasource';
-import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { BaseComponent } from '../../../shared/class/base-component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoggerService } from '../../../shared/service/log/logger.service';
@@ -9,7 +7,6 @@ import { L10nTranslationService, L10nLocale, L10N_LOCALE } from 'angular-l10n';
 import { ConfigLoaderService } from '../../../shared/service/loader/config-loader.service';
 import { AppConfig } from '../../../shared/model/app-config';
 import { AdminUserService } from '../../service/admin-user.service';
-import { MatPaginator } from '@angular/material/paginator';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Roles, UserProfile } from 'src/app/shared/model/user-profile';
 
@@ -52,22 +49,6 @@ export class AdminUserListComponent extends BaseComponent implements OnInit {
    );
   }
 
-  ngAfterViewInit() {
-    // this.userDataSource.counter$
-    //   .pipe(
-    //     tap((count) => {
-    //       this.paginator.length = count;
-    //     })
-    //   )
-    //   .subscribe();
-
-    // this.paginator.page
-    //   .pipe(
-    //     tap(() => this.loadUserProfile())
-    //   )
-    //   .subscribe();
-
-  }
 
   loadUserProfile() {
     this.userDataSource.loadUserProfile(this.pageIndex, this.pageSize);
