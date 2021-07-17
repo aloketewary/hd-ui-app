@@ -11,7 +11,7 @@ import { AdminGuard } from '../shared/guard/admin.guard';
 
 const routes: Routes = [
   {
-    path: '', component: AdminHomeComponent, children: [
+    path: '', children: [
       { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] },
       { path: 'config', component: ConfigListComponent, canActivate: [AdminGuard] },
       { path: 'users', component: AdminUserListComponent, canActivate: [AdminGuard] },

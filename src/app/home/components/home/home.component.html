@@ -1,4 +1,4 @@
-<div class="app-root-style" [ngClass]="{'app-dark-theme': dataHandler.isDarkMode}">
+<div class="app-root-style">
   <mat-sidenav-container #sidenav class="sidenav-root-container">
     <mat-sidenav [mode]="isMobileView?'over':'side'" [opened]="!isMobileView" [disableClose]="!isMobileView" #sidenav class="sidenav-main mat-typography">
       <mat-toolbar class="default-theme" color="primary">
@@ -7,11 +7,38 @@
             class="no-underline cursor-pointer valign-center p-r-20 col-accent">HardwareDash</a>
         </div>
       </mat-toolbar>
+      <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" class="p-l-10 p-t-10 p-b-10">
+        <img class="profile-icon-dark" [src]="'../assets/images/custom/avatar_circle_grey_64dp.png'"
+          onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+          [alt]="userProfile?.email">
+        <!-- <span class="school-font size-14 weight-500">{{userProfile?.email}}</span> -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span class="school-font size-12 weight-400 m-t--5 ellipsis">{{userProfile?.email}}</span>
+          <span class="spacer"></span>
+          <button class="profile-menu" mat-icon-button #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()"
+            [mat-menu-trigger-for]="profile">
+            <mat-icon svgIcon="chevron-down"></mat-icon>
+          </button>
+          <mat-menu #profile="matMenu" yPosition="below">
+            <div>
+              <button mat-menu-item [routerLink]="'myProfileUrl'">
+                <mat-icon>person</mat-icon>
+                <span>{{'SIDEBAR.MENU.MY_PROFILE' | translate:locale.language }}</span>
+              </button>
+              <button mat-menu-item (click)="logoutDialog()">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>{{'SIDEBAR.MENU.LOGOUT' | translate:locale.language }}</span>
+              </button>
+            </div>
+          </mat-menu>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
       <mat-nav-list style="overflow-y: auto; height: 70.5vh;">
         <div *ngFor="let link of dataHandler.sidenavMenu" [@slideInOut]="link.show ? 'out' : 'in'">
           <span *ngIf="checkUrlAccessibleOrNot(link?.userRole, link?.loginType)">
             <ng-container *ngIf="link.isChildAvailable; else elseTemplate">
-              <mat-list-item role="link" #links [ngClass]="{'bg-amber-gradient': routeIsActive(link?.href)}"
+              <mat-list-item role="link" #links [ngClass]="{'bg-route-gradient': routeIsActive(link?.href)}"
                 (click)="showHideNavMenu(link)">
                 <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}"></mat-icon>
                 <a matLine [matTooltip]="link.name | translate:locale.language" matTooltipPosition="after">
@@ -23,7 +50,7 @@
               <span *ngIf="link.isShow">
                 <div *ngFor="let clink of link.child; let last = last;">
                   <mat-list-item *ngIf="checkUrlAccessibleOrNot(clink?.userRole, link?.loginType)" role="link" #links
-                    routerLinkActive="active-link" routerLink="{{clink.href}}" (click)="onLinkClick()" class="p-l-10">
+                    routerLinkActive="bg-route-gradient" routerLink="{{clink.href}}" (click)="onLinkClick()" class="p-l-10">
                     <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{clink.icon}}"></mat-icon>
                     <a matLine [matTooltip]="clink.name | translate:locale.language" matTooltipPosition="after">
                       {{ clink.name | translate:locale.language}}</a>
@@ -54,16 +81,13 @@
           </button>
           <div class="p-l-10 ellipsis" fxLayout="column" fxLayoutAlign="center start" *ngIf="isMobileView">
             <a [routerLink]="rootLogoUrl"
-              class="no-underline cursor-pointer valign-center p-r-20 col-accent">{{userProfile?.schoolName}}</a>
-            <span class="school-font size-11 weight-400 m-t--10 col-accent">{{userProfile?.schoolYear}}</span>
+              class="no-underline cursor-pointer valign-center p-r-20 col-accent">{{userProfile}}</a>
+            <span class="school-font size-11 weight-400 m-t--10 col-accent">{{userProfile}}</span>
           </div>
           <span class="spacer"></span>
           <div class="app-logo">
           </div>
           <span class="spacer"></span>
-          <button mat-icon-button matTooltip="{{'APP.GOTO_ADMIN' | translate:locale.language}}" matTooltipPosition="before" (click)="gotoAdminHome()" aria-label="Goto Home">
-            <mat-icon [svgIcon]="'home-account'"></mat-icon>
-          </button>
           <button mat-icon-button matTooltip="{{'APP.CHANGE_LANGUAGE' | translate:locale.language}}" matTooltipPosition="before" [matMenuTriggerFor]="menu" aria-label="Language menu">
             <mat-icon [svgIcon]="'translate'"></mat-icon>
           </button>
@@ -73,7 +97,7 @@
               <span>{{ trans.text | translate:locale.language }}</span>
             </button>
           </mat-menu>
-          <button mat-icon-button matTooltip="{{'APP.SETTINGS.THEME.BUTTON.TEXT' | translate:locale.language}}" matTooltipPosition="before" (click)="dataHandler.isDarkMode = !dataHandler.isDarkMode">
+          <button mat-icon-button matTooltip="{{'APP.SETTINGS.THEME.BUTTON.TEXT' | translate:locale.language}}" matTooltipPosition="before" (click)="handleDarkMode()">
             <mat-icon [svgIcon]="dataHandler.isDarkMode ? 'weather-night' : 'weather-sunny'"></mat-icon>
           </button>
           <button matTooltip="{{'APP.GOTO_DASHBOARD' | translate:locale.language}}" matTooltipPosition="before"

@@ -1,26 +1,57 @@
-<div class="container mat-typography">
-  <div class="row">
-    <div class="modalbox m-t-55 success col-sm-8 col-md-6 col-lg-5 center animate">
-      <div class="icon">
-        <mat-icon class="icon-alert" [svgIcon]="svgIconName"></mat-icon>
+<ng-container *ngIf="isThemeAvailable; else elseTemplate">
+  <div fxLayout="column" fxLayoutAlign="start center" class="dialog-card">
+    <mat-toolbar [ngClass]="{
+      'bg-light-blue': theme == 'info',
+      'bg-green': theme == 'success',
+      'bg-red': theme == 'error',
+      'bg-orange ': theme == 'warning',
+      'col-white': true
+    }">
+      <mat-icon *ngIf="svgIconName" [svgIcon]="svgIconName" class="m-r-10"></mat-icon>
+      <div class="p-l-0">
+        {{ title | translate:locale.language }}
       </div>
-      <!--/.icon-->
-      <h2>{{ title }}</h2>
-      <p *ngFor="let msg of messageList" class="font-regular-14"> {{ msg }}</p>
-    </div>
-    <!--/.success-->
+    </mat-toolbar>
+    <mat-card [ngClass]="{'flex-full': true}" style="padding: 0px;">
+      <h3 *ngFor="let msg of messageList" class="school-font size-16 m-l-10 m-r-10 m-t-10 m-b-10"> {{ msg | translate:locale.language }} </h3>
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="m-r-10 m-l-10 m-b-10 m-t-30">
+        <button type="button" *ngIf="!isAlert"  mat-button color="primary" (click)="dialogRef.close()">{{ cancelButton | translate:locale.language}}</button>
+        <button type="button" mat-button [ngClass]="{
+          'col-light-blue': theme == 'info',
+      'col-green': theme == 'success',
+      'col-red': theme == 'error',
+      'col-orange ': theme == 'warning'
+        }" (click)="dialogRef.close(true)">{{ okButton | translate:locale.language }}</button>
+      </div>
+    </mat-card>
   </div>
-  <!--/.row-->
-</div>
-<!--/.container-->
-<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px"
-  [ngClass]="{'m-t-10': message !== '', 'flex-full': true}">
-  <button type="button" *ngIf="!isAlert && !isAccessEnabled" mat-stroked-button [color]="cancelBtnColor"
-    (click)="dialogRef.close(false)">{{ cancelButton }}</button>
-  <button type="button" *ngIf="!isAccessEnabled" mat-stroked-button [color]="okBtnColor"
-    (click)="dialogRef.close(true)">{{ okButton }}</button>
-  <button type="button" *ngIf="isAccessEnabled && !isAlert" mat-stroked-button [color]="cancelBtnColor"
-    (click)="dialogRef.close(false)">{{ cancelButton }}</button>
-  <button type="button" *ngIf="isAccessEnabled" mat-stroked-button [color]="okBtnColor"
-    (click)="dialogRef.close(true)">{{ okButton }}</button>
-</mat-dialog-actions>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container mat-typography">
+    <div class="row">
+      <div class="modalbox m-t-55 success col-sm-8 col-md-6 col-lg-5 center animate">
+        <div class="icon">
+          <mat-icon class="icon-alert" [svgIcon]="svgIconName"></mat-icon>
+        </div>
+        <!--/.icon-->
+        <h2>{{ title }}</h2>
+        <p *ngFor="let msg of messageList" class="font-regular-14"> {{ msg }}</p>
+      </div>
+      <!--/.success-->
+    </div>
+    <!--/.row-->
+  </div>
+  <!--/.container-->
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px"
+    [ngClass]="{'m-t-10': message !== '', 'flex-full': true}">
+    <button type="button" *ngIf="!isAlert && !isAccessEnabled" mat-stroked-button [color]="cancelBtnColor"
+      (click)="dialogRef.close(false)">{{ cancelButton }}</button>
+    <button type="button" *ngIf="!isAccessEnabled" mat-stroked-button [color]="okBtnColor"
+      (click)="dialogRef.close(true)">{{ okButton }}</button>
+    <button type="button" *ngIf="isAccessEnabled && !isAlert" mat-stroked-button [color]="cancelBtnColor"
+      (click)="dialogRef.close(false)">{{ cancelButton }}</button>
+    <button type="button" *ngIf="isAccessEnabled" mat-stroked-button [color]="okBtnColor"
+      (click)="dialogRef.close(true)">{{ okButton }}</button>
+  </mat-dialog-actions>
+</ng-template>
+

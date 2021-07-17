@@ -22,18 +22,31 @@ export class CommonDialogService {
     // super('DialogService', http, snackbar, logger);
   }
 
+  /*
+  * Themes are : info / success/ warning / error
+  */
   public confirm(
-    title: string, message?: string, svgIconName?: string,
-    okButtonName?: string, cancelButtonName?: string): Observable<boolean> {
-
+    title: string,
+    message?: string,
+    svgIconName?: string,
+    okButtonName?: string,
+    cancelButtonName?: string,
+    theme?: 'info' | 'success' | 'warning' | 'error',
+  ): Observable<boolean> {
     let dialogRef: MatDialogRef<CommonConfirmDialogComponent>;
-    dialogRef = this.dialog.open(CommonConfirmDialogComponent, { disableClose: true });
+    dialogRef = this.dialog.open(CommonConfirmDialogComponent, {
+      disableClose: true
+    });
 
     dialogRef.componentInstance.title = title;
     dialogRef.componentInstance.message = message || '';
     dialogRef.componentInstance.svgIconName = svgIconName || '';
-    dialogRef.componentInstance.okButton = okButtonName || 'OK'; // this.translationService.translate('COMMON.OK_BUTTON');
-    dialogRef.componentInstance.cancelButton = cancelButtonName || 'CANCEL'; // this.translationService.translate('COMMON.CANCEL_BUTTON');
+    dialogRef.componentInstance.okButton = okButtonName || 'OK_BUTTON';
+    dialogRef.componentInstance.cancelButton = cancelButtonName || 'CANCEL_BUTTON';
+    if (theme) {
+      dialogRef.componentInstance.theme = theme || 'info';
+      dialogRef.componentInstance.isThemeAvailable = true;
+    }
     return dialogRef.afterClosed();
   }
 

@@ -40,32 +40,6 @@
   }
 }
 
-.content {
-  display: inline-block;
-  padding: 7px 16px;
-
-  & .text {
-    font-size: 13px;
-    margin-top: 11px;
-    color: #555;
-  }
-
-  & .number {
-    font-weight: normal;
-    font-size: 26px;
-    margin-top: 2px;
-    color: #555;
-  }
-
-  & .number-gt-xs {
-    font-weight: normal;
-    font-size: 26px;
-    margin-top: 30px;
-    color: #555;
-    text-align: center;
-  }
-}
-
 .hover-expand-effect:after {
   background-color: rgba(0, 0, 0, 0.05);
   content: ".";

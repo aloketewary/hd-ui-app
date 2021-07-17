@@ -9,10 +9,36 @@ $warn-color: "";
 // Import all the tools needed to customize the theme and extract parts of it
 @import "~@angular/material/theming";
 
-@mixin setMatColors($theme) {
-  $primary-color: map-get($theme, primary);
-  $accent-color: map-get($theme, accent);
-  $warn-color: map-get($theme, warn);
+@mixin setMatColors($theme, $isDark) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .content {
+    display: inline-block;
+    padding: 7px 16px;
+
+    & .text {
+      font-size: 13px;
+      margin-top: 11px;
+      color:  isDark($isDark);
+    }
+
+    & .number {
+      font-weight: normal;
+      font-size: 26px;
+      margin-top: 2px;
+      color:  isDark($isDark);
+    }
+
+    & .number-gt-xs {
+      font-weight: normal;
+      font-size: 26px;
+      margin-top: 30px;
+      color:  isDark($isDark);
+      text-align: center;
+    }
+  }
 }
 
 @function set-text-color($color) {
@@ -42,5 +68,13 @@ $warn-color: "";
 
   @if ($type== "warn") {
     @return $warn-color;
+  }
+}
+
+@function isDark($dark) {
+  @if ($dark == 'false') {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
   }
 }

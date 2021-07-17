@@ -76,6 +76,7 @@ export class ConfigListComponent extends BaseComponent implements OnInit {
         this.showMessage(`${result.key} ${config ? 'Updated the config.' : 'Added to the list.'}`);
         this.configModelList.push(result);
         this.logger.info(this.className, 'upload files of ', result.key, ' success');
+        window.location.reload();
       }
     });
   }
@@ -92,6 +93,7 @@ export class ConfigListComponent extends BaseComponent implements OnInit {
           if (data) {
             this.showMessage(`${config.key} removed from the list.`);
             this.configModelList.splice(this.configModelList.indexOf(config));
+            window.location.reload();
           }
         });
       }

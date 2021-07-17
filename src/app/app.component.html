@@ -1,10 +1,12 @@
-<ng-container *ngIf="onlineOffline | async; then thenTemplate; else elseTemplate"></ng-container>
-<ng-template #thenTemplate>
-  <app-http-loader></app-http-loader>
-  <div class="app-root-style">
-    <router-outlet></router-outlet>
-  </div>
-</ng-template>
-<ng-template #elseTemplate>
-  <app-no-network></app-no-network>
-</ng-template>
+<div [ngClass]="{'app-dark-theme': dataHandler.isDarkMode}">
+  <ng-container *ngIf="onlineOffline | async; then thenTemplate; else elseTemplate"></ng-container>
+  <ng-template #thenTemplate>
+    <app-http-loader></app-http-loader>
+    <div class="app-root-style">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
+  <ng-template #elseTemplate>
+    <app-no-network></app-no-network>
+  </ng-template>
+</div>

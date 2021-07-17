@@ -33,8 +33,8 @@ $general-typography: mat-typography-config(
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$app-app-primary: mat-palette($mat-blue-grey, 900);
-$app-app-accent: mat-palette($mat-amber, A700, A100, A400);
+$app-app-primary: mat-palette($mat-deep-purple, 900);
+$app-app-accent: mat-palette($mat-pink, A400, A100, A400);
 // The warn palette is optional (defaults to red).
 $app-app-warn: mat-palette($mat-deep-orange);
 // Create the theme object (a Sass map containing all of the palettes).
@@ -49,8 +49,8 @@ $app-app-theme: mat-light-theme(
 @include angular-material-theme($app-app-theme);
 // Secondary Theme
 .app-dark-theme {
-  $app-dark-primary: mat-palette($mat-teal, 700);
-  $app-dark-accent: mat-palette($mat-amber, 500);
+  $app-dark-primary: mat-palette($mat-blue-grey, 900);
+  $app-dark-accent: mat-palette($mat-amber, A400);
   $app-dark-warn: mat-palette($mat-deep-orange);
   $app-dark-theme: mat-dark-theme(
     $app-dark-primary,
@@ -58,6 +58,9 @@ $app-app-theme: mat-light-theme(
     $app-dark-warn
   );
   @include angular-material-theme($app-dark-theme);
+  // Using the $theme variable from the pre-built theme you can call the theming function
+  @include app-sidemenu($app-dark-theme);
+  @include setMatColors($app-dark-theme, 'true');
   .inner-sidenav-content {
     background-color: #676565 !important;
   }
@@ -65,4 +68,4 @@ $app-app-theme: mat-light-theme(
 
 // Using the $theme variable from the pre-built theme you can call the theming function
 @include app-sidemenu($app-app-theme);
-@include setMatColors($app-app-theme);
+@include setMatColors($app-app-theme, 'false');

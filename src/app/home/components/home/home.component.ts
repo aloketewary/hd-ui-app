@@ -10,10 +10,15 @@ import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/class/base-component';
 import { AppConfig } from 'src/app/shared/model/app-config';
+import { LoginResponse, UserProfile } from 'src/app/shared/model/user-profile';
+import { AuthService } from 'src/app/shared/service/auth/auth.service';
+import { CommonDialogService } from 'src/app/shared/service/common/dialog/common-dialog.service';
 import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
 import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
 import { LoggerService } from 'src/app/shared/service/log/logger.service';
+import { StorageService } from 'src/app/shared/service/storage/storage.service';
 import { isEqualsIgnoreCase, isNullOrUndefined } from 'src/app/shared/util/app-util';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +51,8 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) menuSidenav: MatSidenav;
   watcher: Subscription;
   rootLogoUrl: any;
-  userProfile: any = {};
+  userProfile: UserProfile;
+  loginResponse: LoginResponse;
   schema = this.l10nConfig.schema;
   constructor(
     protected snackBar: MatSnackBar,
@@ -59,11 +65,13 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
     private router: Router,
     @Inject(L10N_CONFIG) private l10nConfig: L10nConfig,
     configLoader: ConfigLoaderService,
+    private dialogService: CommonDialogService,
+    private auth: AuthService,
+    private storage: StorageService
   ) {
     super('HomeComponent', snackBar, logger, translation);
     this.config = configLoader.getConfigData();
     this.currentMode = 'side';
-    this.userProfile.userType = 'ADMIN';
   }
 
   ngOnInit(): void {
@@ -77,6 +85,8 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
     ).subscribe((change: MediaChange) => {
       this.isMobileView = change.mqAlias === 'xs';
     });
+    this.loginResponse = this.storage.getCookieData(environment.LOGIN_PERSISTENCE_NAME);
+    this.userProfile = this.loginResponse as unknown as UserProfile;
   }
 
   ngOnDestroy(): void {
@@ -112,13 +122,41 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
     }
     roleList.forEach((role: string) => {
       if (!rtrn) {
-        rtrn = isEqualsIgnoreCase(this.config[role], this.userProfile?.userType);
+        rtrn = isEqualsIgnoreCase(role, this.loginResponse?.roles[0]);
       }
     });
-    return rtrn && (loginType === this.dataHandler.loginAs);
+    return rtrn;
   }
 
-  gotoAdminHome() {
-    this.router.navigate(['/admin/dashboard']);
+  /**
+   * Remove logout
+   */
+   logoutDialog() {
+    /* Confirm dialog passed optional parameters for better data handle*/
+    this.dialogService
+      .confirm('LOGOUT.TITLE', 'LOGOUT.SURE_MESSAGE', 'logout', 'LOGOUT.BUTTON.LOGOUT_TEXT', 'LOGOUT.BUTTON.CANCEL', 'info')
+      .subscribe(res => {
+        try {
+          if (res) {
+            this.onLoggedOut();
+            this.logger.debug(this.className, 'Logout Successfully');
+            this.showMessage('Logout Successfully', '');
+          }
+        } catch (error) {
+          this.logger.error(this.className, error);
+          this.showMessage('Logout Error');
+        }
+      });
   }
+
+  onLoggedOut(): void {
+    this.auth.logout();
+    this.router.navigate(['/auth/login']);
+  }
+
+  handleDarkMode() {
+    this.dataHandler.isDarkMode = !this.dataHandler.isDarkMode;
+    this.storage.setLocalData('DARK_MODE', this.dataHandler.isDarkMode)
+  }
+
 }

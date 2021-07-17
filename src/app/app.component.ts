@@ -2,7 +2,6 @@ import { DataHandlerService } from './shared/service/handler/data-handler.servic
 import {
   L10N_CONFIG, L10N_LOCALE, L10nConfig, L10nLocale, L10nTranslationService
 } from 'angular-l10n';
-import { Observable } from 'rxjs';
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +10,7 @@ import { BaseComponent } from './shared/class/base-component';
 import { LoggerService } from './shared/service/log/logger.service';
 import { environment } from 'src/environments/environment';
 import { MenuLoaderService } from './shared/service/loader/menu-loader.service';
+import { StorageService } from './shared/service/storage/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +27,8 @@ export class AppComponent extends BaseComponent implements OnInit {
     @Inject(L10N_LOCALE) public locale: L10nLocale,
     @Inject(L10N_CONFIG) private l10nConfig: L10nConfig,
     public dataHandler: DataHandlerService,
-    private menuLoader: MenuLoaderService
+    private menuLoader: MenuLoaderService,
+    private storage: StorageService
   ) {
     super('AppComponent', snackBar, logger, translation);
   }
@@ -45,7 +46,7 @@ export class AppComponent extends BaseComponent implements OnInit {
     });
 
     this.dataHandler.projectName = this.translation.translate('APP.PROJECT_NAME') || 'HardWare Dash';
-
+    this.dataHandler.isDarkMode = this.storage.getLocalData('DARK_MODE')
     this.dataHandler.showRequiredMarker = true;
     this.dataHandler.textAreaMaxRows = 4;
     this.dataHandler.textAreaMinRows = 4;

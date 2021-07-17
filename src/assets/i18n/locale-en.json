@@ -441,7 +441,12 @@
       },
       "UNIT": {
         "TITLE": "Product Unit"
-      }
+      },
+      "ADMIN": {
+        "TITLE": "Admin Home"
+      },
+      "LOGOUT": "Logout",
+      "MY_PROFILE": "My Profile"
     }
   },
   "SUBJECT": {

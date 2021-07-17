@@ -17,6 +17,14 @@
     border-bottom: 2px thin mat-color($primary, 600);
     border-top: 2px thin mat-color($primary, 600);
   }
+  .bg {
+    &-route {
+      &-gradient {
+        background: gradient(mat-color($accent, 500), mat-color($accent, 700));
+        color: gradient-color(mat-color($accent, 500));
+      }
+    }
+  }
   $colors: (
     50,
     100,
