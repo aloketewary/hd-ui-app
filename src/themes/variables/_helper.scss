@@ -43,30 +43,30 @@ $warn-color: "";
 
 @function set-text-color($color) {
   @if (lightness($color) > 50) {
-    @return #000000; // Lighter backgorund, return dark color
+    @return #000000 is-important(true); // Lighter backgorund, return dark color
   } @else {
-    @return #ffffff; // Darker background, return light color
+    @return #ffffff is-important(true); // Darker background, return light color
   }
 }
 
 @function gradient($color1, $color2) {
-  @return linear-gradient(to bottom right, $color1, $color2) !important;
+  @return linear-gradient(to bottom right, $color1, $color2);
 }
 
 @function gradient-color($color) {
-  @return set-text-color($color) !important;
+  @return set-text-color($color);
 }
 
 @function getMatColors($type) {
-  @if ($type== "primary") {
+  @if ($type == "primary") {
     @return $primary-color;
   }
 
-  @if ($type== "accent") {
+  @if ($type == "accent") {
     @return $accent-color;
   }
 
-  @if ($type== "warn") {
+  @if ($type == "warn") {
     @return $warn-color;
   }
 }
@@ -77,4 +77,8 @@ $warn-color: "";
   } @else {
     @return #ffffff; // Darker background, return light color
   }
+}
+
+@function is-important($important){
+  @return #{if($important, '!important', '')};
 }
