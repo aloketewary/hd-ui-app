@@ -1,0 +1,63 @@
+<div fxLayout="column" fxLayoutAlign="center start" class="file-upload">
+  <mat-toolbar color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      {{'ADMIN.CONFIG.HEADER.TITLE' | translate:locale.language}}
+    </div>
+  </mat-toolbar>
+  <form id=formId (ngSubmit)="submitHandler()" #refForm="ngForm" class="flex-full" [formGroup]="userForm">
+    <div fxLayout="column" fxLayoutAlign="center start" class="flex-full">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
+        class="flex-full">
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.CONFIG.FORM.KEY.TITLE' | translate:locale.language}}</mat-label>
+              <input matInput formControlName="email" maxlength="50" required>
+              <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+                {{'ADMIN.CONFIG.FORM.KEY.TITLE' | translate:locale.language}}
+                <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+              </mat-error>
+              <mat-icon matSuffix svgIcon="key" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.CONFIG.FORM.VALUE.TITLE' | translate:locale.language}}</mat-label>
+              <input matInput formControlName="password" maxlength="50" required>
+              <mat-error *ngIf="userForm.controls['password'].hasError('required')">
+                {{'ADMIN.CONFIG.FORM.VALUE.TITLE' | translate:locale.language}}
+                <strong> {{'COMMON.REQUIRED' | translate:locale.language}}</strong>
+              </mat-error>
+              <mat-icon matSuffix svgIcon="alphabetical" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center start"
+        class="flex-full">
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="spaceIn flex-full">
+          <div fxFlex="100">
+            <mat-form-field class="flex-full" appearance="outline"
+              [hideRequiredMarker]="dataHandler.showRequiredMarker">
+              <mat-label>{{'ADMIN.CONFIG.FORM.USED_FOR.TITLE' | translate:locale.language}}</mat-label>
+              <!-- <mat-select placeholder="Select used for" [(value)]="selectedConfigData">
+                <mat-option *ngFor="let list of usedForList" [value]="list" (click)="selectedConfig(list)">
+                  {{list?.value}}
+                </mat-option>
+              </mat-select> -->
+              <mat-icon matSuffix svgIcon="format-list-bulleted-square" color="primary"></mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px" class="flex-full m-b-20 p-r-20">
+      <button mat-stroked-button color="primary" type="submit">SUBMIT</button>
+      <button mat-stroked-button mat-dialog-close color="warn">CANCEL</button>
+    </div>
+  </form>
+</div>

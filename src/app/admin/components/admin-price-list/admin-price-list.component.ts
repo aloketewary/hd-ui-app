@@ -207,14 +207,12 @@ export class AdminPriceListComponent extends BaseComponent implements OnInit, On
 
   loadProductList(): void {
     let sortActive = ''
-    if (this.sort.active == 'slno') {
-
-    } else if (this.sort.active == 'productName') {
-      sortActive = this.sort.active
-    } else sortActive = `productVariant.${this.sort.active}`
+    if (this.sort.active != 'slno') {
+      sortActive = `${this.sort.active},`;
+    }
     this.productDataSource.loadProductList(
       this.filteredValue,
-      `${sortActive},${this.sort.direction}`,
+      `${sortActive}${this.sort.direction}`,
       this.paginator.pageIndex,
       this.paginator.pageSize);
     this.selection.clear();

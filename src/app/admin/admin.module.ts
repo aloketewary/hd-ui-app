@@ -13,6 +13,7 @@ import { AdminPriceManagerComponent } from './components/admin-price-manager/adm
 import { FilesUploadComponent } from './components/files-upload/files-upload.component';
 import { AdminProductUnitListComponent } from './components/admin-product-unit-list/admin-product-unit-list.component';
 import { AdminProductUnitComponent } from './components/admin-product-unit/admin-product-unit.component';
+import { AdminUserComponent } from './components/admin-user/admin-user.component';
 
 
 @NgModule({
@@ -26,14 +27,14 @@ import { AdminProductUnitComponent } from './components/admin-product-unit/admin
     FilesUploadComponent,
     AdminPriceManagerComponent,
     AdminProductUnitListComponent,
-    AdminProductUnitComponent
+    AdminProductUnitComponent,
+    AdminUserComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     AdminRoutingModule,
-
   ],
-  entryComponents: [ConfigComponent]
+  entryComponents: [ConfigComponent, AdminUserComponent]
 })
 export class AdminModule { }

@@ -59,7 +59,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.initForms();
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl !== '/' ? this.route.snapshot.queryParams.returnUrl : undefined;
+    this.route.queryParams
+      .subscribe(params => this.returnUrl = params['returnUrl'] || '/home/dashboard');
   }
 
   initForms(): void {
@@ -88,8 +89,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
           const myDate = new Date();
           myDate.setHours( myDate.getHours() + 1 );
           this.storage.setCookieData(environment.LOGIN_PERSISTENCE_NAME, data, myDate);
-          const currentUrl = this.returnUrl || `/home/dashboard/`;
-          this.router.navigate([currentUrl]);
+          this.router.navigateByUrl(this.returnUrl);
         } else {
           this.isLoginInitiated = false;
           this.showMessage(this.translation.translate('COMMON.ERROR.PLEASE_RETRY_AGAIN'));

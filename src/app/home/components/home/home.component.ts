@@ -159,4 +159,8 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
     this.storage.setLocalData('DARK_MODE', this.dataHandler.isDarkMode)
   }
 
+  isAdmin() {
+    return this.auth.isAdmin();
+  }
+
 }

@@ -61,6 +61,8 @@ $app-app-theme: mat-light-theme(
   // Using the $theme variable from the pre-built theme you can call the theming function
   @include app-sidemenu($app-dark-theme);
   @include setMatColors($app-dark-theme, 'true');
+  @include mat-core-theme($app-dark-theme);
+  @include mat-menu-theme($app-dark-theme);
   .inner-sidenav-content {
     background-color: #676565 !important;
   }
@@ -69,3 +71,27 @@ $app-app-theme: mat-light-theme(
 // Using the $theme variable from the pre-built theme you can call the theming function
 @include app-sidemenu($app-app-theme);
 @include setMatColors($app-app-theme, 'false');
+//@include angular-material-theme($dark-theme);
+//
+// @include mat-autocomplete-theme($light-theme);
+// @include mat-button-theme($light-theme);
+// @include mat-button-toggle-theme($light-theme);
+// @include mat-card-theme($light-theme);
+// @include mat-checkbox-theme($light-theme);
+// @include mat-chips-theme($light-theme);
+// @include mat-dialog-theme($light-theme);
+// @include mat-grid-list-theme($light-theme);
+// @include mat-icon-theme($light-theme);
+// @include mat-input-theme($light-theme);
+// @include mat-list-theme($dark-theme);
+//
+// @include mat-progress-bar-theme($light-theme);
+// @include mat-progress-spinner-theme($light-theme);
+// @include mat-radio-theme($light-theme);
+// @include mat-select-theme($light-theme);
+// @include mat-sidenav-theme($light-theme);
+// @include mat-slide-toggle-theme($light-theme);
+// @include mat-slider-theme($light-theme);
+// @include mat-tabs-theme($dark-theme);
+// @include mat-toolbar-theme($light-theme);
+// @include mat-tooltip-theme($light-theme);

@@ -2,30 +2,7 @@ export class Product {
   id: string;
   isActive: boolean;
   productName: string;
-  productVariant: ProductVariant;
-
-  withId(id: string): Product {
-    this.id = id;
-    return this;
-  }
-  withIsActive(isActive: boolean): Product {
-    this.isActive = isActive;
-    return this;
-  }
-  withPproductName(productName: string): Product {
-    this.productName = productName;
-    return this;
-  }
-  withProductVariant(productVariant: ProductVariant): Product {
-    this.productVariant = productVariant;
-    return this;
-  }
-}
-
-export class ProductVariant {
   buyPrice: number;
-  id: string;
-  isActive: boolean;
   onSale: boolean;
   onSalePrice: number;
   parentId: string;
@@ -37,70 +14,76 @@ export class ProductVariant {
   unit: string;
   multiText: string;
 
-  withBuyPrice(buyPrice: number): ProductVariant {
+  withBuyPrice(buyPrice: number): Product {
     this.buyPrice = buyPrice;
     return this;
   }
 
-  withId(id: string): ProductVariant {
+  withId(id: string): Product {
     this.id = id;
     return this;
   }
 
-  withIsActive(isActive: boolean): ProductVariant {
+  withIsActive(isActive: boolean): Product {
     this.isActive = isActive;
     return this;
   }
 
-  withOnSale(onSale: boolean): ProductVariant {
+  withOnSale(onSale: boolean): Product {
     this.onSale = onSale;
     return this;
   }
 
-  withOnSalePrice(onSalePrice: number): ProductVariant {
+  withOnSalePrice(onSalePrice: number): Product {
     this.onSalePrice = onSalePrice;
     return this;
   }
 
-  withParentId(parentId: string): ProductVariant {
+  withParentId(parentId: string): Product {
     this.parentId = parentId;
     return this;
   }
 
-  withSellingPrice(sellingPrice: number): ProductVariant {
+  withSellingPrice(sellingPrice: number): Product {
     this.sellingPrice = sellingPrice;
     return this;
   }
 
-  withStockTotal(stockTotal: number): ProductVariant {
+  withStockTotal(stockTotal: number): Product {
     this.stockTotal = stockTotal;
     return this;
   }
 
-  withVariant(variant: string): ProductVariant {
+  withVariant(variant: string): Product {
     this.variant = variant;
     return this;
   }
 
-  withVariantName(variantName: string): ProductVariant {
+  withVariantName(variantName: string): Product {
     this.variantName = variantName;
     return this;
   }
 
-  withWholeSalePrice(wholeSalePrice: number): ProductVariant {
+  withWholeSalePrice(wholeSalePrice: number): Product {
     this.wholeSalePrice = wholeSalePrice;
     return this;
   }
 
-  withUnit(unit: string): ProductVariant {
+  withUnit(unit: string): Product {
     this.unit = unit;
     return this;
   }
 
-  withMultiText(multiText: string): ProductVariant {
+  withMultiText(multiText: string): Product {
     this.multiText = multiText;
     return this;
   }
+
+  withPproductName(productName: string): Product {
+    this.productName = productName;
+    return this;
+  }
+
 }
 
 export class ProductData {

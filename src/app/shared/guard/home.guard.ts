@@ -4,14 +4,17 @@ import { CanActivate, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, Router
 import { CookiesStorageService } from 'ngx-store';
 import { Observable } from 'rxjs';
 import { isNullOrUndefined } from '../util/app-util';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeGuard implements CanActivate, CanLoad {
 
-  constructor(private cookieStorage: CookiesStorageService,
-    private router: Router,) {
+  constructor(
+    private cookieStorage: CookiesStorageService,
+    private router: Router,
+    private location: Location) {
 
   }
 
@@ -34,7 +37,7 @@ export class HomeGuard implements CanActivate, CanLoad {
     if (!isNullOrUndefined(token)) {
       return true;
     }
-    this.router.navigate([`/auth/login`], { queryParams: { returnUrl: this.router.url }, queryParamsHandling: null });
+    this.router.navigate([`/auth/login`], { queryParams: { returnUrl: this.location.path() }, queryParamsHandling: null });
     return false;
   }
 }

@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,8 +8,7 @@ import { AppConfig } from 'src/app/shared/model/app-config';
 import { DataHandlerService } from 'src/app/shared/service/handler/data-handler.service';
 import { ConfigLoaderService } from 'src/app/shared/service/loader/config-loader.service';
 import { LoggerService } from 'src/app/shared/service/log/logger.service';
-import { Product, ProductData, ProductVariant } from '../../models/product';
-import { ProductUnit } from '../../models/product-unit';
+import { Product, ProductData } from '../../models/product';
 import { ProductService } from '../../service/product.service';
 
 @Component({
@@ -70,25 +69,21 @@ export class AdminPriceManagerComponent extends BaseComponent implements OnInit,
 
   submitHandler(): void {
     if (this.productForm.valid) {
-      const productVariant = new ProductVariant()
-      .withBuyPrice(this.productForm.controls.buyPrice.value)
-      .withId(this.productModel.variantId)
-      .withIsActive(this.isEditMode ? this.productModel.variantIsActive : true)
-      .withOnSale(this.productForm.controls.onSale.value)
-      .withOnSalePrice(this.productForm.controls.onSalePrice.value)
-      .withParentId(this.productForm.controls.parentId.value)
-      .withSellingPrice(this.productForm.controls.sellingPrice.value)
-      .withStockTotal(this.productForm.controls.stockTotal.value)
-      .withVariant(this.productForm.controls.variant.value)
-      .withVariantName(this.productForm.controls.variantName.value)
-      .withWholeSalePrice(this.productForm.controls.wholeSalePrice.value)
-      .withUnit(this.productForm.controls.unit.value)
-      .withMultiText('');
       const bodyData = new Product()
         .withId(this.productModel.id)
         .withPproductName(this.productForm.controls.productName.value)
-        .withProductVariant(productVariant)
-        .withIsActive(this.productForm.controls.isActive.value);
+        .withBuyPrice(this.productForm.controls.buyPrice.value)
+        .withOnSale(this.productForm.controls.onSale.value)
+        .withOnSalePrice(this.productForm.controls.onSalePrice.value)
+        .withParentId(this.productForm.controls.parentId.value)
+        .withSellingPrice(this.productForm.controls.sellingPrice.value)
+        .withStockTotal(this.productForm.controls.stockTotal.value)
+        .withVariant(this.productForm.controls.variant.value)
+        .withVariantName(this.productForm.controls.variantName.value)
+        .withWholeSalePrice(this.productForm.controls.wholeSalePrice.value)
+        .withUnit(this.productForm.controls.unit.value)
+        .withMultiText('')
+        .withIsActive(this.isEditMode ? this.productModel.variantIsActive : true);
       if (this.isEditMode) {
         this.productService.updateProduct<Product>(this.productModel.id, bodyData).subscribe(data => {
           if (data) {

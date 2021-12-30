@@ -34,7 +34,7 @@
         </div>
       </div>
       <mat-divider></mat-divider>
-      <mat-nav-list style="overflow-y: auto; height: 70.5vh;">
+      <mat-nav-list style="overflow-y: auto; height: 70.5vh; overflow-x: clip;">
         <div *ngFor="let link of dataHandler.sidenavMenu" [@slideInOut]="link.show ? 'out' : 'in'">
           <span *ngIf="checkUrlAccessibleOrNot(link?.userRole, link?.loginType)">
             <ng-container *ngIf="link.isChildAvailable; else elseTemplate">
@@ -101,7 +101,7 @@
             <mat-icon [svgIcon]="dataHandler.isDarkMode ? 'weather-night' : 'weather-sunny'"></mat-icon>
           </button>
           <button matTooltip="{{'APP.GOTO_DASHBOARD' | translate:locale.language}}" matTooltipPosition="before"
-            routerLink="/admin/dashboard" mat-icon-button>
+            routerLink="/home/admin/dashboard" mat-icon-button *ngIf="isAdmin()">
             <mat-icon svgIcon="view-dashboard"></mat-icon>
           </button>
         </mat-toolbar>
